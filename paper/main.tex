@@ -1,20 +1,16 @@
-% This is samplepaper.tex, a sample chapter demonstrating the
-% LLNCS macro package for Springer Computer Science proceedings;
-% Version 2.20 of 2017/10/04
-%
 \documentclass[runningheads]{llncs}
-%
+
 \usepackage{graphicx}
-% Used for displaying a sample figure. If possible, figure files should
-% be included in EPS format.
-%
-% If you use the hyperref package, please uncomment the following line
-% to display URLs in blue roman font according to Springer's eBook style:
-% \renewcommand\UrlFont{\color{blue}\rmfamily}
+\usepackage{xcolor}
+
+
+\newcommand{\RH}[1]{\textcolor{blue}{#1}}
+\newcommand{\JS}[1]{\textcolor{red}{#1}}
+\newcommand{\TODO}[1]{\textcolor{red}{TODO: #1}}
 
 \begin{document}
 
-\title{A simple method to prevent pooled cryptocurrency mining}
+\title{VRF-based mining: How to rule out mining pools from blockchain ecosystem?}
 
 \author{Runchao Han\inst{1,2} \and
 Haoyu Lin \and
@@ -31,8 +27,13 @@ Jiangshan Yu\inst{1}}
 \keywords{Blockchain \and Cryptocurrency mining \and Mining pool.}
 \end{abstract}
 
-\section{First Section}
-\subsection{A Subsection Sample}
+\input{sections/1intro.tex}
+\input{sections/2preliminaries.tex}
+\input{sections/3vrf-based-mining.tex}
+\input{sections/4mining-algorithm-support.tex}
+\input{sections/5sybil-vs-incentive.tex}
+\input{sections/6related-work.tex}
+\input{sections/7conclusion.tex}
 
 \bibliographystyle{splncs04}
 \bibliography{refs}
