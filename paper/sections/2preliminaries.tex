@@ -4,8 +4,17 @@
 
 \RH{describe how PoW and mining works}
 
+
+
 \subsection{Verifiable random functions}
 
 \RH{VRF is a hash function with private key...}
 
 \RH{give the standarised construction}
+
+\begin{itemize}
+    \item $(sk, pk) \leftarrow VRFKeyGen(1^{\lambda})$
+    \item $\beta \leftarrow VRFHash(sk, \alpha)$
+    \item $\pi \leftarrow VRFProve(sk, \alpha)$
+    \item $\{0, 1\} \leftarrow VRFVerify(pk, \alpha, \beta, \pi)$
+\end{itemize}
