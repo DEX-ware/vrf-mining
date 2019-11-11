@@ -21,6 +21,7 @@ $h \leftarrow VRFHash(sk, \alpha)$
 $\pi \leftarrow VRFProve(sk, \alpha)$
 \begin{enumerate}
     \item $h = H_{1}(\alpha)$
+    \item $\gamma = h^{sk}$
     \item choose a random $k \in \interval{0}{q-1}$
     \item $c = H_{3}(g, h, pk, h^{sk}, g^{k}, h^{k})$
     \item $s = k - c \cdot sk \pmod{q}$
