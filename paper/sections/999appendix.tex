@@ -11,7 +11,7 @@ $(sk, pk) \leftarrow VRFKeyGen(1^{\lambda})$
     \item $pk = g^{sk}$
 \end{enumerate}
 
-$h \leftarrow VRFHash(sk, \alpha)$
+$\beta \leftarrow VRFHash(sk, \alpha)$
 \begin{enumerate}
     \item $h = H_{1}(\alpha)$
     \item $\gamma = h^{sk}$
