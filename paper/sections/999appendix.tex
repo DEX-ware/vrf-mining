@@ -37,7 +37,7 @@ Let $H_3(\cdot)$ be a hash function mapping an arbitrary-length string into a fi
         \begin{enumerate}
             \item $u = pk^{c} \cdot g^{s}$
             \item $h = H_{1}(\alpha)$
-            \item check if $\gamma \in G$
+            \item check if $\gamma \stackrel{?}{\in} G$
             \item $v = \gamma^{c} \cdot h^{s}$
             \item check if $c \stackrel{?}{=} H_{3}(g, h, pk, \gamma, u, v)$
         \end{enumerate}
