@@ -5,20 +5,20 @@ Let $H_1(\cdot)$ be a hash function mapping an arbitrary-length string into an e
 Let $H_2(\cdot)$ be a hash function mapping an element in $G$ into a fixed-length string.
 Let $H_3(\cdot)$ be a hash function mapping an arbitrary-length string into a fixed-length string.
 
-\noindent $(sk, pk) \leftarrow VRFKeyGen(1^{\lambda})$
+\noindent $(sk, pk) \gets \mathsf{VRFKeyGen}(1^{\lambda})$
 \begin{enumerate}
     \item $sk$ is chosen uniformly and randomly from $\interval{0}{q-1}$
     \item $pk = g^{sk}$
 \end{enumerate}
 
-\noindent $\beta \leftarrow VRFHash(sk, \alpha)$
+\noindent $\beta \gets \mathsf{VRFHash}(sk, \alpha)$
 \begin{enumerate}
     \item $h = H_{1}(\alpha)$
     \item $\gamma = h^{sk}$
     \item $\beta = H_{2}(\gamma)$
 \end{enumerate}
 
-\noindent $\pi \leftarrow VRFProve(sk, \alpha)$
+\noindent $\pi \gets \mathsf{VRFProve}(sk, \alpha)$
 \begin{enumerate}
     \item $h = H_{1}(\alpha)$
     \item $\gamma = h^{sk}$
@@ -28,7 +28,7 @@ Let $H_3(\cdot)$ be a hash function mapping an arbitrary-length string into a fi
     \item $\pi = (\gamma, c, s)$
 \end{enumerate}
 
-\noindent $\{0, 1\} \leftarrow VRFVerify(pk, \alpha, \beta, \pi)$
+\noindent $\{0, 1\} \gets \mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$
 \begin{enumerate}
     \item $u = pk^{c} \cdot g^{s}$
     \item $h = H_{1}(\alpha)$
