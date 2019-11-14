@@ -1,38 +1,46 @@
 \section{Standardised construction of VRF}
 
+Here we describe the Elliptic curve based VRF (EC-VRF) construction specified in draft-goldbe-vrf-01~\cite{goldberg2017draft}.
+
 Let $G$ be a cyclic group of prime order $q$ with generator $g$. Assume $E = G$
 Let $H_1(\cdot)$ be a hash function mapping an arbitrary-length string into an element in $G$.
 Let $H_2(\cdot)$ be a hash function mapping an element in $G$ into a fixed-length string.
 Let $H_3(\cdot)$ be a hash function mapping an arbitrary-length string into a fixed-length string.
 
-\noindent $(sk, pk) \gets \mathsf{VRFKeyGen}(1^{\lambda})$
-\begin{enumerate}
-    \item $sk$ is chosen uniformly and randomly from $\interval{0}{q-1}$
-    \item $pk = g^{sk}$
-\end{enumerate}
+\noindent\fbox{
+    \parbox{\textwidth}{
 
-\noindent $\beta \gets \mathsf{VRFHash}(sk, \alpha)$
-\begin{enumerate}
-    \item $h = H_{1}(\alpha)$
-    \item $\gamma = h^{sk}$
-    \item $\beta = H_{2}(\gamma)$
-\end{enumerate}
+        $(sk, pk) \gets \mathsf{VRFKeyGen}(1^{\lambda})$
+        \begin{enumerate}
+            \item $sk$ is chosen uniformly and randomly from $\interval{0}{q-1}$
+            \item $pk = g^{sk}$
+        \end{enumerate}
 
-\noindent $\pi \gets \mathsf{VRFProve}(sk, \alpha)$
-\begin{enumerate}
-    \item $h = H_{1}(\alpha)$
-    \item $\gamma = h^{sk}$
-    \item choose a random $k \in \interval{0}{q-1}$
-    \item $c = H_{3}(g, h, pk, h^{sk}, g^{k}, h^{k})$
-    \item $s = k - c \cdot sk \pmod{q}$
-    \item $\pi = (\gamma, c, s)$
-\end{enumerate}
+        $\beta \gets \mathsf{VRFHash}(sk, \alpha)$
+        \begin{enumerate}
+            \item $h = H_{1}(\alpha)$
+            \item $\gamma = h^{sk}$
+            \item $\beta = H_{2}(\gamma)$
+        \end{enumerate}
 
-\noindent $\{0, 1\} \gets \mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$
-\begin{enumerate}
-    \item $u = pk^{c} \cdot g^{s}$
-    \item $h = H_{1}(\alpha)$
-    \item check if $\gamma \in G$
-    \item $v = \gamma^{c} \cdot h^{s}$
-    \item check if $c \stackrel{?}{=} H_{3}(g, h, pk, \gamma, u, v)$
-\end{enumerate}
+        $\pi \gets \mathsf{VRFProve}(sk, \alpha)$
+        \begin{enumerate}
+            \item $h = H_{1}(\alpha)$
+            \item $\gamma = h^{sk}$
+            \item choose a random $k \in \interval{0}{q-1}$
+            \item $c = H_{3}(g, h, pk, h^{sk}, g^{k}, h^{k})$
+            \item $s = k - c \cdot sk \pmod{q}$
+            \item $\pi = (\gamma, c, s)$
+        \end{enumerate}
+
+        $\{0, 1\} \gets \mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$
+        \begin{enumerate}
+            \item $u = pk^{c} \cdot g^{s}$
+            \item $h = H_{1}(\alpha)$
+            \item check if $\gamma \stackrel{?}{\in} G$
+            \item $v = \gamma^{c} \cdot h^{s}$
+            \item check if $c \stackrel{?}{=} H_{3}(g, h, pk, \gamma, u, v)$
+        \end{enumerate}
+    }
+}
+
