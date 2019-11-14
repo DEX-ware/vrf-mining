@@ -14,7 +14,7 @@ To reduce the risk, miners join mining pool
 no need to run full node and deal with block creation, block propogation
 can focus on running mining rigs, for example, ASICs.
 
-Pool operator, run full node, distribute task
+Pool operator, run full node, distribute/outsource task
 produce a block if find solution meeting target difficulty.
 
 However, mining in Bitcoin network suffers from centralisation.
@@ -23,22 +23,17 @@ However, mining in Bitcoin network suffers from centralisation.
 
 \RH{describe mining pool breaks the decentralisation}
 
-Suppose the two scenarios listed below:
 
-% "Machine gun pool"?
-
-% Big whale
-% the cost is not huge, 
-
-malicious attack
+1. malicious attack
 double spend, 51\%, with selfish mining, only requires ... 33?25?
-a group of pool operators can collude.
+1.1. a group of pool operators can collude.
+1.2. even not collude, the cost is not huge, lower pool fee
 
-DNS, steal miners power
-
-
-Even not for 51, 
+2. Even not for 51, 
 pool operators may refuse protocol upgrade. \TODO{for what? why bad?}
+
+
+3. DNS, steal miners power
 
 
 In this work, we put forward a novel idea of combining VRF and mining in PoW to make pooled mining impossible, and to conquer the centralisation of mining power.
