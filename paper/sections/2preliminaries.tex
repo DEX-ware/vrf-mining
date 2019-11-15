@@ -10,16 +10,14 @@
 
 \subsection{Verifiable random functions}
 
-\TODO{diff between VRF \& VDF}
-
-Verifiable Random Function (VRF)~\cite{} is a public-key version of cryptographic hash function.
-It involves a pair of a public key and a secret key.
+Verifiable Random Function (VRF)~\cite{micali1999verifiable} is a public-key version of cryptographic hash function.
+It involves a pair of a secret key and a public key.
 Only the owner of the secret key can compute the hash, while anyone having the public key can verify the hash.
-Formally, a VRF consists of the following four algorithms: $\mathsf{VRFKeyGen}$, $\mathsf{VRFHash}$, $\mathsf{VRFProve}$ and $\mathsf{VRFVerify}$.
+Formally, a VRF consists of four algorithms: $\mathsf{VRFKeyGen}$, $\mathsf{VRFHash}$, $\mathsf{VRFProve}$ and $\mathsf{VRFVerify}$.
 
 \begin{itemize}
-    \item $(sk, pk) \gets \mathsf{VRFKeyGen}(1^{\lambda})$: on input a security parameter $1^{\lambda}$, outputs the private/public key pair $(sk, pk)$.
-    \item $\beta \gets \mathsf{VRFHash}(sk, \alpha)$: on input $sk$ and an arbitrary-length string $\alpha$, outputs a hash $\beta$.
+    \item $(sk, pk) \gets \mathsf{VRFKeyGen}(1^{\lambda})$: on input a security parameter $1^{\lambda}$, outputs the secret/public key pair $(sk, pk)$.
+    \item $\beta \gets \mathsf{VRFHash}(sk, \alpha)$: on input $sk$ and an arbitrary-length string $\alpha$, outputs a fixed-length hash $\beta$.
     \item $\pi \gets \mathsf{VRFProve}(sk, \alpha)$: on input $sk$ and $\alpha$, outputs the proof $\pi$ for $\beta$.
     \item $\{0, 1\} \gets \mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$: on input $pk$, $\alpha$, $\beta$, $\pi$, outputs the verification result 0 or 1.
 \end{itemize}
