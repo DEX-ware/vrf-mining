@@ -8,6 +8,8 @@
 
 % bitcoin sok paper
 
+Note that the hash result is unpredictable and verifiable.
+
 \subsection{Verifiable random functions}
 
 Verifiable Random Function (VRF)~\cite{micali1999verifiable} is a public-key version of cryptographic hash function.
@@ -22,6 +24,3 @@ Formally, a VRF consists of four algorithms: $\mathsf{VRFKeyGen}$, $\mathsf{VRFH
     \item $\{0, 1\} \gets \mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$: on input $pk$, $\alpha$, $\beta$, $\pi$, outputs the verification result 0 or 1.
 \end{itemize}
 
-
-% unpredictability 
-% verifiability
