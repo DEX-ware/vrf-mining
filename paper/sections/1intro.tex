@@ -14,17 +14,19 @@ Because of the hash results are distributed uniformly and cannot be predicted, t
 Therefore, payouts will be less frequent for a solo miner controlling low computing power.
 As miners need to pay for electricity periodically and want to estimate the remaining time to get the investment on hardware back (if they have not), inconsistent payouts can be risky for miners.
 
-% TODO: mining pool
+% mining pool
 To reduce the risk, miners join mining pool.
-no need to run full node and deal with block creation, block propogation
-can focus on running mining rigs, for example, ASICs.
+This also saves miners' effort on running full node and dealing with block creation, block propogation. 
+Miners can focus on running mining rigs, for example, ASICs.
 
-Pool operator, run full node, distribute/outsource task
-produce a block if find solution meeting target difficulty.
+Pool operator is then responsible to run full node, distribute the computing task to miners, 
+produce a block if the submitted solution found meeting work requirement.
+If the solution does not meet the block work requirement but a reduced requirement, which is called ``pool difficulty'', the miner is also paid, depending on its mining power, because it helps eliminate the incorrect answer.
+Thus, mining pool can gather considerable amount of computation power, gain higher probability to mine a block and pay to miners consistently.
 
+% centralisation
 However, mining in Bitcoin network suffers from centralisation.
 
-% show centralisation
 
 \RH{describe mining pool breaks the decentralisation}
 
