@@ -26,19 +26,16 @@ Thus, mining pool can gather considerable amount of computation power, gain high
 
 % centralisation
 However, mining in Bitcoin network suffers from centralisation.
-By December 2019, the 4 largest mining pool~\cite{} control more than 51\% of the hash power in Bitcoin network, whereas there are more than 29 mining pools known~\cite{}.
+By December 2019, the 4 largest mining pool~\cite{} \TODO{fix jointly} jointly control more than 51\% of the hash power in Bitcoin network, whereas there are more than 29 mining pools known~\cite{}.
 
-% cons
-1. malicious attack
-double spend, 51\%, with selfish mining, only requires ... 33?25?
-1.1. a group of pool operators can collude.
-1.2. even not collude, the cost is not huge, lower pool fee
-
-2. Even not for 51, 
+The drawbacks of mining power centralisation is non-negligible.
+An unexhausted list is shown as follows.
+First, pool operators can collude with each other, perform 51\% attacks and double spend their money, if the sum of their hash power is greater than 51\% of the entire network.
+Second, 
 pool operators may refuse protocol upgrade. \TODO{for what? why bad?}
 
-
 3. DNS, steal miners power
+
 
 
 In this work, we put forward a novel idea of combining VRF and mining in PoW to eliminate the intentionality of pooled mining, and to conquer the centralisation of mining power. We call our constrcution \textbf{VRF-based mining}.
