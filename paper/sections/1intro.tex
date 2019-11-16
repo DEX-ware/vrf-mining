@@ -10,10 +10,11 @@ Such a reward is to incentivise the miners to maintain the ledger and maintain i
 Though in Proof of Stake~\cite{} and its variants, it is similar that coins are minted and rewarded to the miner for each block, it requires no hash calculation to perform puzzle solution searching.
 Therefore, we only discuss mining in PoW in this paper.
 
+Because of the hash results are distributed uniformly and cannot be predicted, the probabilty of a miner to find a solution depends on the hash power it ownes.
+Therefore, payouts will be less frequent for a solo miner controlling low computing power.
+As miners need to pay for electricity periodically and want to estimate the remaining time to get the investment on hardware back (if they have not), inconsistent payouts can be risky for miners.
+
 % TODO: mining pool
-% TODO: by luck, short term, long term
-Payouts will be less frequent for a solo miner controlling low computing power. Miner need to pay for electricity periodically and get the investment back.
-Inconsistent payouts will be risky for miners.
 To reduce the risk, miners join mining pool.
 no need to run full node and deal with block creation, block propogation
 can focus on running mining rigs, for example, ASICs.
