@@ -2,20 +2,16 @@
 
 \subsection{Our construction}
 
+We replace hash function in the mining by VRF, and construct VRF-based mining.
+
+The desired properties of a well-designed hash function includes uniformity, deterministic, unpredictability and verifiability.
+\TODO{prove uniformity \& deterministic}
+As shown in appendix~\ref{}, ...
+Therefore, VRF fits in here.
+
+To rule out pooled mining, we combine VRF with digital signature scheme.
 As the digital signature scheme use in cryptocurrency are based on Elliptic curve, we construct Elliptic curve based VRF for our VRF-based mining.
 The standardised construction is put in the appendix~\ref{}.
-
-% word for construction (for example, follow mpc-sok)
-
-\RH{replace hash by VRF...}
-
-As shown in appendix~\ref{}, 
-
-
-% what we need:
-% unpredictability
-% verifiability
-% VRF fits in
 
 \subsection{Why mining pools cannot work here}
 
