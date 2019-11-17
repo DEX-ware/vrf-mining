@@ -15,6 +15,7 @@ This help provide the blockchain with liveness: new blocks and valid transaction
 
 The incentive also motivate the miners to stay honest and is to achieve incentive compatibility~\cite{}.
 Because the agreed chain has the corresponding PoW effort accumulated, to alter the history and double-spend his money, a miner need to control a considerable amount of hash power to redo the PoW of the block, in which his first transaction was included, and all the following blocks since it.
+The probability of his success diminishes exponentially to the number of blocks to be redone, while at the same time there are new blocks kept being added to the original chain. 
 A miner owning such a computing power may choose between using it to double spend his money, or using it to mine new blocks and get rewarded. 
 
 To keep the blockchain system running expectedly, the reward needs to be profitable.
