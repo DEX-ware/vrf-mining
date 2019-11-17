@@ -20,7 +20,7 @@ In the case of solo mining, our sheme works as follows.
     \item ...
     \item miner then submit the $pk$, $\beta$, and the proof $\pi$ to the full node it runs;
     \item full node then check against $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$, if the result is valid, a new block is mined, and the coinbase reward is paid to the miner, for example, to his scriptPubKey (thus, the miner can spend the reward by his private key later);
-    \item $pk$, $\beta$ and $\pi$ should also be recorded in the block header, so that other nodes can easily validate via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
+    \item $pk$, $\beta$ and $\pi$ should also be recorded in the block header, so that, when the block is propogated to other nodes, they can easily validate it via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
 \end{enumerate}
 
 \subsection{Why mining pools cannot work in our scheme}
