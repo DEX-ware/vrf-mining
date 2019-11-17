@@ -36,14 +36,18 @@ However, this leads to the centralisation of computation power.
 
 We already address that, our sheme completely discourage a rational pool operator who wants get mining rewards.
 However, there remains a concern that, we need to make a trade-off between Sybil resistance and incentivising miners to join mining.
+Such a problem is known as Quadratic Voting~\cite{lalley2018quadratic}, and has been discussed in a post.
 
-easier to find solution -> cheaper to 51 
+We explain the problem as follows.
+
+
+
+easier to find solution -> cheaper to 51
+
 easier to generate identity -> less sybil-resistant
 
-% our construction: resistant but not stable
+
+harder to find solution -> unstable payouts for low investment, discourage miners 
 
 
-Apparently, 
-... is related to ...
-
-Such a problem is known as Quadratic Voting~\cite{lalley2018quadratic}.
+Therefore, when designing the VRF, we need to take into account balancing the sybil resistance and incentive.
