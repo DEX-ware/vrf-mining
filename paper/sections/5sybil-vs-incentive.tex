@@ -6,14 +6,17 @@
 
 \subsection{Why miners join mining}
 
-\RH{mining can have rewards -> incentive}
+PoW-style blockchains incentivise miners to maintain the transaction history.
 
-PoW style blockchains use block subsidy to 
-liveness
+Block subsidy and transaction fees are to encourage miners to keep recording new transaction.
+This help provide the blockchain with liveness: new blocks and valid transactions with appropriate feed will continue to be added to the ledger.
 
+The incentive also motivate the miners to stay honest and is to achieve incentive compatibility~\cite{}.
+Because the agreed chain has the corresponding PoW effort accumulated, to alter the history and double-spend his money, a miner need to control a considerable amount of hash power to redo the PoW of the block, in which his first transaction was included, and all the following blocks since it.
+A miner owning such a computing power may choose between using it to double spend his money, or using it to mine new blocks and get rewarded. 
 
-
-The incentive also help encourage the miners to stay honest and is to achieve incentive compatibility~\cite{}.
+To keep the blockchain system running expectedly, the reward needs to be profitable.
+Therefore, miners are incentivised to join mining.
 
 \subsection{Why miners join mining pools}
 
