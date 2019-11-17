@@ -14,6 +14,8 @@ The standardised construction is put in the appendix~\ref{vrf_standardised_const
 
 In the case of solo mining, our sheme works as follows.
 
+\TODO{change format to algorithm2e}
+% https://www.overleaf.com/learn/latex/algorithms
 \begin{enumerate}
     \item The solo miner runs $\mathsf{VRFKeyGen}(1^{\lambda})$ to generate a secret key and public key pair $(sk, pk)$.
     \item The miner query the the full node it runs, and build a block template, including a coinbase transaction paying to him, for example, to his \texttt{scriptPubKey}.
