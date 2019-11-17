@@ -1,9 +1,15 @@
 \section{Sybil-resistance v.s. incentive compatibility}
 
 \subsection{Why consensus requires mining}
-Nakamoto consensus
 
+Nakamoto consensus requires PoW minig because it is designed that the consensus blockchain is the chain with the greatest PoW effort accumulated and therefore the greatest the greatest difficulty to produce, usually the longest chain.
+Such a chain is chosen as the majority agreement because it is the most difficult one to manipulate.
+
+Moreover, PoW can provide the blockchain with Sybil-resistance.
 Sybil attack is to subvert a reputation system by forging indentities.
+In PoW-style blockchains, the miner mines the new block is identically the leader producing the new block.
+Therefore, PoW 
+
 PoW-style blockchains resist Sybil attacks by making identities generation expensive.
 
 \subsection{Why miners join mining}
@@ -30,26 +36,10 @@ Therefore, miners are incentivised to join mining.
 
 \RH{There is a trade-off between sybil resistance and the incentive for miners to join the mining... Need some balance...}
 
-% btc resists by pricing
+easier to find solution -> cheaper to 51 
+easier to generate identity -> less sybil-resistant
+
 % our construction: resistant but not stable
-% less incentivised
-% lower power
-
-easier to find solution
-easier to generate identity
-less resistant
-
-in bitcoin, leader, id, PoW, longest chain
-The longest chain serves proof of transaction history caming from the largest pool of computing power.
-As long as the majority of the computing power remain honest.
-In bitcoin, the nodes are incentivised to maintain the history
-the profit is low for misbehaving
-
-
-our construction
-balance
-cheaper to 51 and less sybil-resistant
-
 
 As aforementioned, unstable payouts will be risky.
 
