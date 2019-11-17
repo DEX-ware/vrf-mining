@@ -4,16 +4,11 @@
 
 In cryptocurrency mining, miners search for solutions to a computational puzzle.
 Specifically, the puzzle is to find a (partial) pre-image for a cryptographic hash function, of which output is less than a target value.
-The hash function maps a list of transaction, the hash of the previous block, a timestamp, an nonce and other information, to a value.
-Note that the hash result is unpredictable and verifiable.
+The hash function maps a list of transaction, the hash of the previous block, a timestamp, an nonce and other information, to a result value.
+The target value begins with several consecutive zero bits.
+As the hash result is unpredictable and unformly distributed, the probability of the hash result lies among the desired interval is inversely proportional to the number of leading zero.
 
-% leading zero
-% difficulty
-% propotional
-% hash power
-
-The first miner who finds the solution and anounces it, wins the competition and gets rewarded.
-
+The more computation power the miner possesses, the more rounds of hash he can run during a time unit, and the more likely he can find the solution. The first miner who finds the solution and anounces it, wins the competition and gets rewarded.
 
 \subsection{Verifiable random functions}
 
