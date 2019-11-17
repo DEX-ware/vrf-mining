@@ -17,10 +17,17 @@ In the case of solo mining, our sheme works as follows.
 \begin{enumerate}
     \item The solo miner runs $\mathsf{VRFKeyGen}$ to generate a secret key and public key pair.
     \item The miner query the the full node it runs, and build a block template, including a coinbase transaction paying to him, for example, to his \texttt{scriptPubKey}.
-    \item ...
-    \item Miner then submit the $pk$, $\beta$, and the proof $\pi$ to the node;
-    \item The node then check against $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$, and whether the \texttt{scriptPubKey} in the coinbase transaction corresponds to $pk$.
-    If both results are valid, a new block is mined, and the coinbase reward is paid to the miner.
+    \item The miner alters the nounce in the block header.
+    \item The miner takes the block header as $\alpha$, and runs $\mathsf{VRFHash}(sk, \alpha)$ to get $\beta$. If $\beta$ meets the difficulty requirement, a block is found; otherwise, the miner changes the nounce and runs $\mathsf{VRFHash}(sk, \alpha)$ again.
+    \item The miner runs $\mathsf{VRFProve}(sk, \alpha)$ to generate a proof $\pi$.
+    \item The miner then submit the $pk$, $\beta$, and the proof $\pi$ to the node.
+    \item The node then check:
+        \begin{enumerate}
+            \item if $\beta$ meets the difficulty requirement;
+            \item if $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$ result is valid;
+            \item whether the \texttt{scriptPubKey} in the coinbase transaction corresponds to $pk$.
+        \end{enumerate}
+        If all results are valid, a new block is mined, and the coinbase reward is paid to the miner.
     \item $pk$, $\beta$ and $\pi$ should also be recorded in the block header, so that, when the block is propogated to other nodes, they can easily validate it via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
 \end{enumerate}
 
