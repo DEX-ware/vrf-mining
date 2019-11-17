@@ -18,7 +18,7 @@ In the case of solo mining, our sheme works as follows.
 % https://www.overleaf.com/learn/latex/algorithms
 \begin{enumerate}
     \item The solo miner runs $\mathsf{VRFKeyGen}(1^{\lambda})$ to generate a secret key and public key pair $(sk, pk)$.
-    \item The miner query the the full node it runs, and build a block template, including a coinbase transaction paying to him, for example, to his \texttt{scriptPubKey}.
+    \item The miner queries the the full node it runs, and build a block template, including a coinbase transaction paying to him, for example, to his \texttt{scriptPubKey}.
     \item The miner alters the nonce in the block header.
     \item The miner takes the block header as $\alpha$, and runs $\mathsf{VRFHash}(sk, \alpha)$ to get $\beta$. If $\beta$ meets the difficulty requirement, a block is found; otherwise, the miner changes the nonce and runs $\mathsf{VRFHash}(sk, \alpha)$ again.
     \item The miner runs $\mathsf{VRFProve}(sk, \alpha)$ to generate a proof $\pi$.
