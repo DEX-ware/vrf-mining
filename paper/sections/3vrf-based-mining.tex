@@ -14,8 +14,12 @@ The standardised construction is put in the appendix~\ref{vrf_standardised_const
 
 In the case of solo mining, our sheme works as follows.
 
-1. 
-
+1. the solo miner runs \mathsf{VRFKeyGen} to generate a secret key and public key pair;
+2.
+3.
+4. miner then submit the $pk$, $\beta$, and the proof $\pi$ to the full node it runs;
+5. full node then check against $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$, if the result is valid, a new block is mined, and the coinbase reward is paid to the miner, for example, to his scriptPubKey (thus, the miner can spend the reward by his private key later);
+6. $pk$, $\beta$ and $\pi$ should also be recorded in the block, so that other nodes can validate via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
 
 \subsection{Why mining pools cannot work in our scheme}
 
