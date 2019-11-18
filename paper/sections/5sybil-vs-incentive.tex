@@ -46,3 +46,10 @@ However, if using algorithm B, though it can bring stronger sybil resistance to 
 As aforementioned in section~\ref{sec:intro}, low minig power will lead to unstable payouts, which will undoubtedly discourage miners if their budget are limited.
 
 Therefore, when designing the VRF, we need to take into account balancing the sybil resistance and incentive.
+
+\begin{tikzpicture}
+      \draw[->] (0,0) -- (4.2,0) node[right] {$x$};
+      \draw[->] (0,0) -- (0,4.2) node[above] {$y$};
+      \draw[scale=0.5,domain=0:3,smooth,variable=\x,blue] plot ({\x},{\x*\x});
+      \draw[scale=0.5,domain=0:3,smooth,variable=\y,red]  plot ({\y*\y},{\y});
+\end{tikzpicture}
