@@ -47,9 +47,23 @@ As aforementioned in section~\ref{sec:intro}, low minig power will lead to unsta
 
 Therefore, when designing the VRF, we need to take into account balancing the sybil resistance and incentive.
 
+\begin{figure}
+\centering
 \begin{tikzpicture}
-      \draw[->] (0,0) -- (4.2,0) node[right] {$x$};
-      \draw[->] (0,0) -- (0,4.2) node[above] {$y$};
-      \draw[scale=0.5,domain=0:3,smooth,variable=\x,blue] plot ({\x},{\x*\x});
-      \draw[scale=0.5,domain=0:3,smooth,variable=\y,red]  plot ({\y*\y},{\y});
+  \draw[->] (0,0) -- (6,0) node[right] {$x$: investment on hardware};
+  \draw[->] (0,0) -- (0,5) node[above] {$y$: hash power};
+  \draw (0,0) .. controls (3,0) and (4,0) .. (5,4.5);
 \end{tikzpicture}
+\caption{M1} \label{fig:M1}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+  \draw[->] (0,0) -- (6,0) node[right] {$x$: investment on hardware};
+  \draw[->] (0,0) -- (0,5) node[above] {$y$: hash power};
+  \draw (0,0) .. controls (0,3) and (0,4) .. (5,4.5);
+\end{tikzpicture}
+\caption{M2} \label{fig:M2}
+\end{figure}
