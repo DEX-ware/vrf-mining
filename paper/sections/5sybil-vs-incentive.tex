@@ -38,7 +38,7 @@ We have addressed in section~\ref{sec:discourage-pool} that, our sheme completel
 However, there still remains a concern that, we need to make a trade-off between Sybil resistance and incentivising miners to join mining.
 Such a problem is known as Quadratic Voting~\cite{lalley2018quadratic}, and has been discussed in ~\cite{radical}.
 
-We explain the problem as follows. Assumes we have 2 different mining algorithms, of which the computation-power-vs-investment-on-hardware curves are shown in figure~\ref{} and figure~\ref{} respectively.
+We explain the problem as follows. Assumes we have 2 different mining algorithms, of which the computation-power-vs-investment-on-hardware curves are shown in figure~\ref{fig:algo_A} and figure~\ref{fig:algo_B} respectively.
 
 For algorithm A, with fewever investment on hardware, a miner can gain relativly higher computing power than B. That is, it is cheaper to generate identity, and hence it is less sybil-resistant.
 
@@ -54,7 +54,8 @@ Therefore, when designing the VRF, we need to take into account balancing the sy
   \draw[->] (0,0) -- (0,5) node[above] {$y$: hash power};
   \draw (0,0) .. controls (3,0) and (4,0) .. (5,4.5);
 \end{tikzpicture}
-\caption{M1} \label{fig:M1}
+\caption{algorithm A}
+\label{fig:algo_A}
 \end{figure}
 
 
@@ -65,5 +66,6 @@ Therefore, when designing the VRF, we need to take into account balancing the sy
   \draw[->] (0,0) -- (0,5) node[above] {$y$: hash power};
   \draw (0,0) .. controls (0,3) and (0,4) .. (5,4.5);
 \end{tikzpicture}
-\caption{M2} \label{fig:M2}
+\caption{algorithm B}
+\label{fig:algo_B}
 \end{figure}
