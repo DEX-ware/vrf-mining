@@ -38,17 +38,11 @@ We have addressed in section~\ref{sec:discourage-pool} that, our sheme completel
 However, there still remains a concern that, we need to make a trade-off between Sybil resistance and incentivising miners to join mining.
 Such a problem is known as Quadratic Voting~\cite{lalley2018quadratic}, and has been discussed in ~\cite{radical}.
 
-We explain the problem as follows. Assumes we have 2 different mining algorithms, of which the computation-power-vs-investment-on-hardware curve are shown in figure~\ref{} and figure~\ref{} respectively.
+We explain the problem as follows. Assumes we have 2 different mining algorithms, of which the computation-power-vs-investment-on-hardware curves are shown in figure~\ref{} and figure~\ref{} respectively.
 
-For algorithm A, with fewever investment on hardware, we can gain relativly higher computing power than B. That is, it is cheaper to generate identity, and hence it is less sybil-resistant.
+For algorithm A, with fewever investment on hardware, a miner can gain relativly higher computing power than B. That is, it is cheaper to generate identity, and hence it is less sybil-resistant.
 
-However, if using algorithm B, though we can bring stronger sybil-resistance, 
-th
-harder to find solution -> unstable payouts for low investment, 
-discourage miners 
-
-
-
-
+However, if using algorithm B, though it can bring stronger sybil resistance to the system, a miner will find that he cannot gain significant hash power unless he invest enough on the hardware.
+As aforementioned in section~\ref{sec:intro}, low minig power will lead to unstable payouts, which will undoubtedly discourage miners if their budget are limited.
 
 Therefore, when designing the VRF, we need to take into account balancing the sybil resistance and incentive.
