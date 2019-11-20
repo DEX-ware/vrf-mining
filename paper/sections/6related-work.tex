@@ -24,10 +24,21 @@
 % 2. SIG is usually done by ECDSA or EdDSA, where these two signatures contain a changable parameter k, which can be another traversal space. VRF does not give this opportunity. (select a cryptographically secure random integer k from [1, n-2])
 % and read comments below
 Eyal et al.~\cite{2P-PoW} propose a 
-transition
+transition: 
 Two Phase Proof of Work (2P-PoW)
+preserve: blockchain(balance) & hardware
 However,
 this solution suffers the problems 
+1) do not eliminate
+2) need secure hash?
+3) hard-fork
+
+% hosted-mining
+% http://cs.umd.edu/~amiller/permacoin.pdf
+
+
+% zkp
+% https://bitcointalk.org/index.php?topic=309073
 
 
 % BetterHash
