@@ -20,18 +20,17 @@
 
 \paragraph{2P-PoW}
 % http://hackingdistributed.com/2014/06/18/how-to-disincentivize-large-bitcoin-mining-pools/
-% 1. The first step can still be outsourced. it cannot prevent centralisation, but reduce centralisation
-% 2. SIG is usually done by ECDSA or EdDSA, where these two signatures contain a changable parameter k, which can be another traversal space. VRF does not give this opportunity. (select a cryptographically secure random integer k from [1, n-2])
-% and read comments below
-Eyal et al.~\cite{2P-PoW} propose a 
-transition: 
-Two Phase Proof of Work (2P-PoW)
-preserve: blockchain(balance) & hardware
-However,
-this solution suffers the problems 
-1) do not eliminate
-2) need secure hash?
-3) hard-fork
+% TODO: read the comments
+Eyal et al.~\cite{2P-PoW} propose \textit{Two Phase Proof of Work} (\textit{2P-PoW}) for smooth transition to large pool disincentivisation.
+This solution is backward-compatible because it preserves blockchain data and retains mining hardware. 
+However, \textit{2P-PoW} still suffers from several problems:
+\begin{itemize}
+\renewcommand\labelitemi{$\circ$}
+    \item it does not deter mining pools but merely reduce centralisation, since phase 1 is outsourcable;
+    \item $\mathsf{SIG}$ in phase 2 is usually achieved by \textit{ECDSA} or \textit{EdDSA}, containing a changable cryptography parameter, which leads to another traversal space (such a problem does exist in VRF because the parameter is determined once a VRF is chosen);
+    \item it still requires a hard fork.
+\end{itemize}
+
 
 % hosted-mining
 % http://cs.umd.edu/~amiller/permacoin.pdf
