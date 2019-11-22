@@ -12,7 +12,7 @@ The standardised construction is put in the appendix~\ref{vrf_standardised_const
 % As shown in appendix~\ref{vrf_standardised_construction}, ...
 % Therefore, VRF fits in here.
 
-In the case of solo mining, our sheme works as follows.
+In the case of solo mining, our sheme, which contains a miner side and a node side, works as follows.
 
 % \begin{enumerate}
 %     \item The solo miner runs $\mathsf{VRFKeyGen}(1^{\lambda})$ to generate a secret key and public key pair $(sk, pk)$.
@@ -31,10 +31,10 @@ In the case of solo mining, our sheme works as follows.
 %     \item $pk$, $\beta$ and $\pi$ should also be recorded in the block header, so that, when the block is propogated to other nodes, they can easily validate it via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
 % \end{enumerate}
 
-\paragraph{Miner side}
-\newblock
-\newline
+\subsubsection{Miner side}
+
 A Miner performs minining as described in Algorithm ~\ref{algo:vft-mining}.
+
 \begin{algorithm}[H]
 \caption{VRF Mining}
 \label{algo:vft-mining}
@@ -47,18 +47,19 @@ A Miner performs minining as described in Algorithm ~\ref{algo:vft-mining}.
     $\beta \gets \mathsf{VRFHash}(sk, blockheader)$\;
   }
   $\pi \gets \mathsf{VRFProve}(sk, \alpha)$\;
-  submit $pk$, $\beta$, and the proof $\pi$ to the node;
+  submit $pk$, $\beta$, and the proof $\pi$ to the node.
 \end{algorithm}
 
-\paragraph{Node side}
-\newblock
-\newline
+\subsubsection{Node side}
+
 The node then checks:
+
 \begin{enumerate}
     \item $\beta$ $\le$ target;
     \item $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$;
     \item the \texttt{scriptPubKey} in the coinbase transaction is of $pk$.
 \end{enumerate}
+
 If all results are valid, a new block is mined, and the coinbase reward is paid to the miner. Note that $pk$, $\beta$ and $\pi$ should also be recorded in the block header, so that, when the block is propogated to other nodes, they can easily validate it via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
 
 
