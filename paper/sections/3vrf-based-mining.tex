@@ -14,40 +14,53 @@ The standardised construction is put in the appendix~\ref{vrf_standardised_const
 
 In the case of solo mining, our sheme works as follows.
 
-\TODO{change format to algorithm2e}
-% https://www.overleaf.com/learn/latex/algorithms
-\begin{enumerate}
-    \item The solo miner runs $\mathsf{VRFKeyGen}(1^{\lambda})$ to generate a secret key and public key pair $(sk, pk)$.
-    \item The miner queries the the full node it runs, and build a block template, including a coinbase transaction paying to him, for example, to his \texttt{scriptPubKey}.
-    \item The miner alters the nonce in the block header.
-    \item The miner takes the block header as $\alpha$, and runs $\mathsf{VRFHash}(sk, \alpha)$ to get $\beta$. If $\beta$ meets the difficulty requirement, a block is found; otherwise, the miner changes the nonce and runs $\mathsf{VRFHash}(sk, \alpha)$ again.
-    \item The miner runs $\mathsf{VRFProve}(sk, \alpha)$ to generate a proof $\pi$.
-    \item The miner then submit the $pk$, $\beta$, and the proof $\pi$ to the node.
-    \item The node then check:
-        \begin{enumerate}
-            \item if $\beta$ meets the difficulty requirement;
-            \item if $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$ result is valid;
-            \item whether the \texttt{scriptPubKey} in the coinbase transaction corresponds to $pk$.
-        \end{enumerate}
-        If all results are valid, a new block is mined, and the coinbase reward is paid to the miner.
-    \item $pk$, $\beta$ and $\pi$ should also be recorded in the block header, so that, when the block is propogated to other nodes, they can easily validate it via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
-\end{enumerate}
+% \begin{enumerate}
+%     \item The solo miner runs $\mathsf{VRFKeyGen}(1^{\lambda})$ to generate a secret key and public key pair $(sk, pk)$.
+%     \item The miner queries the the full node it runs, and build a block template, including a coinbase transaction paying to him, for example, to his \texttt{scriptPubKey}.
+%     \item The miner alters the nonce in the block header.
+%     \item The miner takes the block header as $\alpha$, and runs $\mathsf{VRFHash}(sk, \alpha)$ to get $\beta$. If $\beta$ meets the difficulty requirement, a block is found; otherwise, the miner changes the nonce and runs $\mathsf{VRFHash}(sk, \alpha)$ again.
+%     \item The miner runs $\mathsf{VRFProve}(sk, \alpha)$ to generate a proof $\pi$.
+%     \item The miner then submit the $pk$, $\beta$, and the proof $\pi$ to the node.
+%     \item The node then check:
+%         \begin{enumerate}
+%             \item if $\beta$ meets the difficulty requirement;
+%             \item if $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$ result is valid;
+%             \item whether the \texttt{scriptPubKey} in the coinbase transaction corresponds to $pk$.
+%         \end{enumerate}
+%         If all results are valid, a new block is mined, and the coinbase reward is paid to the miner.
+%     \item $pk$, $\beta$ and $\pi$ should also be recorded in the block header, so that, when the block is propogated to other nodes, they can easily validate it via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
+% \end{enumerate}
 
+\paragraph{Miner side}
+\newblock
+\newline
+A Miner performs minining as described in Algorithm ~\ref{algo:vft-mining}.
 \begin{algorithm}[H]
+\caption{VRF Mining}
+\label{algo:vft-mining}
 \SetAlgoLined
-\KwResult{Write here the result }
- initialization\;
- \While{While condition}{
-  instructions\;
-  \eIf{condition}{
-   instructions1\;
-   instructions2\;
-   }{
-   instructions3\;
+  $(sk, pk) \gets \mathsf{VRFKeyGen}(1^{\lambda})$\;
+  build a block template, including a coinbase transaction paying to the miner\;
+  $\beta \gets \mathsf{VRFHash}(sk, blockheader)$\;
+  \While{$\beta > target$}{
+    alter the nonce in the $blockheader$\;
+    $\beta \gets \mathsf{VRFHash}(sk, blockheader)$\;
   }
- }
- \caption{How to write algorithms}
+  $\pi \gets \mathsf{VRFProve}(sk, \alpha)$\;
+  submit $pk$, $\beta$, and the proof $\pi$ to the node;
 \end{algorithm}
+
+\paragraph{Node side}
+\newblock
+\newline
+The node then checks:
+\begin{enumerate}
+    \item if $\beta$ meets the difficulty requirement;
+    \item if $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$ result is valid;
+    \item whether the \texttt{scriptPubKey} in the coinbase transaction corresponds to $pk$.
+\end{enumerate}
+If all results are valid, a new block is mined, and the coinbase reward is paid to the miner. $pk$, $\beta$ and $\pi$ should also be recorded in the block header, so that, when the block is propogated to other nodes, they can easily validate it via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
+
 
 
 \subsection{Why pooled mining cannot work in our scheme}
