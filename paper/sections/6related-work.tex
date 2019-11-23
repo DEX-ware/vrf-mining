@@ -34,7 +34,9 @@ However, \textit{2P-PoW} still suffers from several problems:
 % BetterHash
 \paragraph{\textbf{BetterHash}}
 BetterHash~\cite{draft-bip-BetterHash} is one of the solutions to the mining power centralisation.
-However, BetterHash suffers from criticism.
-BetterHash doesn't really solve the centralised pooled mining, \TODO{because}.
-% create block_templeate: select txs, build coinbase tx
-BetterHash requires miner technical knowledge to create a block templeate, manage and run a full node, etc..
+However, BetterHash suffers from criticism because:
+\begin{itemize}
+\renewcommand\labelitemi{$\circ$}
+    \item it doesn't solve the centralised pooled mining, but only transfer the right to build the block template to the miner side;
+    \item it requires miner technical knowledge to create a block templeate, manage and run a full node.
+\end{itemize}
