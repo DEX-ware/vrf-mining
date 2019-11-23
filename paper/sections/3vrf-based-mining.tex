@@ -6,7 +6,7 @@ We replace hash function in mining by VRF, and thus construct VRF-based mining.
 
 To rule out pooled mining, we combine VRF with digital signature scheme.
 As the digital signature scheme use in cryptocurrency are based on Elliptic curve, we construct Elliptic curve based VRF for our VRF-based mining.
-The standardised construction is put in the appendix~\ref{vrf_standardised_construction}.
+The standardised construction can be referred in the appendix~\ref{vrf_standardised_construction}.
 
 % The desired properties of a well-designed hash function includes uniformity, deterministic, unpredictability and verifiability.
 % As shown in appendix~\ref{vrf_standardised_construction}, ...
@@ -32,11 +32,11 @@ In the case of solo mining, our sheme, which contains a miner side and a node si
 % \end{enumerate}
 
 \TODO{revise scriptPubKey here.}
-\TODO{more explanation on blockheader an $\alpha$}
+\TODO{more explanation on blockheader and $\alpha$}
 
 \subsubsection{Miner side}
 
-A Miner performs minining as described in Algorithm ~\ref{algo:vft-mining}.
+A Miner performs minining as described in Algorithm ~\ref{algo:vft-mining-1}.
 
 \begin{algorithm}[H]
 \caption{VRF Mining Phase 1}
