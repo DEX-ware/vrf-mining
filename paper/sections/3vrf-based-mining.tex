@@ -5,7 +5,7 @@
 We replace hash function in mining by VRF, and thus construct VRF-based mining.
 
 To rule out pooled mining, we combine VRF with digital signature scheme.
-As the digital signature scheme use in cryptocurrency are based on Elliptic curve, we construct Elliptic curve based VRF for our VRF-based mining.
+As the digital signature scheme used in cryptocurrency are based on Elliptic curve, we construct Elliptic curve based VRF for our VRF-based mining.
 The standardised construction can be referred in the appendix~\ref{vrf_standardised_construction}.
 
 % The desired properties of a well-designed hash function includes uniformity, deterministic, unpredictability and verifiability.
@@ -34,7 +34,7 @@ In the case of solo mining, our sheme, which contains a miner side and a node si
 \TODO{revise scriptPubKey here.}
 \TODO{more explanation on blockheader and $\alpha$}
 
-\subsubsection{Miner side}
+\subsubsection{Miner side\\}
 
 A Miner performs minining as described in Algorithm ~\ref{algo:vft-mining-1}.
 
@@ -50,10 +50,12 @@ A Miner performs minining as described in Algorithm ~\ref{algo:vft-mining-1}.
     $\beta \gets \mathsf{VRFHash}(sk, blockheader)$\;
   }
   $\pi \gets \mathsf{VRFProve}(sk, \alpha)$\;
-  submit $pk$, $\beta$, and the proof $\pi$ to the node;
+  submit $pk$, $\beta$, and the proof $\pi$ to the node.
 \end{algorithm}
 
-\subsubsection{Node side}
+\subsubsection{Node side\\}
+
+Once upon receiving $pk$, $\beta$, and $\pi$, the node then performs Algorithm~\ref{algo:vft-mining-2}.
 
 \begin{algorithm}[H]
 \caption{VRF Mining Phase 2}
@@ -61,7 +63,7 @@ A Miner performs minining as described in Algorithm ~\ref{algo:vft-mining-1}.
 \SetAlgoLined
 \If{$\beta$ $\le$ target}{
     \If{$\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$}{
-        \If{the \texttt{scriptPubKey} in the coinbase transaction is of $pk$}{
+        \If{the coinbase transaction is paying to \texttt{scriptPubKey} of $pk$}{
         record $pk$, $\beta$ and $\pi$ in the block\;
         produce a new block, with coinbase reward paying to the miner\;
         propogate the block to other nodes\;
@@ -70,7 +72,7 @@ A Miner performs minining as described in Algorithm ~\ref{algo:vft-mining-1}.
 }
 \end{algorithm}
 
-Note that $pk$, $\beta$ and $\pi$ should also be recorded, so that, when the block is propogated to other nodes, they can easily validate it via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
+Note that $pk$, $\beta$ and $\pi$ is recorded in the blockheader, so that, when the block is propogated to other nodes, they can easily validate it via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
 
 
 
