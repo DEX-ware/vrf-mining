@@ -12,27 +12,10 @@ The standardised construction can be referred in the appendix~\ref{vrf_standardi
 % As shown in appendix~\ref{vrf_standardised_construction}, ...
 % Therefore, VRF fits in here.
 
-In the case of solo mining, our sheme, which contains a miner side and a node side, works as follows.
-
-% \begin{enumerate}
-%     \item The solo miner runs $\mathsf{VRFKeyGen}(1^{\lambda})$ to generate a secret key and public key pair $(sk, pk)$.
-%     \item The miner queries the the full node it runs, and build a block template, including a coinbase transaction paying to him, for example, to his \texttt{scriptPubKey}.
-%     \item The miner alters the nonce in the block header.
-%     \item The miner takes the block header as $\alpha$, and runs $\mathsf{VRFHash}(sk, \alpha)$ to get $\beta$. If $\beta$ meets the difficulty requirement, a block is found; otherwise, the miner changes the nonce and runs $\mathsf{VRFHash}(sk, \alpha)$ again.
-%     \item The miner runs $\mathsf{VRFProve}(sk, \alpha)$ to generate a proof $\pi$.
-%     \item The miner then submit the $pk$, $\beta$, and the proof $\pi$ to the node.
-%     \item The node then check:
-%         \begin{enumerate}
-%             \item if $\beta$ meets the difficulty requirement;
-%             \item if $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$ result is valid;
-%             \item whether the \texttt{scriptPubKey} in the coinbase transaction corresponds to $pk$.
-%         \end{enumerate}
-%         If all results are valid, a new block is mined, and the coinbase reward is paid to the miner.
-%     \item $pk$, $\beta$ and $\pi$ should also be recorded in the block header, so that, when the block is propogated to other nodes, they can easily validate it via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
-% \end{enumerate}
-
-\TODO{revise scriptPubKey here.}
-\TODO{more explanation on blockheader and $\alpha$}
+In the case of solo mining, our sheme, which contains a miner side and a node side, works as follows. Note that we divide the blockheader into two part:
+one part containing $pk$, $\beta$, and $\pi$ (which will be explained later);
+and the other part not containing them.
+We call the later part $\alpha$.
 
 \subsubsection{Miner side\\}
 
@@ -43,11 +26,11 @@ A Miner performs minining as described in Algorithm ~\ref{algo:vft-mining-1}.
 \label{algo:vft-mining-1}
 \SetAlgoLined
   $(sk, pk) \gets \mathsf{VRFKeyGen}(1^{\lambda})$\;
-  build a block template, including a coinbase transaction paying to \texttt{scriptPubKey} of $pk$\;
-  $\beta \gets \mathsf{VRFHash}(sk, blockheader)$\;
+  build a block template, including a coinbase transaction paying to the \texttt{scriptPubKey} of $pk$\;
+  $\beta \gets \mathsf{VRFHash}(sk, \alpha)$\;
   \While{$\beta > target$}{
-    alter the nonce in the $blockheader$\;
-    $\beta \gets \mathsf{VRFHash}(sk, blockheader)$\;
+    alter the nonce in $\alpha$\;
+    $\beta \gets \mathsf{VRFHash}(sk, \alpha)$\;
   }
   $\pi \gets \mathsf{VRFProve}(sk, \alpha)$\;
   submit $pk$, $\beta$, and the proof $\pi$ to the node.
@@ -63,7 +46,7 @@ Once upon receiving $pk$, $\beta$, and $\pi$, the node then performs Algorithm~\
 \SetAlgoLined
 \If{$\beta$ $\le$ target}{
     \If{$\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$}{
-        \If{the coinbase transaction is paying to \texttt{scriptPubKey} of $pk$}{
+        \If{the coinbase transaction is paying to the \texttt{scriptPubKey} of $pk$}{
         record $pk$, $\beta$ and $\pi$ in the block\;
         produce a new block, with coinbase reward paying to the miner\;
         propogate the block to other nodes\;
@@ -72,7 +55,7 @@ Once upon receiving $pk$, $\beta$, and $\pi$, the node then performs Algorithm~\
 }
 \end{algorithm}
 
-Note that $pk$, $\beta$ and $\pi$ is recorded in the blockheader, so that, when the block is propogated to other nodes, they can easily validate it via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
+Note that $pk$, $\beta$ and $\pi$ are recorded in the blockheader, so that, when the block is propogated to other nodes, they can easily validate it via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
 
 
 
