@@ -31,7 +31,7 @@ By December 2019, the 4 largest mining pool, put together, control more than 51\
 
 The drawbacks of mining power centralisation is non-negligible.
 An unexhausted list is shown as follows.
-\begin{enumerate}
+\begin{itemize}
     % 51%
     \item Pool operators can collude with each other, perform 51\% attacks~\cite{} and double spend their money, if the sum of their hash power is greater than 51\% of the entire network. \HY{do we need to talk about selfish mining?}
     % failure
@@ -42,6 +42,6 @@ An unexhausted list is shown as follows.
     \item A pool can also direct the hash power it controls to mine which fork he decides to extend, and even the worse, to mine another coin if using the same hash algorithm, which is undoubtedly harmful to the ecosystem.
     % upgrade
     \item Pool operators may stall protocol upgrade, for example, Segregated Witness~\cite{segwit} support, out of conservatism, or unawareness of such an upgrade.
-\end{enumerate}
+\end{itemize}
 
 In this work, we put forward a novel idea of combining VRF and mining in PoW to eliminate the intentionality of pooled mining, and to conquer the centralisation of mining power. We call our constrcution \textbf{VRF-based mining}.
