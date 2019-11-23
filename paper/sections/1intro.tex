@@ -31,16 +31,17 @@ By December 2019, the 4 largest mining pool, put together, control more than 51\
 
 The drawbacks of mining power centralisation is non-negligible.
 An unexhausted list is shown as follows.
-% 51%
-First, pool operators can collude with each other, perform 51\% attacks~\cite{} and double spend their money, if the sum of their hash power is greater than 51\% of the entire network.
-\HY{do we need to talk about selfish mining?}
-% failure
-Second, centralisation introduces points of failure into the network: if a big mining pool is hacked, or DNS is spoofed, a considerable amount of mining power can be stolen.
-% censorship
-Third, mining pools can perform censorship on the transaction, rejecting transactions from some exchanges, or CoinJoin transactions.
-% direct
-Fourth, a pool can also direct the hash power it controls to mine which fork he decides to extend, and even the worse, to mine another coin if using the same hash algorithm, which is undoubtedly harmful to the ecosystem.
-% upgrade
-Moreover, pool operators may stall protocol upgrade, for example, Segregated Witness~\cite{segwit} support, out of conservatism, or unawareness of such an upgrade.
+\begin{enumerate}
+    % 51%
+    \item Pool operators can collude with each other, perform 51\% attacks~\cite{} and double spend their money, if the sum of their hash power is greater than 51\% of the entire network. \HY{do we need to talk about selfish mining?}
+    % failure
+    \item Centralisation introduces points of failure into the network: if a big mining pool is hacked, or DNS is spoofed, a considerable amount of mining power can be stolen.
+    % censorship
+    \item Mining pools can perform censorship on the transaction, rejecting transactions from some exchanges, or CoinJoin transactions.
+    % direct
+    \item A pool can also direct the hash power it controls to mine which fork he decides to extend, and even the worse, to mine another coin if using the same hash algorithm, which is undoubtedly harmful to the ecosystem.
+    % upgrade
+    \item Pool operators may stall protocol upgrade, for example, Segregated Witness~\cite{segwit} support, out of conservatism, or unawareness of such an upgrade.
+\end{enumerate}
 
 In this work, we put forward a novel idea of combining VRF and mining in PoW to eliminate the intentionality of pooled mining, and to conquer the centralisation of mining power. We call our constrcution \textbf{VRF-based mining}.
