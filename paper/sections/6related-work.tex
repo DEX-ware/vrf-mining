@@ -29,7 +29,7 @@ However, \textit{2P-PoW} still suffers from several problems:
 \begin{itemize}
 \renewcommand\labelitemi{$\circ$}
     \item it does not deter mining pools but merely reduce centralisation, since phase 1 is outsourcable;
-    \item $\mathsf{SIG}$ in phase 2 is usually achieved by \textit{ECDSA} or \textit{EdDSA}, containing a changable cryptography parameter, which leads to another traversal space (such a problem does exist in VRF because the parameter is determined once a VRF is chosen);
+    \item \sout{$\mathsf{SIG}$ in phase 2 is usually achieved by \textit{ECDSA} or \textit{EdDSA}, containing a changable cryptography parameter, which leads to another traversal space (such a problem does exist in VRF because the parameter is determined once a VRF is chosen);} \HY{deleted because, in Eyal et al.'s post, they state that a deterministic $SIG$ is needed}
     \item it still requires a hard fork.
 \end{itemize}
 
