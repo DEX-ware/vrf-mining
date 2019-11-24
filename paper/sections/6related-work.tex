@@ -5,10 +5,11 @@ Our analysis also show that some of them suffer from significant flaws.
 
 \paragraph{\textbf{Nonoutsourceable Puzzles}}
 Miller et al.~\cite{miller2015nonoutsourceable} formalize the definition of \textit{Nonoutsourceable Puzzles},
-\TODO{tiers}
-\TODO{and construct a \textit{Weekly nonoutsourceable puzzles}}
-\TODO{flaws}
-Moreover, our protocol in fact construct a stronger version of their \textit{Strongly nonoutsourceable puzzles} if integrated with zero-knowledge transformation as in their protocol, because if the pool manager outsources the computation task, he will not only lose the block rewards, but also the secret key, result in losing all his balance, identity forging and privacy leakage.
+present the constructions for it.
+They also propose a multi-tier reward structure to incentivise miner for such an adaption.  
+They illustrate that, zero-knowledge proof can be used to make stealing the reward untraceable and thus construct \textit{Strongly nonoutsourceable puzzles}.
+Our protocol in fact construct a stronger version of their \textit{Strongly nonoutsourceability} if integrated with zero-knowledge transformation as in their protocol, because if the pool manager outsources the computation task, he will not only lose the block rewards, but also the secret key, result in losing all his balance, identity forging and privacy leakage.
+However, as admitted in their paper, it is impratical to distinguish malicious miners from honest miners in their \textit{Strongly nonoutsourceabe puzzles} construction.
 
 
 \paragraph{\textbf{P2Pool}}
