@@ -8,10 +8,6 @@ To rule out pooled mining, we combine VRF with digital signature scheme.
 As the digital signature scheme used in cryptocurrency are based on Elliptic curve, we construct Elliptic curve based VRF for our VRF-based mining.
 The standardised construction can be referred in the appendix~\ref{vrf_standardised_construction}.
 
-% The desired properties of a well-designed hash function includes uniformity, deterministic, unpredictability and verifiability.
-% As shown in appendix~\ref{vrf_standardised_construction}, ...
-% Therefore, VRF fits in here.
-
 In the case of solo mining, our sheme, which contains a miner side and a node side, works as follows. Note that we divide the blockheader into two part:
 one part containing $pk$, $\beta$, and $\pi$ (which will be explained later);
 and the other part not containing them.

@@ -28,12 +28,13 @@ Therefore, miners are incentivised to join mining.
 
 \subsection{Why miners join mining pools}
 
-\TODO{can delegate}
-
-\TODO{won't steal? present for pool? see https://bitcointalk.org/index.php?topic=309073}
-
-As aforementioned, unsteady income stream will be risky, but the probability of a miner find a solution is in propotion to to the his hash power.
+As aforementioned, unsteady income stream will be risky, but the probability of a miner find a solution is in propotion to his hash power.
 Therefore, in pratice, miners often join a mining pool and perform computation on behalf of the pool, and get lower variant payouts allocated to them by the pool operators.
+This in fact relies on the fact that miners cannot steal the reward paying to the pool, because he neither can modify the coinbase transaction nor have knowledge on spending such an output;
+and the assumption that the pool will honestly pay to the miners according to their contribuitons.
+If a dishonest pool pays less to a miner than it deserves, the miner can discover it, leave the pool and shift to another.
+This will descrease the pool's mining power and lower his probability to mine a block, and no rational pool will do so.
+Therefore, the pool operator can trustlessly delegate the tasks to miners and miners tend to join pooled mining.
 However, this leads to the centralisation of computation power.
 
 \subsection{Balancing the sybil resistance and incentive}
