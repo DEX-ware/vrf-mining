@@ -12,10 +12,10 @@ Moreover, our protocol in fact construct a stronger version of their \textit{Str
 
 % P2Pool
 \paragraph{\textbf{P2Pool}}
-successful
-low variant
-but: efficiency, security, incentive
-
+P2Pool~\cite{p2pool} is successful decentralised mining pool protocol achieving low payout variance.
+However, P2Pool fails in incentivising and steering miner to migrate to it, because it requires more overhead but provides higher reward variance than mining in a centralised pool.
+At the time of writing, P2Pool only accounts for less than 0.002\% of the total mining capacity~\cite{p2pool-stats}.
+This also leads to a critical issue that, because it uses another Nakamoto-Consensus chain, called share-chain, to decide payments to miners, and the share-chain security depends on the pool hashrate, it can be easily 51\% attacked if the pool hashrate is low.
 
 
 \paragraph{\textbf{SmartPool}}
