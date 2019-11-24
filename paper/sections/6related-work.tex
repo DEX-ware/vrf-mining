@@ -1,5 +1,8 @@
 \section{Related work}
 
+We investigate several proposals aiming at increasing the decentralisation level of Bitcoin, and find that none of them completely discentivise mining pools.
+Our analysis also show that some of them suffer from significant flaws.
+
 \paragraph{\textbf{Nonoutsourceable Puzzles}}
 % Nonoutsourceable Scratch-Off Puzzles to Discourage Bitcoin Mining Coalitions
 % http://soc1024.ece.illinois.edu/nonoutsourceable_full.pdf
@@ -17,8 +20,11 @@
 % https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-luu.pdf
 
 \paragraph{\textbf{Adaptive Retaliation Strategies}}
-% An Eye for an Eye: Economics of Retaliation in Mining Pools
-% https://arxiv.org/pdf/1908.10781.pdf
+Kwon et al.~\cite{kwon2019eye} proves that in a Repeated FAW~\cite{}-BWH~\cite{} Game, a larger pool can make profit whereas a smaller pool suffers a loss, which will undoubtedly increase the centralisation level of Bitcoin.
+They then bring up \textit{Adaptive Retaliation Strategies} (\textit{ARS}) to make FAW attack and BWH attack unprofitable, so as to 
+
+However, \textit{ARS} increases the operation cost for a pool manager, because he needs to plant moles to other pools, calculate on the models and detect opponents' attacks.
+Moreover, \textit{ARS} still 
 
 \paragraph{\textbf{2P-PoW}}
 Eyal et al.~\cite{2P-PoW} propose \textit{Two Phase Proof of Work} (\textit{2P-PoW}) for smooth transition to large pool disincentivisation, by dividing PoW into phase 1 as same as the original minig and phase 2 requiring a secret key.
@@ -28,6 +34,7 @@ However, \textit{2P-PoW} still suffers from several problems:
 \renewcommand\labelitemi{$\circ$}
     \item it does not deter mining pools but merely reduce centralisation, since phase 1 is outsourcable;
     \item \sout{$\mathsf{SIG}$ in phase 2 is usually achieved by \textit{ECDSA} or \textit{EdDSA}, containing a changable cryptography parameter, which leads to another traversal space (such a problem does exist in VRF because the parameter is determined once a VRF is chosen);} \HY{deleted because, in Eyal et al.'s post, they state that a deterministic $SIG$ is needed}
+    \item how to choose the difficulty parameters for each phase still remains unknown and needs simulation;
     \item it still requires a hard fork.
 \end{itemize}
 
