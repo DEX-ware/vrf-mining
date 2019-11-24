@@ -10,23 +10,29 @@ Miller et al.~\cite{miller2015nonoutsourceable} formalize the definition of \tex
 \TODO{flaws}
 Moreover, our protocol in fact construct a stronger version of their \textit{Strongly nonoutsourceable puzzles} if integrated with zero-knowledge transformation as in their protocol, because if the pool manager outsources the computation task, he will not only lose the block rewards, but also the secret key, result in losing all his balance, identity forging and privacy leakage.
 
-% P2Pool
+
 \paragraph{\textbf{P2Pool}}
-P2Pool~\cite{p2pool} is successful decentralised mining pool protocol achieving low payout variance.
-However, P2Pool fails in incentivising and steering miner to migrate to it, because it requires more overhead but provides higher reward variance than mining in a centralised pool.
-At the time of writing, P2Pool only accounts for less than 0.002\% of the total mining capacity~\cite{p2pool-stats}.
+\textit{P2Pool}~\cite{p2pool} is a successful decentralised mining pool protocol achieving low payout variance.
+However, \textit{P2Pool} fails in incentivising and steering miner to migrate to it, because it requires more overhead but provides higher reward variance than mining in a centralised pool.
+At the time of writing, \textit{P2Pool} only accounts for less than 0.002\% of the total mining capacity~\cite{p2pool-stats}.
 This also leads to a critical issue that, because it uses another Nakamoto-Consensus chain, called share-chain, to decide payments to miners, and the share-chain security depends on the pool hashrate, it can be easily 51\% attacked if the pool hashrate is low.
 
 
 \paragraph{\textbf{SmartPool}}
-% SmartPool: Practical Decentralized Pooled Mining
-% https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-luu.pdf
+\textit{SmartPool} is proposed by Luu et al.~\cite{luu2017smartpool}, using smart contract to construct pratical decentralised mining pools.
+However, this protocol requires running a smart contract, and therefore cannot natively support blockchains without smart contract platform.
+Instead, to build a \textit{SmartPool} for a smart-contract-less blockchain like Bitcoin, one will need to additionally operate the pool on top of a blockchain with smart contract support like Ethereum.
+This also involves chain interoperability -- the smart-contract-less blockchain need to provide parameters to the smart-contract chain, and the smart-contract chain needs to verify them, increasing the complexity and operation cost.
+Another issue is that, compared to centralised pools, \textit{SmartPool}'s payouts are still unstable, especially when the pool hash power is low,
+And therefore, miners are not incentivised enough to shift to it, which is similar to the case of \textit{P2Pool}.
+
 
 \paragraph{\textbf{Adaptive Retaliation Strategies}}
 Kwon et al.~\cite{kwon2019eye} proves that in a Repeated FAW\cite{courtois2014subversive,rosenfeld2011analysis}-BWH\cite{kwon2017selfish} Game, a larger pool can make profit whereas a smaller pool suffers a loss, which will undoubtedly increase the centralisation level of Bitcoin.
 They then bring up \textit{Adaptive Retaliation Strategies} (\textit{ARS}) to make FAW attack and BWH attack unprofitable, so as to discentivise rational pools in conducting such attacks.
 However, \textit{ARS} increases the operation cost for a pool manager, because he needs to plant moles to other pools, calculate on the models and detect opponents' attacks.
 Moreover, in \textit{ARS}, a large pool with enough budget can still perform sabotage attack to drain small pools fund and force them to quit the market, leveling up the centralisation.
+
 
 \paragraph{\textbf{2P-PoW}}
 Eyal and Sirer~\cite{2P-PoW} propose \textit{Two Phase Proof of Work} (\textit{2P-PoW}) for smooth transition to large pool disincentivisation, by dividing PoW into phase 1 as same as the original minig and phase 2 requiring a secret key.
@@ -39,7 +45,6 @@ However, \textit{2P-PoW} still suffers from several problems:
     \item how to choose the difficulty parameters for each phase still remains unknown and needs simulation;
     \item it still requires a hard fork.
 \end{itemize}
-
 
 
 % BetterHash
