@@ -30,7 +30,7 @@ Eyal et al.~\cite{2P-PoW} propose \textit{Two Phase Proof of Work} (\textit{2P-P
 This solution is backward-compatible because it preserves blockchain data and retains mining hardware. 
 However, \textit{2P-PoW} still suffers from several problems:
 \begin{itemize}
-\renewcommand\labelitemi{$\circ$}
+\renewcommand\labelitemi{$\bullet$}
     \item it does not deter mining pools but merely reduce centralisation, since phase 1 is outsourcable;
     \item \sout{$\mathsf{SIG}$ in phase 2 is usually achieved by \textit{ECDSA} or \textit{EdDSA}, containing a changable cryptography parameter, which leads to another traversal space (such a problem does exist in VRF because the parameter is determined once a VRF is chosen);} \HY{deleted because, in Eyal et al.'s post, they state that a deterministic $SIG$ is needed}
     \item how to choose the difficulty parameters for each phase still remains unknown and needs simulation;
@@ -42,7 +42,7 @@ However, \textit{2P-PoW} still suffers from several problems:
 BetterHash~\cite{draft-bip-BetterHash} is one of the solutions to the mining power centralisation.
 However, BetterHash suffers from criticism because:
 \begin{itemize}
-\renewcommand\labelitemi{$\circ$}
+\renewcommand\labelitemi{$\bullet$}
     \item it does not solve the centralised pooled mining, but only transfers the right to build the block template to the miner side;
     \item it requires miner technical knowledge to create a block templeate, manage and run a full node.
 \end{itemize}
