@@ -1,14 +1,48 @@
 \section{Related work}
 
-\RH{There should be at least two related papers, but all of them solve the problem by incentive only. Our paper makes mining pool completely impossible}
+We investigate several proposals aiming at increasing the decentralisation level of Bitcoin, and find that none of them completely discentivise mining pools.
+Our analysis also show that some of them suffer from significant flaws.
 
-% SmartPool: Practical Decentralized Pooled Mining, https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-luu.pdf
-% http://soc1024.ece.illinois.edu/nonoutsourceable_full.pdf
-% https://arxiv.org/pdf/1908.10781.pdf
+\paragraph{\textbf{Nonoutsourceable Puzzles}}
+Miller et al.~\cite{miller2015nonoutsourceable} formalize the definition of \textit{Nonoutsourceable Puzzles},
+present the constructions for it.
+They also propose a multi-tier reward structure to incentivise miner for such an adaption.  
+They illustrate that, zero-knowledge proof can be used to make stealing the reward untraceable and thus construct \textit{Strongly nonoutsourceable puzzles}.
+Our protocol in fact construct a stronger version of their \textit{Strongly nonoutsourceability} if integrated with zero-knowledge transformation as in their protocol, because if the pool manager outsources the computation task, he will not only lose the block rewards, but also the secret key, result in losing all his balance, identity forging and privacy leakage.
+However, as admitted in their paper, it is impratical to distinguish malicious miners from honest miners in their \textit{Strongly nonoutsourceabe puzzles} construction.
 
-% BetterHash
-BetterHash~\cite{draft-bip-BetterHash} is one of the solutions to the mining power centralisation.
-However, BetterHash suffers from criticism.
-BetterHash doesn't really solve the centralised pooled mining, \TODO{because}.
-% create block_templeate: select txs, build coinbase tx
-BetterHash requires miner technical knowledge to create a block templeate, manage and run a full node, etc..
+
+\paragraph{\textbf{P2Pool}}
+\textit{P2Pool}~\cite{p2pool} is a successful decentralised mining pool protocol achieving low payout variance.
+However, \textit{P2Pool} fails in incentivising and steering miner to migrate to it, because it requires more overhead but provides higher reward variance than mining in a centralised pool.
+At the time of writing, \textit{P2Pool} only accounts for less than 0.002\% of the total mining capacity~\cite{p2pool-stats}.
+This also leads to a critical issue that, because it uses another Nakamoto-Consensus chain, called share-chain, to decide payments to miners, and the share-chain security depends on the pool hashrate, it can be easily 51\% attacked if the pool hashrate is low.
+
+
+\paragraph{\textbf{SmartPool}}
+\textit{SmartPool} is proposed by Luu et al.~\cite{luu2017smartpool}, using smart contract to construct pratical decentralised mining pools.
+However, this protocol requires running a smart contract, and therefore cannot natively support blockchains without smart contract platform.
+Instead, to build a \textit{SmartPool} for a smart-contract-less blockchain like Bitcoin, one will need to additionally operate the pool on top of a blockchain with smart contract support like Ethereum.
+This also involves chain interoperability -- the smart-contract-less blockchain need to provide parameters to the smart-contract chain, and the smart-contract chain needs to verify them, increasing the complexity and operation cost.
+Another issue is that, compared to centralised pools, \textit{SmartPool}'s payouts are still unstable, especially when the pool hash power is low,
+And therefore, miners are not incentivised enough to shift to it, which is similar to the case of \textit{P2Pool}.
+
+
+\paragraph{\textbf{Adaptive Retaliation Strategies}}
+Kwon et al.~\cite{kwon2019eye} proves that in a Repeated FAW\cite{courtois2014subversive,rosenfeld2011analysis}-BWH\cite{kwon2017selfish} Game, a larger pool can make profit whereas a smaller pool suffers a loss, which will undoubtedly increase the centralisation level of Bitcoin.
+They then bring up \textit{Adaptive Retaliation Strategies} (\textit{ARS}) to make FAW attack and BWH attack unprofitable, so as to discentivise rational pools in conducting such attacks.
+However, \textit{ARS} increases the operation cost for a pool manager, because he needs to plant moles to other pools, calculate on the models and detect opponents' attacks.
+Moreover, in \textit{ARS}, a large pool with enough budget can still perform sabotage attack to drain small pools fund and force them to quit the market, leveling up the centralisation.
+
+
+\paragraph{\textbf{2P-PoW}}
+Eyal and Sirer~\cite{2P-PoW} propose \textit{Two Phase Proof of Work} (\textit{2P-PoW}) for smooth transition to large pool disincentivisation, by dividing PoW into phase 1 as same as the original minig and phase 2 requiring a secret key.
+This solution is backward-compatible because it preserves blockchain data and retains mining hardware. 
+However, \textit{2P-PoW} still suffers from several problems:
+\begin{itemize}
+\renewcommand\labelitemi{$\bullet$}
+    \item it does not deter mining pools but merely reduce centralisation, since phase 1 is outsourcable;
+    \item \sout{$\mathsf{SIG}$ in phase 2 is usually achieved by \textit{ECDSA} or \textit{EdDSA}, containing a changable cryptography parameter, which leads to another traversal space (such a problem does exist in VRF because the parameter is determined once a VRF is chosen);} \HY{deleted because, in Eyal et al.'s post, they state that a deterministic $SIG$ is needed}
+    \item how to choose the difficulty parameters for each phase still remains unknown and needs simulation;
+    \item it still requires a hard fork.
+\end{itemize}

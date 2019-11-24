@@ -1,40 +1,48 @@
 \section{Introduction}
+\label{sec:intro}
 
-\TODO{we need to justify for PoS. does PoS also have mining?}
+% Bitcoin
+By December 2019, Bitcoin is the most popular cryptocurrency in the world.
+It uses a public ledger to record the transaction history: transactions are stored in blocks, and each block is linked to its previous block.
+In Bitcoin, Proof of Work (PoW) is used to timestamp transactions, and to determine the majority agreement on the transaction history.
+% mining
+Miners search for a PoW solution to a puzzle concurrently, and the miner who outruns others becomes the leader to produce the next block and win the reward.
+Such a reward is to incentivise the miners to maintain the ledger and maintain it honestly.
+Though in Proof of Stake~\cite{} and its variants, it is similar that coins are minted and rewarded to the miner for each block, it requires no hash calculation to perform puzzle solution searching.
+Therefore, we only discuss mining in PoW in this paper.
 
-\RH{describe Bitcoin and PoW}
+Because of the hash results are distributed uniformly and cannot be predicted, the probabilty of a miner to find a solution depends on the hash power it ownes.
+Therefore, payouts will be less frequent for a solo miner controlling low computing power.
+As miners need to pay for electricity periodically and want to estimate the remaining time to get the investment on hardware back (if they have not), inconsistent payouts can be risky for miners.
 
-\RH{describe mining and mining pool}
+% mining pool
+To reduce the risk, miners join mining pool to complete the computation tasks.
+This also saves miners' effort on running full node and dealing with block creation, block propogation and other technical details.
+Miners can then focus on running mining rigs, for example, ASICs.
 
-% TODO: by luck, short term, long term
-Payouts will be less frequent for a solo miner controlling low computing power.
-Miner need to pay for electricity periodically and get the investment back.
-Inconsistent payouts will be risky for miners.
-To reduce the risk, miners join mining pool
-no need to run full node and deal with block creation, block propogation
-can focus on running mining rigs, for example, ASICs.
+Pool operator is then responsible to run full node, distribute the computing task to miners, 
+produce a block if the submitted solution found meeting work requirement.
+If the solution does not meet the block work requirement but a reduced requirement, the miner can also get paid, depending on its mining power, because it helps eliminate incorrect answers.
+Such a reduced requirement is also used to assess each miner's power, so as to decide the payment amount.
+Thus, mining pool can gather considerable amount of computation power, gain higher probability to mine a block and pay to miners consistently.
 
-Pool operator, run full node, distribute/outsource task
-produce a block if find solution meeting target difficulty.
-
+% centralisation
 However, mining in Bitcoin network suffers from centralisation.
+At the time of writing (Dec. 2019), given the statistics from BTC.com~\cite{btc-com},the 4 largest mining pool, put together, control more than 51\% of the hash power in Bitcoin network, whereas there are more than 20 mining pools known.
 
-% show centralisation
+The drawbacks of mining power centralisation is non-negligible.
+An unexhausted list is shown as follows.
+\begin{itemize}
+    % 51%
+    \item Pool operators can collude with each other, perform 51\% attacks~\cite{} and double spend their money, if the sum of their hash power is greater than 51\% of the entire network. \HY{do we need to talk about selfish mining?}
+    % failure
+    \item Centralisation introduces points of failure into the network: if a big mining pool is hacked, or DNS is spoofed, a considerable amount of mining power can be stolen.
+    % censorship
+    \item Mining pools can perform censorship on the transaction, rejecting transactions from some exchanges, or CoinJoin transactions.
+    % direct
+    \item A pool can also direct the hash power it controls to mine which fork he decides to extend, and even the worse, to mine another coin if using the same hash algorithm, which is undoubtedly harmful to the ecosystem.
+    % upgrade
+    \item Pool operators may stall protocol upgrade, for example, Segregated Witness~\cite{segwit} support, out of conservatism, or unawareness of such an upgrade.
+\end{itemize}
 
-\RH{describe mining pool breaks the decentralisation}
-
-
-1. malicious attack
-double spend, 51\%, with selfish mining, only requires ... 33?25?
-1.1. a group of pool operators can collude.
-1.2. even not collude, the cost is not huge, lower pool fee
-
-2. Even not for 51, 
-pool operators may refuse protocol upgrade. \TODO{for what? why bad?}
-
-
-3. DNS, steal miners power
-
-
-In this work, we put forward a novel idea of combining VRF and mining in PoW to make pooled mining impossible, and to conquer the centralisation of mining power.
-We call our constrcution \textbf{VRF-based mining}.
+In this work, we put forward a novel idea of combining VRF and mining in PoW to eliminate the intentionality of pooled mining, and to conquer the centralisation of mining power. We call our constrcution \textbf{VRF-based mining}.
