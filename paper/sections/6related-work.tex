@@ -4,6 +4,12 @@ We investigate several proposals aiming at increasing the decentralisation level
 Our analysis also show that some of them suffer from significant flaws.
 
 \paragraph{\textbf{Nonoutsourceable Puzzles}}
+Miller et al.~\cite{miller2015nonoutsourceable} formalize the definition of \textit{Nonoutsourceable Puzzles},
+\TODO{tiers}
+\TODO{and construct a \textit{Weekly nonoutsourceable puzzles}}
+\TODO{flaws}
+Moreover, our protocol in fact construct a stronger version of their \textit{Strongly nonoutsourceable puzzles} if integrating zero-knowledge transformation like in their protocol, because a pool participant can not only but also if the pool manager outsources the task and leakage
+
 % Nonoutsourceable Scratch-Off Puzzles to Discourage Bitcoin Mining Coalitions
 % http://soc1024.ece.illinois.edu/nonoutsourceable_full.pdf
 % (better version of zkp, https://bitcointalk.org/index.php?topic=309073)
@@ -12,8 +18,10 @@ Our analysis also show that some of them suffer from significant flaws.
 % lose all coins, not only newly minted (mining reward)
 % identity forging, privacy leakage...
 
-% hosted-mining
-% http://cs.umd.edu/~amiller/permacoin.pdf
+% P2Pool
+\paragraph{\textbf{P2Pool}}
+
+
 
 \paragraph{\textbf{SmartPool}}
 % SmartPool: Practical Decentralized Pooled Mining
@@ -26,7 +34,7 @@ However, \textit{ARS} increases the operation cost for a pool manager, because h
 Moreover, in \textit{ARS}, a large pool with enough budget can still perform sabotage attack to drain small pools fund and force them to quit the market, leveling up the centralisation.
 
 \paragraph{\textbf{2P-PoW}}
-Eyal et al.~\cite{2P-PoW} propose \textit{Two Phase Proof of Work} (\textit{2P-PoW}) for smooth transition to large pool disincentivisation, by dividing PoW into phase 1 as same as the original minig and phase 2 requiring a secret key.
+Eyal and Sirer~\cite{2P-PoW} propose \textit{Two Phase Proof of Work} (\textit{2P-PoW}) for smooth transition to large pool disincentivisation, by dividing PoW into phase 1 as same as the original minig and phase 2 requiring a secret key.
 This solution is backward-compatible because it preserves blockchain data and retains mining hardware. 
 However, \textit{2P-PoW} still suffers from several problems:
 \begin{itemize}
@@ -37,17 +45,14 @@ However, \textit{2P-PoW} still suffers from several problems:
     \item it still requires a hard fork.
 \end{itemize}
 
-% P2Pool
-\paragraph{\textbf{P2Pool}}
-
 
 
 % BetterHash
-\paragraph{\textbf{BetterHash}}
-BetterHash~\cite{draft-bip-BetterHash} is one of the solutions to the mining power centralisation.
-However, BetterHash suffers from criticism because:
-\begin{itemize}
-\renewcommand\labelitemi{$\bullet$}
-    \item it does not solve the centralised pooled mining, but only transfers the right to build the block template to the miner side;
-    \item it requires miner technical knowledge to create a block templeate, manage and run a full node.
-\end{itemize}
+% \paragraph{\textbf{BetterHash}}
+% BetterHash~\cite{draft-bip-BetterHash} is one of the solutions to the mining power centralisation.
+% However, BetterHash suffers from criticism because:
+% \begin{itemize}
+% \renewcommand\labelitemi{$\bullet$}
+%     \item it does not solve the centralised pooled mining, but only transfers the right to build the block template to the miner side;
+%     \item it requires miner technical knowledge to create a block templeate, manage and run a full node.
+% \end{itemize}
