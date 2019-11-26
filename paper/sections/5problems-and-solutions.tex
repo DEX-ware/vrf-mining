@@ -1,11 +1,25 @@
-\section{Sybil-resistance v.s. incentive compatibility}
+\section{Problems and possible solutions}
 
 \RH{I have thought about this section, and found my previous conclusion and story are wrong.
 Instead, we should discuss disadvantages and:
 1. without pools, miners are rewarded unstably, so are discouraged to mine, so mining power of the blockchain will be less, so weaker security guarantee.
 2. high orphan block rate, network may have greater impact on mining.
+3. choice of hash functions
 Solutions for 1: silumate mining pool on blockchain. This should be discussed online, and there has been a paper describing collaborative mining (https://www.usenix.org/system/files/sec19-szalachowski.pdf)
 Solutions for 2: longer blocktime, Grephene/propogate headers only, and other layer0 solutions...}
+
+
+\subsection{Choice of hash functions}
+
+\RH{this part we should discuss all 3 hash functions. Here we only talk about H2 (for producing hash). This might be tricky, so leave it the last one to do}
+
+Existing mining algorithms can be easily integrated into VRF.
+
+Currently, all existing mining algorithms take an input and then perform hash on it. Different algorithms vary with input length (depending on the blockchain data structure), and the hash function.
+As shown in appendix~\ref{vrf_standardised_construction}, our construction accepts an arbitrary-length input $\alpha$.
+We then simply use the hash function in the targeted mining algorithm as our $H_{1}$.
+Thus, our scheme can add supports for different mining algorithms.
+
 
 \subsection{Why consensus requires mining}
 

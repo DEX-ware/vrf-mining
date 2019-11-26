@@ -2,6 +2,8 @@
 
 \subsection{Our construction}
 
+Intutively, 
+
 We replace hash function in mining by VRF, and thus construct VRF-based mining.
 
 To rule out pooled mining, we combine VRF with digital signature scheme.
@@ -63,15 +65,3 @@ Upon receiving $pk$, $\beta$, and $\pi$, the node then performs Algorithm~\ref{a
 The $pk$, $\beta$ and $\pi$ are recorded in the blockheader, so that, when the block is propogated to other nodes, they can easily validate it via $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$.
 
 
-
-\subsection{Why pooled mining cannot work in our scheme}
-\label{sec:discourage-pool}
-
-% need private key
-As shown in appendix~\ref{vrf_standardised_construction}, both $\mathsf{VRFHash}$ and $\mathsf{VRFProve}$ take secret key $sk$ as input.
-That is to say, if a pool operator would like to provide pooled mining service and let miners participate, he will need to provide miners with his secret key.
-
-% none would like to provide private key
-However, none rational pool operator will tend to give out his secret key, as revealing his secret key give others the opportunity to redeem his balance or forge his identity.
-
-Therefore, following our construction, we eliminate the intentionality of pooled mining and can reduce the centralisation of mining power significanlty.

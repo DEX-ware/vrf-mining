@@ -1,0 +1,16 @@
+\section{Security and Non-outsourcability}
+
+\RH{Let's extend this section to security and nonoutsourcability justification, which extends Miller's paper.
+In particular, 
+1. We list/reformalise desired properties that can render pooled mining impossible. This should inlcude: Correctness, Feasibility, Parallelisability, Imcompressibility, Nonoutsourcability (we should reformalise this one), Non-transferability, .
+2. In addition, we should justify 1. support of different hash algos, 2. hash should be slower than EC.
+Runchao will do this part.}
+
+% need private key
+As shown in appendix~\ref{vrf_standardised_construction}, both $\mathsf{VRFHash}$ and $\mathsf{VRFProve}$ take secret key $sk$ as input.
+That is to say, if a pool operator would like to provide pooled mining service and let miners participate, he will need to provide miners with his secret key.
+
+% none would like to provide private key
+However, none rational pool operator will tend to give out his secret key, as revealing his secret key give others the opportunity to redeem his balance or forge his identity.
+
+Therefore, following our construction, we eliminate the intentionality of pooled mining and can reduce the centralisation of mining power significantly.
