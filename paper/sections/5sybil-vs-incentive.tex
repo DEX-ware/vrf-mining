@@ -1,5 +1,12 @@
 \section{Sybil-resistance v.s. incentive compatibility}
 
+\RH{I have thought about this section, and found my previous conclusion and story are wrong.
+Instead, we should discuss disadvantages and:
+1. without pools, miners are rewarded unstably, so are discouraged to mine, so mining power of the blockchain will be less, so weaker security guarantee.
+2. high orphan block rate, network may have greater impact on mining.
+Solutions for 1: silumate mining pool on blockchain. This should be discussed online, and there has been a paper describing collaborative mining (https://www.usenix.org/system/files/sec19-szalachowski.pdf)
+Solutions for 2: longer blocktime, Grephene/propogate headers only, and other layer0 solutions...}
+
 \subsection{Why consensus requires mining}
 
 Nakamoto consensus requires PoW minig because it is designed that the consensus blockchain is the chain with the greatest PoW effort accumulated and therefore the greatest the greatest difficulty to produce, usually the longest chain.

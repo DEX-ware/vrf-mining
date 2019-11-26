@@ -1,15 +1,23 @@
 \section{Preliminaries}
 
-\subsection{Cryptocurrency mining}
+\subsection{Cryptocurrency mining and mining pools}
 
 \TODO{rephrase due to similarity to ``SoK: Research Perspectives and Challenges for Bitcoin and Cryptocurrencies''}
 
-In cryptocurrency mining, miners search for the solution to a computational puzzle.
-Specifically, the puzzle is to find a (partial) pre-image for a cryptographic hash function, of which output is less than a target value begining with several consecutive zero bits.
-The hash function maps a list of transaction, the hash of the previous block, a timestamp, an nonce and other information, to a result value.
-As the hash result is unpredictable and unformly distributed, the probability of the hash result lies among the desired interval is inversely proportional to the number of leading zero.
 
-The more computation power the miner possesses, the more rounds of hash he can run during a time unit, and the more likely he can find the solution. The first miner who finds the solution and anounces it, wins the competition and gets rewarded.
+In cryptocurrency mining, miners search for the solution to a computational puzzle.
+Specifically, the puzzle is to find a (partial) pre-image for a cryptographic hash function, of which output is less than a target value beginning with several consecutive zero bits.
+The hash function maps a list of transaction, the hash of the previous block, a timestamp, an nonce and other information, to a result value.
+As the hash result is unpredictable and uniformly distributed, the probability of the hash result lies among the desired interval is inversely proportional to the number of leading zero.
+
+The more computation power the miner possesses, the more rounds of hash he can run during a time unit, and the more likely he can find the solution. The first miner who finds the solution and announces it, wins the competition and gets rewarded.
+
+\RH{In addition, we should talk how mining pool works as well. In particular,
+1. architecture (pool operator, miner)
+2. protocol (miner submits share, pool operator verifies share and distribute reward)
+3. why more stable reward? (share diff is much smaller)}
+
+
 
 \subsection{Verifiable random functions}
 
@@ -25,3 +33,4 @@ Formally, a VRF consists of four algorithms: $\mathsf{VRFKeyGen}$, $\mathsf{VRFH
     \item $\{0, 1\} \gets \mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$: on input $pk$, $\alpha$, $\beta$, $\pi$, outputs the verification result 0 or 1.
 \end{itemize}
 
+\RH{Maybe we should talk about formal properties of VRF, including Uniqueness, Pseudorandomness, Collision resistance. Runchao will write this part later}
