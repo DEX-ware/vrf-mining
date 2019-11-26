@@ -10,6 +10,11 @@
 \usepackage[normalem]{ulem}
 
 
+\makeatletter
+\newcommand{\printfnsymbol}[1]{%
+  \textsuperscript{\@fnsymbol{#1}}%
+}
+\makeatother
 
 \newcommand{\RH}[1]{\textcolor{blue}{#1}}
 \newcommand{\JS}[1]{\textcolor{red}{#1}}
@@ -21,7 +26,11 @@
 \title{VRF-based mining: How to rule out mining pools from blockchain ecosystem?}
 \titlerunning{VRF-based mining}
 
-\author{Runchao Han\inst{1,2} \and Haoyu Lin \and Jiangshan Yu\inst{1}}
+\author{
+    Runchao Han\thanks{equal contribution}\inst{1,2}
+    \and Haoyu Lin\printfnsymbol{1}
+    \and Jiangshan Yu\inst{1}
+}
 \authorrunning{Han et al.}
 
 \institute{Monash University \and CSIRO-Data61}
@@ -30,7 +39,7 @@
 
 \begin{abstract}
 
-\keywords{Blockchain \and Cryptocurrency mining \and Mining pool.}
+    \keywords{Blockchain \and Cryptocurrency mining \and Mining pool.}
 \end{abstract}
 
 \input{sections/1intro.tex}
