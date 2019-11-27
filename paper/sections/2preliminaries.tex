@@ -36,9 +36,9 @@ Formally, a VRF consists of four algorithms: $\mathsf{VRFKeyGen}$, $\mathsf{VRFH
 % refer https://tools.ietf.org/pdf/draft-goldbe-vrf-01.pdf
 VRFs should preserve three security properties, including \textbf{Uniqueness}, \textbf{Collision Resistance}, \textbf{Pseudorandomness}. Informally, 
 
-\begin{itemize}
-    \item \textbf{Uniqueness}: Given any public VRF key and any input, there is a unique valid output.
-    \item \textbf{Collision Resistance}: Finding two different inputs that have the same output is computationally hard.
-    \item \textbf{Pseudorandomness}: Without knowing the corresponding proof, distinguishing a VRF output from a random string is computationally hard.
-\end{itemize}
+\begin{description}
+    \item[Uniqueness] Given any public VRF key and any input, there is a unique valid output.
+    \item[Collision Resistance] Finding two different inputs that have the same output is computationally hard.
+    \item[Pseudorandomness] Without knowing the corresponding proof, distinguishing a VRF output from a random string is computationally hard.
+\end{description}
 

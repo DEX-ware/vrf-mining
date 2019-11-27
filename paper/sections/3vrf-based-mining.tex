@@ -32,7 +32,7 @@ However, with the secret key, any miner in the mining pool can steal all coins o
 
 
 \begin{algorithm}[H]
-\caption{$\mathsf{Verify}(blk, h, \pi)$}
+\caption{$\mathsf{Verify}(blk, h, \pi, Target)$}
 \label{algo:verify}
 \SetAlgoLined
 $pk \gets blk . txs[0] . scriptPubKey$ \Comment*[r]{Find pubkey in coinbase tx}
@@ -45,3 +45,5 @@ $\mathsf{require}(\mathsf{VRFVerify}(pk, blk, h, \pi))$ \;
 $\dots$ \Comment*[l]{Verify other fields}
 $\dots$ \Comment*[l]{Verify transactions}
 \end{algorithm}
+
+\RH{describe}

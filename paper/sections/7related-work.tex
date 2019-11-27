@@ -47,7 +47,7 @@ This solution is backward-compatible because it preserves blockchain data and re
 However, \textit{2P-PoW} still suffers from several problems:
 \begin{itemize}
 \renewcommand\labelitemi{$\bullet$}
-    \item it does not deter mining pools but merely reduce centralisation, since phase 1 is outsourcable;
+    \item it does not deter mining pools but merely reduce centralisation, since phase 1 is outsourceable;
     \item \sout{$\mathsf{SIG}$ in phase 2 is usually achieved by \textit{ECDSA} or \textit{EdDSA}, containing a changable cryptography parameter, which leads to another traversal space (such a problem does exist in VRF because the parameter is determined once a VRF is chosen);} \HY{deleted because, in Eyal et al.'s post, they state that a deterministic $SIG$ is needed}
     \item how to choose the difficulty parameters for each phase still remains unknown and needs simulation;
     \item it still requires a hard fork.
