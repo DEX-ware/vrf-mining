@@ -1,7 +1,41 @@
 \section{Instantiating VRF}
 
 
-% 3. How to instantiate VRF. support of different hash algos (hash should be slower than EC).
+% 1. Choice of hash functions.
+% 2. support of existing hash algos (hash should be slower than EC).
+
+% Let $H_1(\cdot)$ be a hash function mapping an arbitrary-length string into an element in $G$. (str - elem)
+%   rec: Elligator2
+% Let $H_2(\cdot)$ be a hash function mapping an element in $G$ into a fixed-length string. (elem - str)
+%   rec: toString then any hash
+% Let $H_3(\cdot)$ be a hash function mapping an arbitrary-length string into a fixed-length string. (str - str)
+%   fast hash for better verify performance
+
+In order to implement VRF-based mining, one needs to first instantiate the VRF.
+VRF has four configurable components, namely the elliptic curve and three hash functions $H_{1}(\cdot)$, $H_{2}(\cdot)$ and $H_{2}(\cdot)$.
+$H_{1}(\cdot)$ maps an arbitrary-length string into an elliptic curve element;
+$H_{2}(\cdot)$ maps an elliptic curve element into a fixed-length string; and
+$H_{3}(\cdot)$ maps an arbitrary-length string into a fixed-length string.
+In this section, we discuss considerations on choosing these four components for VRF-based mining.
+
+\subsection{Elliptic curve}
+As neither blockchains and VRF limits the choice of elliptic curves, any elliptic curve can be adapted.
+Among prominent elliptic curves, Curve25519~\cite{} can be a promising choice.
+Curve25519 supports Ed25519~\cite{}, a fast and secure digital signature algorithm.
+In addition, numerous blockchains~\cite{} and projects using VRF~\cite{} adapt Ed25519 as their underlying elliptic curve.
+
+\subsection{$H_{1}(\cdot)$}
+$H_{1}(\cdot)$ is a hash-to-curve function.
+% indistinguishable
+Hash-to-curve functions should prevent distinguishing behaviours: adversaries cannot learn any pattern of the input from its hash.
+% deterministic
+In addition, the hash-to-curve function used in VRF should be deterministic, otherwise the hash will be unreproducible.
+A standardisation document~\cite{} specifies several hash-to-curve functions that satisfy our requirements: Icart Method~\cite{}, Shallue-Woestijne-Ulas Method~\cite{}, Simplified SWU Method~\cite{} and Elligator2~\cite{}.
+Elligator2 is the recommended hash-to-curve function for Curve25519.
+
+\subsection{$H_{2}(\cdot)$}
+
+\subsection{$H_{3}(\cdot)$}
 
 \HY{being faster than hash is not a must-have property. but I agree that being too slow is undesired.}
 \HY{becasue: different blockchains vary with hash algos;  if a hash algo is time-consuming per round, the network diff can still be adjusted to keep the block-time stable.}
@@ -14,8 +48,3 @@ Currently, all existing mining algorithms take an input and then perform hash on
 As shown in appendix~\ref{vrf_standardised_construction}, our construction accepts an arbitrary-length input $\alpha$.
 We then simply use the hash function in the targeted mining algorithm as our $H_{1}$.
 Thus, our scheme can add supports for different mining algorithms.
-
-
-
-
-\subsection{Hardware }
