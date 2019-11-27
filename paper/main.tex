@@ -7,6 +7,8 @@
 \usepackage{cuted, tcolorbox}
 \usepackage{tikz}
 \usepackage[ruled,vlined]{algorithm2e}
+\usepackage{algpseudocode}
+
 \usepackage[normalem]{ulem}
 
 
@@ -20,6 +22,12 @@
 \newcommand{\JS}[1]{\textcolor{red}{#1}}
 \newcommand{\TODO}[1]{\textcolor{red}{TODO: #1}}
 \newcommand{\HY}[1]{\textcolor{brown}{#1}}
+
+% blue comment
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+% blue triangle
+\SetKwComment{Comment}{\color{blue} $\triangleright$\ }{}
 
 \begin{document}
 
