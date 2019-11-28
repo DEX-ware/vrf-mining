@@ -15,8 +15,9 @@ In this section, we discuss considerations on choosing these four components for
 
 As neither blockchains and VRF limits the choice of elliptic curves, any elliptic curve can be adapted.
 Among prominent elliptic curves, Curve25519~\cite{bernstein2006curve25519} can be a promising choice.
-Curve25519 supports Ed25519~\cite{bernstein2012high}, a fast and secure digital signature algorithm.
-In addition, numerous blockchains and projects using VRF adapt Ed25519 as their underlying elliptic curve.
+First, Curve25519 works on a prime field with the prime number $2^{255} - 19$, which provides sufficient enumeration space for VRF.
+Second, Curve25519 supports Ed25519~\cite{bernstein2012high}, a fast and secure digital signature algorithm.
+Last, Curve25519 is compatible with existing blockchains: numerous blockchains and projects using VRF adapt Curve25519 as their underlying elliptic curve.
 
 
 
