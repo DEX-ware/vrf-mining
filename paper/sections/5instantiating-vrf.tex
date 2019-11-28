@@ -41,7 +41,7 @@ It can be divided to two steps: 1) encoding an elliptic curve point to a string,
 The encoding step can be bidirectional and unencrypted, so can be done simply by converting a big integer to a string.
 The hashing step should be cryptographically secure, so can adapt any existing cryptographically secure hash functions.
 
-For ASIC-resistant cryptocurrencies using memory-hard hash functions (e.g., Ethereum~\cite{} and Monero~\cite{}), there are some concerns on choosing hash functions in $H_{2}(\cdot)$.
+For ASIC-resistant cryptocurrencies using memory-hard hash functions (e.g., Ethereum~\cite{wood2014ethereum} and Monero~\cite{monero}), there are some concerns on choosing hash functions in $H_{2}(\cdot)$.
 % VRFHash shoule memory-hard
 To make mining memory-hard, $\mathsf{VRFHash}$ should be memory-hard.
 % vrfhash steps
