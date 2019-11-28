@@ -6,12 +6,14 @@ We classify related research to two types, namely mining protocols trying to add
 
 \subsection{Mining protocols}
 
+There are two mining protocols aiming at discouraging or breaking mining pools: the \textit{non-outsourceable scratch-off puzzle}~\cite{miller2015nonoutsourceable} and the \textit{Two Phase Proof-of-Work} (\textit{2P-PoW})~\cite{2P-PoW}.
+
 \textbf{Non-outsourceable scratch-off puzzle.}
 Miller et al.~\cite{miller2015nonoutsourceable} formalises cryptocurrency mining as \textit{Scratch-off puzzles}, defines \textit{Non-outsourceable scratch-off puzzles}, and proposes two constructions.
-As discussed in \S~\ref{sec:non_outsourceability}, compared to the non-outsourceable scratch-off puzzle, our VRF-based mining achieves better non-outsourceability, and is much simpler to implement.
+As discussed in \S\ref{sec:non_outsourceability}, compared to the non-outsourceable scratch-off puzzle, our VRF-based mining achieves better non-outsourceability, and is much simpler to implement.
 
 \textbf{2P-PoW.}
-Eyal and Sirer propose \textit{Two Phase Proof of Work} (\textit{2P-PoW})~\cite{2P-PoW}, a mining protocol that discourages pooled mining.
+Eyal and Sirer proposes 2P-PoW~\cite{2P-PoW}, a mining protocol that discourages pooled mining.
 In 2P-PoW, there are two phases, and each phase has a difficulty parameter.
 A miner should find a nonce that makes the block to pass two phases: 1) the Sha256d hash of the block meets the first difficulty, 2) the Sha256 hash of the signature of the block meets the second difficulty.
 As the second requirement requires the private key, pool operators cannot outsource the second phase.
