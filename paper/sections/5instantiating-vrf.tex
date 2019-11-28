@@ -12,6 +12,7 @@ In this section, we discuss considerations on choosing these four components for
 
 
 \subsection{Elliptic curve}
+
 As neither blockchains and VRF limits the choice of elliptic curves, any elliptic curve can be adapted.
 Among prominent elliptic curves, Curve25519~\cite{} can be a promising choice.
 Curve25519 supports Ed25519~\cite{}, a fast and secure digital signature algorithm.
@@ -21,6 +22,7 @@ In addition, numerous blockchains~\cite{} and projects using VRF~\cite{} adapt E
 
 
 \subsection{$H_{1}(\cdot)$ (hashing a string to an elliptic curve point)}
+
 % indistinguishable
 $H_{1}(\cdot)$ is a hash-to-curve function, which should prevent distinguishing behaviours: adversaries cannot learn any pattern of the input from its hash.
 % deterministic
@@ -33,8 +35,6 @@ Within these hash-to-curve functions, Elligator2 is the recommended one for Curv
 
 
 \subsection{$H_{2}(\cdot)$ (hashing an elliptic curve point to a string)}
-
-\HY{being faster than hash is not a must-have property. but I agree that being too slow is undesired.}
 
 $H_{2}(\cdot)$ hashes an elliptic curve point to a fixed-length string.
 It can be divided to two steps: 1) encoding an elliptic curve point to a string, and 2) hashing the string using a normal hash function.
@@ -57,5 +57,6 @@ This requirement can be achieved by repetitively executing one or multiple diffe
 
 
 \subsection{$H_{3}(\cdot)$ (Normal hash function)}
+
 $H_{3}(\cdot)$ is only used in $\mathsf{VRFProve}$ (proving the authorship of hashes) and $\mathsf{VRFVerify}$ (verifying the authorship of hashes).
 The overhead of proving and verification should be minimised, so cryptographically secure hash functions that are designed to be fast (such as Keccak~\cite{} and BLAKE~\cite{}) are suitable for $H_{3}(\cdot)$.
