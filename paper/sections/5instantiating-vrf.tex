@@ -14,9 +14,9 @@ In this section, we discuss considerations on choosing these four components for
 \subsection{Elliptic curve}
 
 As neither blockchains and VRF limits the choice of elliptic curves, any elliptic curve can be adapted.
-Among prominent elliptic curves, Curve25519~\cite{} can be a promising choice.
-Curve25519 supports Ed25519~\cite{}, a fast and secure digital signature algorithm.
-In addition, numerous blockchains~\cite{} and projects using VRF~\cite{} adapt Ed25519 as their underlying elliptic curve.
+Among prominent elliptic curves, Curve25519~\cite{bernstein2006curve25519} can be a promising choice.
+Curve25519 supports Ed25519~\cite{bernstein2012high}, a fast and secure digital signature algorithm.
+In addition, numerous blockchains and projects using VRF adapt Ed25519 as their underlying elliptic curve.
 
 
 
@@ -28,7 +28,7 @@ $H_{1}(\cdot)$ is a hash-to-curve function, which should prevent distinguishing 
 % deterministic
 In addition, the hash-to-curve function used in VRF should be deterministic, otherwise the hash will be unreproducible.
 
-A standardisation document~\cite{} specifies several hash-to-curve functions that fit into different elliptic curves and satisfy our requirements: Icart Method~\cite{}, Shallue-Woestijne-Ulas Method~\cite{}, Simplified SWU Method~\cite{} and Elligator2~\cite{}.
+A standardisation document~\cite{scott2019hashing} specifies several hash-to-curve functions that fit into different elliptic curves and satisfy our requirements: Icart Method~\cite{icart2009hash}, Shallue-Woestijne-Ulas Method~\cite{ulas2007rational}, Simplified SWU Method~\cite{brier2010efficient} and Elligator2~\cite{bernstein2013elligator}.
 Within these hash-to-curve functions, Elligator2 is the recommended one for Curve25519.
 
 
@@ -50,7 +50,7 @@ $H_{1}(\cdot)$ and the encoding step in $H_{2}(\cdot)$ can be fast so less possi
 The scalar-point multiplication is slow and computation (rather than memory)-intensive.
 % make VRFHash memory hard
 The hash function in $H_{2}(\cdot)$ is the only possibility to make $\mathsf{VRFHash}$ memory-hard, and it should be overwhelmingly slower than the scalar-point multiplication, otherwise the scalar-point multiplication will make $\mathsf{VRFHash}$ computation-intensive.
-This requirement can be achieved by repetitively executing one or multiple different memory-hard hash functions (such as Ethash~\cite{}, Equihash~\cite{}, and CryptoNight~\cite{}).
+This requirement can be achieved by repetitively executing one or multiple different memory-hard hash functions (such as Ethash~\cite{wiki2017ethash}, Equihash~\cite{biryukov2017equihash}, and CryptoNight~\cite{seigenneocortex}).
 
 
 
@@ -59,4 +59,4 @@ This requirement can be achieved by repetitively executing one or multiple diffe
 \subsection{$H_{3}(\cdot)$ (Normal hash function)}
 
 $H_{3}(\cdot)$ is only used in $\mathsf{VRFProve}$ (proving the authorship of hashes) and $\mathsf{VRFVerify}$ (verifying the authorship of hashes).
-The overhead of proving and verification should be minimised, so cryptographically secure hash functions that are designed to be fast (such as Keccak~\cite{} and BLAKE~\cite{}) are suitable for $H_{3}(\cdot)$.
+The overhead of proving and verification should be minimised, so cryptographically secure hash functions that are designed to be fast (such as Keccak~\cite{bertoni2013keccak} and BLAKE~\cite{aumasson2008sha}) are suitable for $H_{3}(\cdot)$.
