@@ -1,16 +1,5 @@
 \section{Instantiating VRF}
 
-
-% 1. Choice of hash functions.
-% 2. support of existing hash algos (hash should be slower than EC).
-
-% Let $H_1(\cdot)$ be a hash function mapping an arbitrary-length string into an element in $G$. (str - elem)
-%   rec: Elligator2
-% Let $H_2(\cdot)$ be a hash function mapping an element in $G$ into a fixed-length string. (elem - str)
-%   rec: toString then any hash
-% Let $H_3(\cdot)$ be a hash function mapping an arbitrary-length string into a fixed-length string. (str - str)
-%   fast hash for better verify performance
-
 In order to implement VRF-based mining, one needs to first instantiate the VRF.
 VRF has four configurable components, namely the elliptic curve and three hash functions $H_{1}(\cdot)$, $H_{2}(\cdot)$ and $H_{2}(\cdot)$.
 $H_{1}(\cdot)$ maps an arbitrary-length string into an elliptic curve element;
@@ -18,33 +7,55 @@ $H_{2}(\cdot)$ maps an elliptic curve element into a fixed-length string; and
 $H_{3}(\cdot)$ maps an arbitrary-length string into a fixed-length string.
 In this section, we discuss considerations on choosing these four components for VRF-based mining.
 
+
+
+
+
 \subsection{Elliptic curve}
 As neither blockchains and VRF limits the choice of elliptic curves, any elliptic curve can be adapted.
 Among prominent elliptic curves, Curve25519~\cite{} can be a promising choice.
 Curve25519 supports Ed25519~\cite{}, a fast and secure digital signature algorithm.
 In addition, numerous blockchains~\cite{} and projects using VRF~\cite{} adapt Ed25519 as their underlying elliptic curve.
 
-\subsection{$H_{1}(\cdot)$}
-$H_{1}(\cdot)$ is a hash-to-curve function.
+
+
+
+\subsection{$H_{1}(\cdot)$ (hashing a string to an elliptic curve point)}
 % indistinguishable
-Hash-to-curve functions should prevent distinguishing behaviours: adversaries cannot learn any pattern of the input from its hash.
+$H_{1}(\cdot)$ is a hash-to-curve function, which should prevent distinguishing behaviours: adversaries cannot learn any pattern of the input from its hash.
 % deterministic
 In addition, the hash-to-curve function used in VRF should be deterministic, otherwise the hash will be unreproducible.
-A standardisation document~\cite{} specifies several hash-to-curve functions that satisfy our requirements: Icart Method~\cite{}, Shallue-Woestijne-Ulas Method~\cite{}, Simplified SWU Method~\cite{} and Elligator2~\cite{}.
-Elligator2 is the recommended hash-to-curve function for Curve25519.
 
-\subsection{$H_{2}(\cdot)$}
+A standardisation document~\cite{} specifies several hash-to-curve functions that fit into different elliptic curves and satisfy our requirements: Icart Method~\cite{}, Shallue-Woestijne-Ulas Method~\cite{}, Simplified SWU Method~\cite{} and Elligator2~\cite{}.
+Within these hash-to-curve functions, Elligator2 is the recommended one for Curve25519.
 
-\subsection{$H_{3}(\cdot)$}
+
+
+
+\subsection{$H_{2}(\cdot)$ (hashing an elliptic curve point to a string)}
 
 \HY{being faster than hash is not a must-have property. but I agree that being too slow is undesired.}
-\HY{becasue: different blockchains vary with hash algos;  if a hash algo is time-consuming per round, the network diff can still be adjusted to keep the block-time stable.}
 
-\RH{this part we should discuss all 3 hash functions. Here we only talk about H2 (for producing hash). This might be tricky, so leave it the last one to do}
+$H_{2}(\cdot)$ hashes an elliptic curve point to a fixed-length string.
+It can be divided to two steps: 1) encoding an elliptic curve point to a string, and 2) hashing the string using a normal hash function.
+The encoding step can be bidirectional and unencrypted, so can be done simply by converting a big integer to a string.
+The hashing step should be cryptographically secure, so can adapt any existing cryptographically secure hash functions.
 
-Existing mining algorithms can be easily integrated into VRF.
+For ASIC-resistant cryptocurrencies using memory-hard hash functions (e.g., Ethereum~\cite{} and Monero~\cite{}), there are some concerns on choosing hash functions in $H_{2}(\cdot)$.
+% VRFHash shoule memory-hard
+To make mining memory-hard, $\mathsf{VRFHash}$ should be memory-hard.
+% vrfhash steps
+$\mathsf{VRFHash}$ of the standardised VRF consists of one $H_{1}(\cdot)$ hashing, one scalar-point multiplication and one $H_{2}(\cdot)$ hashing.
+$H_{1}(\cdot)$ and the encoding step in $H_{2}(\cdot)$ can be fast so less possible to become the performance hotspot.
+The scalar-point multiplication is slow and computation (rather than memory)-intensive.
+% make VRFHash memory hard
+The hash function in $H_{2}(\cdot)$ is the only possibility to make $\mathsf{VRFHash}$ memory-hard, and it should be overwhelmingly slower than the scalar-point multiplication, otherwise the scalar-point multiplication will make $\mathsf{VRFHash}$ computation-intensive.
+This requirement can be achieved by repetitively executing one or multiple different memory-hard hash functions (such as Ethash~\cite{}, Equihash~\cite{}, and CryptoNight~\cite{}).
 
-Currently, all existing mining algorithms take an input and then perform hash on it. Different algorithms vary with input length (depending on the blockchain data structure), and the hash function.
-As shown in appendix~\ref{vrf_standardised_construction}, our construction accepts an arbitrary-length input $\alpha$.
-We then simply use the hash function in the targeted mining algorithm as our $H_{1}$.
-Thus, our scheme can add supports for different mining algorithms.
+
+
+
+
+\subsection{$H_{3}(\cdot)$ (Normal hash function)}
+$H_{3}(\cdot)$ is only used in $\mathsf{VRFProve}$ (proving the authorship of hashes) and $\mathsf{VRFVerify}$ (verifying the authorship of hashes).
+The overhead of proving and verification should be minimised, so cryptographically secure hash functions that are designed to be fast (such as Keccak~\cite{} and BLAKE~\cite{}) are suitable for $H_{3}(\cdot)$.
