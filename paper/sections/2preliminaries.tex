@@ -2,20 +2,34 @@
 
 \subsection{Cryptocurrency mining and mining pools}
 
-\TODO{rephrase due to similarity to ``SoK: Research Perspectives and Challenges for Bitcoin and Cryptocurrencies''}
+
+A miner mines on a blockchain with Nakamoto consensus by solving PoW puzzles.
+The PoW puzzle is usually constructed using cryptographic hash functions, and works as follows.
+% how mining works
+First, a miner constructs a block template, which consists of transactions to include, hash of the last block, and other block metadata, except the nonce.
+Second, the miner should find a nonce which makes the hash of the block to satisfy a difficulty parameter.
+Once the miner find a valid nonce, he can append this block to the blockchain.
+% how diff works
+As hash functions are one-way, miners cannot calculate nonces from hashes.
+Instead, miners can only repetitively hash different nonces until finding a hash satisfying the difficulty parameter.
+The difficulty is parametrised by limiting the interval of hashes.
+For example, Bitcoin controls the difficulty of finding a nonce by specifying the number of leading zeros of hashes.
 
 
-In cryptocurrency mining, miners search for the solution to a computational puzzle.
-Specifically, the puzzle is to find a (partial) pre-image for a cryptographic hash function, of which output is less than a target value beginning with several consecutive zero bits.
-The hash function maps a list of transaction, the hash of the previous block, a timestamp, an nonce and other information, to a result value.
-As the hash result is unpredictable and uniformly distributed, the probability of the hash result lies among the desired interval is inversely proportional to the number of leading zero.
 
-The more computation power the miner possesses, the more rounds of hash he can run during a time unit, and the more likely he can find the solution. The first miner who finds the solution and announces it, wins the competition and gets rewarded.
+In a mining pool, the pool operator outsources the mining process by allowing miners to find nonces for him.
+% distribute
+More specifically, the pool operator distributes his block template as well as a ``share difficulty'' to each miner.
+The share difficulty is much lower than the difficulty of the blockchain.
+% submit
+Miners then keep finding nonces to make the block hash to satisfy the share difficulty, and submitting valid nonces to the pool operator.
+% reward
+As nonces satisfying the blockchain difficulty must satisfy the share difficulty, miners can filter submitted nonces to obtain nonces that can produce blocks.
+After a time period (say 24 hours), the pool operator calculates the number of shares submitted by each miner, and distributes the mining reward to each miner according to their submitted shares.
+% why stable
+As finding a valid share is much easier than finding a valid block, calculating the mining power of a miner using shares is more fine-grained than using blocks.
+In this way, each miner is rewarded in a more fine-grained way, so more stably.
 
-\RH{In addition, we should talk how mining pool works as well. In particular,
-1. architecture (pool operator, miner)
-2. protocol (miner submits share, pool operator verifies share and distribute reward)
-3. why more stable reward? (share diff is much smaller)}
 
 
 
