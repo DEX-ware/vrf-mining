@@ -1,10 +1,11 @@
 \section{Instantiating VRF}
 
 In order to implement VRF-based mining, one needs to first instantiate the VRF.
-VRF has four configurable components, namely the elliptic curve and three hash functions $H_{1}(\cdot)$, $H_{2}(\cdot)$ and $H_{2}(\cdot)$.
-$H_{1}(\cdot)$ maps an arbitrary-length string into an elliptic curve element;
-$H_{2}(\cdot)$ maps an elliptic curve element into a fixed-length string; and
-$H_{3}(\cdot)$ maps an arbitrary-length string into a fixed-length string.
+VRF in Algorithm~\ref{algo:standard-ecvrf} has four configurable components, including the elliptic curve and three hash functions.
+Three hash functions are:
+$H_{1}(\cdot)$ mapping an arbitrary-length string into an elliptic curve element,
+$H_{2}(\cdot)$ mapping an elliptic curve element into a fixed-length string, and
+$H_{3}(\cdot)$ mapping an arbitrary-length string into a fixed-length string.
 In this section, we discuss considerations on choosing these four components for VRF-based mining.
 
 
