@@ -10,7 +10,7 @@ However, with the secret key, any miner in the mining pool can steal all coins o
 \begin{algorithm}[]
 \caption{$\mathsf{Work}(sk, t, Target)$.}
 \label{algo:work}
-\SetAlgoLined
+\SetAlgoLined\DontPrintSemicolon
 \KwIn{The secret key $sk$, the block template $t$, and the difficulty parameter $Target$}
 \KwOut{The block $blk$, the VRF output $h$, and the VRF proof $\pi$}
   Initialise $n$, $h$, $blk$ \Comment*[r]{Initialise variables}
@@ -18,7 +18,7 @@ However, with the secret key, any miner in the mining pool can steal all coins o
     $blk \gets \mathsf{ConstructBlock}(t, n)$ \Comment*[r]{Assemble the block}
     $h \gets \mathsf{VRFHash}(sk, blk)$ \Comment*[r]{Produce the VRF output}
     \If (\Comment*[f]{If meeting difficulty}) {$h < Target$}{
-      break; \Comment*[r]{Mining successful}
+      break \Comment*[r]{Mining successful}
     }
   }
   $\pi \gets \mathsf{VRFProve}(sk, blk)$ \Comment*[r]{Produce the proof}
@@ -30,7 +30,7 @@ However, with the secret key, any miner in the mining pool can steal all coins o
 \begin{algorithm}[h]
 \caption{$\mathsf{Verify}(blk, h, \pi, Target)$}
 \label{algo:verify}
-\SetAlgoLined
+\SetAlgoLined\DontPrintSemicolon
 $pk \gets blk . txs[0] . scriptPubKey$ \Comment*[r]{Find pubkey in coinbase tx}
 $\mathsf{require}(h < Target)$ \Comment*[r]{Hash should meet diff requirement}
 \tcc{Here $\mathsf{VRFVerify}(\cdot)$ ensures:\\

@@ -53,7 +53,7 @@ Formally, a VRF consists of four algorithms: $\mathsf{VRFKeyGen}$, $\mathsf{VRFH
 \end{itemize}
 
 % refer https://tools.ietf.org/pdf/draft-goldbe-vrf-01.pdf
-VRFs should preserve three security properties, including \textbf{Uniqueness}, \textbf{Collision Resistance}, \textbf{Pseudorandomness}. Informally,
+VRFs should preserve the following three security properties~\cite{goldberg2017draft}:
 
 \begin{description}
     \item[Uniqueness] Given any public VRF key and any input, there is a unique valid output.
@@ -62,9 +62,7 @@ VRFs should preserve three security properties, including \textbf{Uniqueness}, \
 \end{description}
 
 
-Algorithm~\ref{algo:standard-ecvrf} describe the Elliptic-curve-based VRF (EC-VRF) construction standardised in draft-goldbe-vrf~\cite{goldberg2017draft}.
-
-
+Algorithm~\ref{algo:standard-ecvrf} describes the Elliptic-curve-based VRF (EC-VRF) construction standardised in draft-goldbe-vrf~\cite{goldberg2017draft}.
 
 \begin{algorithm}[]
     \SetAlgoLined\DontPrintSemicolon
@@ -72,11 +70,9 @@ Algorithm~\ref{algo:standard-ecvrf} describe the Elliptic-curve-based VRF (EC-VR
     \SetKwFunction{VRFHash}{$\beta \gets \mathsf{VRFHash}(sk, \alpha)$}
     \SetKwFunction{VRFProve}{$\pi \gets \mathsf{VRFProve}(sk, \alpha)$}
     \SetKwFunction{VRFVerify}{$\{0, 1\} \gets \mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$}
-
     \SetKwProg{myalg}{Algorithm}{:}{}
 
     Functions:
-
     \begin{itemize}
         \item $G$ is a cyclic group of prime order $q$ with generator $g$.
         \item $H_1(\cdot)$ hashes an arbitrary-length string into an element in $G$.
