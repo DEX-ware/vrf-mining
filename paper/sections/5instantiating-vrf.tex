@@ -28,7 +28,7 @@ Last, Curve25519 is compatible with existing blockchains: numerous blockchains a
 % indistinguishable
 $H_{1}(\cdot)$ is a hash-to-curve function, which should prevent distinguishing behaviours: adversaries cannot learn any pattern of the input from its hash.
 % deterministic
-In addition, the hash-to-curve function used in VRF should be deterministic, otherwise the hash will be unreproducible.
+In addition, the hash-to-curve function used in VRF should be deterministic, otherwise the hash will be unreproducible \HY{Should we mention traversable?}.
 
 A standardisation document~\cite{scott2019hashing} specifies several hash-to-curve functions that fit into different elliptic curves and satisfy our requirements: Icart Method~\cite{icart2009hash}, Shallue-Woestijne-Ulas Method~\cite{ulas2007rational}, Simplified SWU Method~\cite{brier2010efficient} and Elligator2~\cite{bernstein2013elligator}.
 Within these hash-to-curve functions, Elligator2 is the recommended one for Curve25519.
@@ -53,7 +53,7 @@ The scalar-point multiplication is slow and computation (rather than memory)-int
 % make VRFHash memory hard
 The hash function in $H_{2}(\cdot)$ is the only possibility to make $\mathsf{VRFHash}$ memory-hard, and it should be overwhelmingly slower than the scalar-point multiplication, otherwise the scalar-point multiplication will make $\mathsf{VRFHash}$ computation-intensive.
 This requirement can be achieved by repetitively executing one or multiple different memory-hard hash functions (such as Ethash~\cite{wiki2017ethash}, Equihash~\cite{biryukov2017equihash}, and CryptoNight~\cite{seigenneocortex}).
-
+\HY{Should we connect this to section\ref{sebsec:balancing}?}
 
 
 
