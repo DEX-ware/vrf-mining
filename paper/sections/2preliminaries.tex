@@ -66,32 +66,33 @@ Algorithm~\ref{algo:standard-ecvrf} describes the Elliptic-curve-based VRF (EC-V
 
 \begin{algorithm}[]
     \SetAlgoLined\DontPrintSemicolon
-    \SetKwFunction{VRFKeyGen}{$(sk, pk) \gets \mathsf{VRFKeyGen}(1^{\lambda})$}
-    \SetKwFunction{VRFHash}{$\beta \gets \mathsf{VRFHash}(sk, \alpha)$}
-    \SetKwFunction{VRFProve}{$\pi \gets \mathsf{VRFProve}(sk, \alpha)$}
-    \SetKwFunction{VRFVerify}{$\{0, 1\} \gets \mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$}
+    \SetKwFunction{VRFKeyGen}{$(sk, pk) \gets \mathsf{VRFKeyGen}$}
+    \SetKwFunction{VRFHash}{$\beta \gets \mathsf{VRFHash}$}
+    \SetKwFunction{VRFProve}{$\pi \gets \mathsf{VRFProve}$}
+    \SetKwFunction{VRFVerify}{$\{0, 1\} \gets \mathsf{VRFVerify}$}
     \SetKwProg{myalg}{Algorithm}{:}{}
 
-    Functions:
+    Preliminaries:
     \begin{itemize}
         \item $G$ is a cyclic group of prime order $q$ with generator $g$.
         \item $H_1(\cdot)$ hashes an arbitrary-length string into an element in $G$.
         \item $H_2(\cdot)$ hashes an element in $G$ into a fixed-length string.
         \item $H_3(\cdot)$ hashes an arbitrary-length string into a fixed-length string.
+        \item $\mathsf{random}([x, y])$ uniformly and randomly picks a number in $\interval{x}{y}$.
     \end{itemize}
 
-    \myalg{\VRFKeyGen{}}{
+    \myalg{\VRFKeyGen{$1^{\lambda}$}}{
         $sk = \mathsf{random}(\interval{0}{q-1})$\;
         $pk = g^{sk}$\;
         \Return{$(sk, pk)$} \;}{}
 
-    \myalg{\VRFHash{}}{
+    \myalg{\VRFHash{$sk, \alpha$}}{
         $h = H_{1}(\alpha)$\;
         $\gamma = h^{sk}$\;
         $\beta = H_{2}(\gamma)$\;
         \Return{$\beta$}\;}{}
 
-    \myalg{\VRFProve{}}{
+    \myalg{\VRFProve{$sk, \alpha$}}{
         $h = H_{1}(\alpha)$\;
         $\gamma = h^{sk}$\;
         $k = \mathsf{random}(\interval{0}{q-1})$\;
@@ -100,7 +101,7 @@ Algorithm~\ref{algo:standard-ecvrf} describes the Elliptic-curve-based VRF (EC-V
         $\pi = (\gamma, c, s)$\;
         \Return{$\pi$}\;}{}
 
-    \myalg{\VRFVerify{}}{
+    \myalg{\VRFVerify{$pk, \alpha, \beta, \pi$}}{
         $u = pk^{c} \cdot g^{s}$\;
         $h = H_{1}(\alpha)$\;
         \If{$\gamma \notin G$}{
