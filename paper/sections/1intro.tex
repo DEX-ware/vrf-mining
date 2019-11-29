@@ -1,7 +1,7 @@
 \section{Introduction}
 \label{sec:intro}
 
-Bitcoin~\cite{} started the era of cryptocurrency.
+Bitcoin~\cite{nakamoto2008bitcoin} started the era of cryptocurrency.
 Bitcoin's main novelty is Nakamoto consensus - the first consensus protocol that can work in permissionless settings.
 % blockchain
 In Nakamoto consensus, each participant maintains its own ledger, and the ledger is usually called blockchain.
@@ -9,7 +9,7 @@ A blockchain is formed as a chain of blocks, and each block contains a batch of 
 Blockchain is designed to be append-only, and its integrity is protected by digital signatures.
 % proof of work
 Participants keep appending blocks to the blockchain.
-To append a block, a participant should first solve a Proof-of-Work (PoW)~\cite{} puzzle - a probabilistic and moderately hard computation puzzle.
+To append a block, a participant should first solve a Proof-of-Work (PoW)~\cite{dwork1992pricing} puzzle - a probabilistic and moderately hard computation puzzle.
 Once solving the puzzle, the participant will append his block to the blockchain, and get some cryptocurrency as reward.
 By adaptively adjusting the difficulty of PoW puzzles, Nakamoto consensus can stabilise the speed of generating blocks.
 Participants of Nakamoto consensus are also known as miners, the process of solving PoW puzzles is known as mining, and the computation power used for mining is known as mining power.
@@ -25,7 +25,7 @@ In this way, a miner can get reward more stably by joining a mining pool.
 However, mining pools lead to centralisation of mining power, which contradicts the design objective of Bitcoin - the decentralisation.
 % problem of centralisation
 Centralisation of mining power can be harmful for the security of Nakamoto consensus.
-A mining pool with sufficient mining power can perform numerous types of attacks to break the consensus, such as selfish mining attacks~\cite{} and 51\% attacks~\cite{}.
+A mining pool with sufficient mining power can perform numerous types of attacks to break the consensus, such as selfish mining attacks~\cite{eyal2018majority} and 51\% attacks~\cite{nakamoto2008bitcoin}.
 Even top mining pools are not big enough, multiple mining pools can even collude to launch attacks.
 In addition, mining pools can decide which transactions to include in order to censor the blockchain.
 % to date...
@@ -35,9 +35,9 @@ To date (01/12/2019), four largest mining pools control more than 51\% Bitcoin m
 
 
 \textbf{Our contributions.}
-In this work, we put forward a novel idea of combining VRF and mining in PoW to eliminate the intentionality of pooled mining, and to conquer the centralisation of mining power. We call our constrcution \textbf{VRF-based mining}.
+In this work, we put forward a novel idea of combining VRF and mining in PoW to eliminate the intentionality of pooled mining, and to conquer the centralisation of mining power. We call our construction \textbf{VRF-based mining}.
 
-\RH{We should make the contribution part more sophisticated here. At least we have the following contributions:
+\TODO{We should make the contribution part more sophisticated here. At least we have the following contributions:
 Main: We propose the VRF-based mining that makes pooled mining impossible. In particular, we
 1. Propose the detailed construction of VRF-based mining, which can be a drop-in replacement of existing hash-based mining (we already have)
 2. We rethink the desired properties of mining that can make pooled mining difficult while remaining secure (Runchao will do this later)
@@ -47,4 +47,4 @@ Main: We propose the VRF-based mining that makes pooled mining impossible. In pa
 }
 
 \textbf{Paper organisation.}
-\RH{we should have a paragraph describing the organisation of this paper. See the paper ``New Techniques for Efficient Trapdoor Functions and Applications''}
+\TODO{we should have a paragraph describing the organisation of this paper. See the paper ``New Techniques for Efficient Trapdoor Functions and Applications''}
