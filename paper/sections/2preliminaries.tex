@@ -28,8 +28,8 @@ The share difficulty is much lower than the difficulty of the blockchain.
 % submit
 Miners then keep finding nonces to make the block hash to satisfy the share difficulty, and submitting valid nonces to the pool operator.
 % reward
-As nonces satisfying the blockchain difficulty must satisfy the share difficulty, miners can filter \HY{why talk about filtering?} submitted nonces to obtain nonces that can produce blocks.
-After a time period (say 24 hours), the pool operator calculates the number of shares submitted by each miner, and distributes the mining reward to each miner according to their submitted shares.
+As nonces satisfying the blockchain difficulty must satisfy the share difficulty, the pool operator can find nonces satisfying the blockchain difficulty from nonces submitted from miners.
+After a time period (say 24 hours), the pool operator calculates the number of shares submitted by each miner, and distributes the mining reward to miners according to their submitted shares.
 % why stable
 As finding a valid share is much easier than finding a valid block, calculating the mining power of a miner using shares is more fine-grained than using blocks.
 In this way, each miner is rewarded in a more fine-grained way, so more stably.
