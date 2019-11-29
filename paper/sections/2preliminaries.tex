@@ -62,53 +62,60 @@ VRFs should preserve three security properties, including \textbf{Uniqueness}, \
 \end{description}
 
 
-Here we describe the Elliptic-curve-based VRF (EC-VRF) construction standardised in draft-goldbe-vrf~\cite{goldberg2017draft}.
+Algorithm~\ref{algo:standard-ecvrf} describe the Elliptic-curve-based VRF (EC-VRF) construction standardised in draft-goldbe-vrf~\cite{goldberg2017draft}.
 
-% \noindent\fbox{
-%     \parbox{\textwidth}{
 
-\begin{figure}[]
-    \begin{mdframed}
 
-        Let $G$ be a cyclic group of prime order $q$ with generator $g$.\\
-        Let $H_1(\cdot)$ be a hash function mapping an arbitrary-length string into an element in $G$.\\
-        Let $H_2(\cdot)$ be a hash function mapping an element in $G$ into a fixed-length string.\\
-        Let $H_3(\cdot)$ be a hash function mapping an arbitrary-length string into a fixed-length string.\\
+\begin{algorithm}[]
+    \SetAlgoLined\DontPrintSemicolon
+    \SetKwFunction{VRFKeyGen}{$(sk, pk) \gets \mathsf{VRFKeyGen}(1^{\lambda})$}
+    \SetKwFunction{VRFHash}{$\beta \gets \mathsf{VRFHash}(sk, \alpha)$}
+    \SetKwFunction{VRFProve}{$\pi \gets \mathsf{VRFProve}(sk, \alpha)$}
+    \SetKwFunction{VRFVerify}{$\{0, 1\} \gets \mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$}
 
-        $(sk, pk) \gets \mathsf{VRFKeyGen}(1^{\lambda})$
-        \begin{enumerate}
-            \item $sk = \mathsf{random}(\interval{0}{q-1})$
-            \item $pk = g^{sk}$
-        \end{enumerate}
+    \SetKwProg{myalg}{Algorithm}{:}{}
 
-        $\beta \gets \mathsf{VRFHash}(sk, \alpha)$
-        \begin{enumerate}
-            \item $h = H_{1}(\alpha)$
-            \item $\gamma = h^{sk}$
-            \item $\beta = H_{2}(\gamma)$
-        \end{enumerate}
+    Functions:
 
-        $\pi \gets \mathsf{VRFProve}(sk, \alpha)$
-        \begin{enumerate}
-            \item $h = H_{1}(\alpha)$
-            \item $\gamma = h^{sk}$
-            \item $k = \mathsf{random}(\interval{0}{q-1})$
-            \item $c = H_{3}(g, h, pk, h^{sk}, g^{k}, h^{k})$
-            \item $s = k - c \cdot sk \pmod{q}$
-            \item $\pi = (\gamma, c, s)$
-        \end{enumerate}
+    \begin{itemize}
+        \item $G$ is a cyclic group of prime order $q$ with generator $g$.
+        \item $H_1(\cdot)$ hashes an arbitrary-length string into an element in $G$.
+        \item $H_2(\cdot)$ hashes an element in $G$ into a fixed-length string.
+        \item $H_3(\cdot)$ hashes an arbitrary-length string into a fixed-length string.
+    \end{itemize}
 
-        $\{0, 1\} \gets \mathsf{VRFVerify}(pk, \alpha, \beta, \pi)$
-        \begin{enumerate}
-            \item $u = pk^{c} \cdot g^{s}$
-            \item $h = H_{1}(\alpha)$
-            \item check if $\gamma \stackrel{?}{\in} G$
-            \item $v = \gamma^{c} \cdot h^{s}$
-            \item check if $c \stackrel{?}{=} H_{3}(g, h, pk, \gamma, u, v)$
-        \end{enumerate}
+    \myalg{\VRFKeyGen{}}{
+        $sk = \mathsf{random}(\interval{0}{q-1})$\;
+        $pk = g^{sk}$\;
+        \Return{$(sk, pk)$} \;}{}
 
-    \end{mdframed}
+    \myalg{\VRFHash{}}{
+        $h = H_{1}(\alpha)$\;
+        $\gamma = h^{sk}$\;
+        $\beta = H_{2}(\gamma)$\;
+        \Return{$\beta$}\;}{}
 
-    \label{fig:standard-ecvrf}
-    \caption{The construction of Elliptic-curve-based VRF standardised in draft-goldbe-vrf~\cite{goldberg2017draft}.}
-\end{figure}
+    \myalg{\VRFProve{}}{
+        $h = H_{1}(\alpha)$\;
+        $\gamma = h^{sk}$\;
+        $k = \mathsf{random}(\interval{0}{q-1})$\;
+        $c = H_{3}(g, h, pk, h^{sk}, g^{k}, h^{k})$\;
+        $s = k - c \cdot sk \pmod{q}$\;
+        $\pi = (\gamma, c, s)$\;
+        \Return{$\pi$}\;}{}
+
+    \myalg{\VRFVerify{}}{
+        $u = pk^{c} \cdot g^{s}$\;
+        $h = H_{1}(\alpha)$\;
+        \If{$\gamma \notin G$}{
+            \Return{$0$}\;
+        }
+        $v = \gamma^{c} \cdot h^{s}$\;
+        \If{$c \neq H_{3}(g, h, pk, \gamma, u, v)$}{
+            \Return{$0$}\;
+        }
+        \Return{$1$}\;}{}
+
+    \label{algo:standard-ecvrf}
+    \caption{The Elliptic-curve-based VRF (EC-VRF) construction standardised in draft-goldbe-vrf~\cite{goldberg2017draft}.}
+\end{algorithm}
