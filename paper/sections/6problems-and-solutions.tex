@@ -1,12 +1,32 @@
 \section{Problems and possible solutions}
 \label{sec:problems-and-solutions}
 
-\RH{I have thought about this section, and found my previous conclusion and story are wrong.
-Instead, we should discuss the disadvantage of having no mining pools:
-1. without pools, miners are rewarded unstably, so are discouraged to mine, so mining power of the blockchain will be less, so weaker security guarantee.
-2. high orphan block rate, network may have greater impact on mining.
-Solutions for 1: silumate mining pool on blockchain. This should be discussed online, and there has been a paper describing collaborative mining (https://www.usenix.org/system/files/sec19-szalachowski.pdf)
-Solutions for 2: longer blocktime, Grephene/propogate headers only, and other layer0 solutions...}
+% \RH{I have thought about this section, and found my previous conclusion and story are wrong.
+% Instead, we should discuss the disadvantage of having no mining pools:
+% 1. without pools, miners are rewarded unstably, so are discouraged to mine, so mining power of the blockchain will be less, so weaker security guarantee.
+% 2. high orphan block rate, network may have greater impact on mining.
+% Solutions for 1: silumate mining pool on blockchain. This should be discussed online, and there has been a paper describing collaborative mining (https://www.usenix.org/system/files/sec19-szalachowski.pdf)
+% Solutions for 2: longer blocktime, Grephene/propogate headers only, and other layer0 solutions...}
+
+\RH{intro of this section. e.g.,
+While the mining power is decentralised, several problems may occur...
+In this section, we discuss possible problems of having no mining pool...}
+
+
+\subsection{High reward variance}
+
+\RH{1. Discuss why high reward variance
+2. Discuss possible solutions, including 1) multi-tier reward in Andrew Miller's paper, 2) StrongChain, and 3) Section4.2 of https://arxiv.org/pdf/1810.08092.pdf
+}
+
+\subsection{High orphan rate}
+
+\RH{1. Discuss why high orphan rate
+2. Discuss solutions, including 1) GHOST and uncle blocks, 2) speed up block propagation by block relays e.g., https://arxiv.org/abs/1905.10518, bloxroute, https://github.com/bitcoin/bips/blob/master/bip-0152.mediawiki}
+
+
+
+RH{The original discussion on sybil resistance and incentive can be deleted, because it's about decentralisation, which is the topic after eliminating mining pools. A better way is to initiate another research proposing ways of balancing sybil resistance and incentive of small miners in order to achieve better decentralisation and contradict this paper https://arxiv.org/abs/1905.05158}
 
 
 
