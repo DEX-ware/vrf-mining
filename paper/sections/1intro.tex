@@ -35,22 +35,22 @@ To date (01/12/2019), four largest mining pools control more than 51\% Bitcoin m
 
 
 \textbf{Our contributions.}
-In this work, we put forward a novel idea of combining VRF and mining in PoW to eliminate the intentionality of pooled mining, and to conquer the centralisation of mining power. We call our construction \textbf{VRF-based mining}.
+In this work, we introduce \textit{VRF-based mining}, a novel idea of using Verifiable Random Functions (VRFs) rather than hash functions for mining in PoW-based consensus.
+With VRF, a miner should use his private key to mine blocks, so a pool operator should reveal his private key in order to outsource the mining process to miners.
+In this way, no one can outsource the mining process, otherwise any miner can steal all cryptocurrency in his wallet anonymously.
 
-\TODO{We should make the contribution part more sophisticated here. At least we have the following contributions:
-Main: We propose the VRF-based mining that makes pooled mining impossible. In particular, we
-1. Propose the detailed construction of VRF-based mining, which can be a drop-in replacement of existing hash-based mining (we already have)
-2. We rethink the desired properties of mining that can make pooled mining difficult while remaining secure (Runchao will do this later)
-3. We justify the security and non-outsourcability of VRF-based mining against existing attacks and vulnerabilities (Runchao)
-4. We analyse cons of having no mining pool and possible solutions (Haoyu)
-5. We discuss how to discourage pooled staking using VRF (Haoyu)
-}
+Our contributions are as follows:
+
+\begin{description}
+    \item [VRF-based mining] We propose the idea of VRF-based mining, and describe its detailed construction. The construction is surprisingly straightforward: we replace the hash function in PoW-based consensus with a VRF, and a block in the blockchain should contain the VRF hash and its proof, but does not need to contain the digital signature. By verifying the VRF hash, one can convince the correctness of the hash, the satisfiability of the nonce, and the authorship of the block in the same time.
+    \item [Revisiting non-outsourceable cryptocurrency mining] We revisit the definition of non-outsourceability of Miller et al.~\cite{miller2015nonoutsourceable}. In particular, we show non-outsourceability consists of the punishment of outsourcing and the unaccountability of breaking pooled mining. We then show how VRF-based mining achieves stronger punishment of outsourcing than non-outsourceable scratch-off puzzle of Miller et al.~\cite{miller2015nonoutsourceable}.
+    \item [Instantiating VRFs for VRF-based mining] We discuss how to instantiate VRFs for VRF-based mining. In particular, we show a VRF has four tweakable components, namely the elliptic curve and two hash functions between strings and elliptic curve elements, and a normal hash function. Then, we discuss concerns how to choose them for VRF-based mining purpose.
+    \item [Problems and solutions of having no mining pools] We discuss two problems of having no mining pools, namely the high mining reward variance and the high orphan block rate. We then discuss how to address them without mining pools.
+\end{description}
 
 \textbf{Paper organisation.}
-% \TODO{we should have a paragraph describing the organisation of this paper. See the paper ``New Techniques for Efficient Trapdoor Functions and Applications''}
-We revisit the concepts of mining, the standard definitions and the properties of VRF and EC-VRF in Section~\ref{sec:preliminaries}.
-We give our construction of VRF-based mining in Section~\ref{sec:construction},
-analyse its non-outsourceability in Section~\ref{sec:non_outsourceability},
-and then explore the options on implementation in Section~\ref{sec:instantiation}.
-Finally, we discuss the \TODO{XXX} in Section~\ref{sec:problems-and-solutions},
-and the related work in Section~\ref{sec:related}.
+\S\ref{sec:preliminaries} and \S\ref{sec:construction} describes preliminaries and the construction of VRF-based mining, respectively.
+\S\ref{sec:non_outsourceability} revisits the definition of non-outsourceability, and shows VRF-based mining achieves better non-outsourceability than existing proposals.
+\S\ref{sec:instantiation} discusses concerns of instantiating VRFs for VRF-based mining.
+\S\ref{sec:problems-and-solutions} discusses problems of having no mining pools and their solutions.
+\S\ref{sec:related} summaries related work, and \S\ref{sec:conclusion} concludes this paper.
