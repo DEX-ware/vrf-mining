@@ -45,8 +45,14 @@
 \maketitle
 
 \begin{abstract}
-    TODO
-    \keywords{Blockchain \and Cryptocurrency mining \and Mining pool.}
+  In this paper, we describe VRF-based mining, a simple and effective way of making pooled mining impossible.
+  Instead of using hash functions, VRF-based mining uses Verifiable Random Functions (VRFs) for Proof-of-work (PoW)-based consensus.
+  As VRF binds the authorship with hashes, a pool operator should reveal his private key to outsource the mining process to miners, and miners can easily steal cryptocurrency in the pool operator's wallet anonymously.
+  
+  In addition, we informally revisit the definition of non-outsourceability in existing research, and show VRF-based mining achieves stronger non-outsourceability than all existing proposals.
+  Moreover, we describe how to instantiate VRFs for VRF-based mining.
+  Last, we discuss potential problems of having no mining pools, and how to address them.
+  \keywords{Blockchain \and Cryptocurrency mining \and Mining pool.}
 \end{abstract}
 
 \input{sections/1intro.tex}
