@@ -26,23 +26,22 @@ For example, given a nonce meeting the first difficulty, the pool operator repet
 Moreover, how to adjust two difficulties still remains unknown and requires some simulations.
 
 \textbf{Stratum V2.}
-Stratum V2 is a ...
-in ...
+\textit{Stratum V2}~\cite{stratum-v2} is the upgraded version of the most popular pooled mining protocol \textit{Stratum}~\cite{stratum}.
+With \textit{BetterHash}~\cite{draft-bip-BetterHash} subprotocol embedded, \textit{Stratum V2} wants to acheive better decentralisation than V1.
+\textit{BetterHash} transist the right to select transactions and build the block to the miner side, and thus resolves the censorship problem but not selfish mining.
+In \textit{BetterHash}, a pool will need to send the block template to 
+the miners, and a miner may additionally
+communication will a bitcoin node, 
+handle transaction selection 
+and negotiate with the pool for one or multiple time,
+which will undoubtedly increase the communication overhead and operation complexity.
 
-BetterHash embedded
-cite
 
-However
-
-censorship
-selfish mining
 need incentivisation
 
-overhead
 
 
-other problems s v2 has....
-
+Moreover, \textit{Stratum V2} leaves \textit{BetterHash} optional but not mandatory, which implies that it make no promise to the decentralisation.
 
 
 \subsection{Decentralised mining pools}
