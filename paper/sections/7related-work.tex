@@ -25,8 +25,16 @@ If the signature is non-deterministic, the pool operator can make use of all non
 For example, given a nonce meeting the first difficulty, the pool operator repetitively generates signatures to meet the second requirement.
 Moreover, how to adjust two difficulties still remains unknown and requires some simulations.
 
-
-
+\textbf{Stratum V2.}
+\textit{Stratum V2}~\cite{stratum-v2} is the upgraded version of the most popular pooled mining protocol \textit{Stratum}~\cite{stratum}.
+With \textit{BetterHash}~\cite{draft-bip-BetterHash} subprotocol embedded, \textit{Stratum V2} wants to acheive better decentralisation than V1.
+\textit{BetterHash} transist the right to select transactions and build the block to the miner side, and thus resolves the censorship problem but not selfish mining.
+In \textit{Stratum V2}, a pool will need to send the block template to the miners,
+and a miner may additionally communication with a bitcoin node, handle transaction selection to build the block it expects, and negotiate with the pool for one or multiple time,
+which will undoubtedly increase the communication overhead and operation complexity.
+Moreover, \textit{Stratum V2} leaves \textit{BetterHash} optional but not mandatory, which implies that it make no promise to the decentralisation.
+And, if miners have divergences, as the negotiation may divide pool's minig power among its miners and introduce inefficiency, 
+a pool may not be incentivised to provide such a functionality.
 
 
 \subsection{Decentralised mining pools}
@@ -40,7 +48,7 @@ In this way, miners are rewarded stably while mining power is not aggregated to 
 
 
 
-\textbf{P2Pool}~\cite{voight2011p2pool} is a decentralised mining pool for Bitcoin.
+\textbf{P2Pool.}~\cite{voight2011p2pool} is a decentralised mining pool for Bitcoin.
 % how p2pool works
 P2Pool runs a share-chain among all miners in the pool, and the share-chain includes shares submitted to the pool in sequence.
 During mining, the coinbase transaction records the number of shares submitted by each miner, and distributes the mining reward according to miners' contribution.
@@ -53,7 +61,7 @@ If the difficulty is low, there will be numerous low-difficulty shares, which in
 Second, frequent share submissions amplifies the influence of network latency which leads to high orphan share rate.
 Last, P2Pool is vulnerable to temporary dishonest majority~\cite{decentralised-mining-pool-security}.
 
-\textbf{SmartPool}~\cite{luu2017smartpool} is another decentralised mining pool, which uses a smart contract to replace the centralised pool operator.
+\textbf{SmartPool.}~\cite{luu2017smartpool} is another decentralised mining pool, which uses a smart contract to replace the centralised pool operator.
 % con 1: smart contract
 As relying on smart contracts, SmartPool cannot work on blockchains without smart contracts.
 % con 2: network delay
