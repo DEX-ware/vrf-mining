@@ -23,9 +23,9 @@ In particular, they define two levels of non-outsourceability, namely \textbf{We
 
 Basically, \textbf{Weak Non-outsourceability} defines the punishment of outsourcing, while \textbf{Strong Non-outsourceability} covers both the punishment and the anonymity of malicious miners.
 We call the property defining the punishment of outsourcing \textbf{Punish-mining-reward}.
-The anonymity of malicious miners defined in~\cite{miller2015nonoutsourceable} is equivalent to \textbf{Transaction Unlinkability}~\cite{van2013cryptonote}: given two arbitrary transactions, distinguishing whether they have the same output address requires knowing the private keys holding their outputs.
+The anonymity of malicious miners defined in~\cite{miller2015nonoutsourceable} is a special case of \textbf{Transaction Unlinkability}~\cite{van2013cryptonote}: given two arbitrary transactions, distinguishing whether they have the same output address requires knowing the private keys holding their outputs.
 To steal the mining reward, the miner should create a transaction, of which the input is the mining reward and the output is his owned address.
-Identifying who steals the mining reward is equivalent to finding out who holds the output address, which can be further reduced to \textbf{Transaction Unlinkability}.
+Identifying who steals the mining reward is equivalent to finding out who holds the output address, and we call the property making such attempt infeasible \textbf{Stealing-unlinkability}.
 
 
 \subsection{Punish-secret-key-leakage}
@@ -45,9 +45,9 @@ This indicates that, in terms of the punishment of outsourcing, \textbf{Punish-s
 
 \subsection{Non-outsourceability of VRF-based mining}
 
-VRF-based mining achieves both \textbf{Punish-secret-key-leakage} and \textbf{Transaction Unlinkability}.
+VRF-based mining achieves both \textbf{Punish-secret-key-leakage} and \textbf{Stealing-unlinkability}.
 In VRF-based mining, the pool operator outsources mining requires revealing his private key to miners, which leads to \textbf{Punish-secret-key-leakage}.
-Similar with the construction achieving \textbf{Strong Non-outsourceability} in~\cite{miller2015nonoutsourceable}, VRF-based mining achieves \textbf{Transaction Unlinkability} by allowing a malicious miner to use a freshly generated address to steal cryptocurrency.
+Similar with the construction achieving \textbf{Strong Non-outsourceability} in~\cite{miller2015nonoutsourceable}, VRF-based mining achieves \textbf{Stealing-unlinkability} by allowing a malicious miner to use a freshly generated address to steal cryptocurrency.
 To receive the stolen cryptocurrency of the pool operator, the malicious miner can create a new address, and construct a transaction of which the stolen cryptocurrency directs to this address.
 As this new address has no historical transactions, linking the transaction stealing cryptocurrency with other transactions can be impossible.
 Then the malicious miner can then spend his stolen cryptocurrency anonymously using numerous techniques, such as mixing services~\cite{maxwell2013coinjoin}\cite{bonneau2014mixcoin}\cite{ruffing2014coinshuffle}\cite{heilman2017tumblebit} and stealth addresses~\cite{van2013cryptonote}.
