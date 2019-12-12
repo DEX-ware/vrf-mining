@@ -14,14 +14,14 @@
 \subsection{Revised definitions}
 
 Miller et al. \cite{miller2015nonoutsourceable} first formalises cryptocurrency mining as non-outsourceable scratch-off puzzles, and formally defines non-outsourceability.
-In particular, they define two levels of non-outsourceability, namely \textbf{Weak Non-outsourceability} and \textbf{Strong Non-outsourceability}.
+In particular, they define two levels of non-outsourceability, namely \textbf{Weak non-outsourceability} and \textbf{Strong non-outsourceability}.
 
 \begin{description}
-    \item[Weak Non-outsourcability] If the pool operator outsources the mining process, miners can always steal the reward of mining.
-    \item[Strong Non-outsourcability] In addition to the Weak Non-outsourcability, the pool operator cannot link the stolen mining reward with the miner who steals it.
+    \item[Weak non-outsourcability] If the pool operator outsources the mining process, miners can always steal the reward of mining.
+    \item[Strong non-outsourcability] In addition to the \textbf{Weak non-outsourcability}, the pool operator cannot link the stolen mining reward with the miner who steals it.
 \end{description}
 
-Basically, \textbf{Weak Non-outsourceability} defines the punishment of outsourcing, while \textbf{Strong Non-outsourceability} covers both the punishment and the anonymity of malicious miners.
+Basically, \textbf{Weak non-outsourceability} defines the punishment of outsourcing, while \textbf{Strong non-outsourceability} covers both the punishment and the anonymity of malicious miners.
 We call the property defining the punishment of outsourcing \textbf{Punish-mining-reward}.
 The anonymity of malicious miners defined in~\cite{miller2015nonoutsourceable} is a special case of \textbf{Transaction Unlinkability}~\cite{van2013cryptonote}: given two arbitrary transactions, distinguishing whether they have the same output address requires knowing the private keys holding their outputs.
 To steal the mining reward, the miner should create a transaction, of which the input is the mining reward and the output is his owned address.
