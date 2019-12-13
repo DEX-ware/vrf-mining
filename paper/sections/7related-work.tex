@@ -14,10 +14,12 @@ Miller et al.~\cite{miller2015nonoutsourceable} formalises cryptocurrency mining
 One of these two constructions achieves \textbf{Weak non-outsourceability} (i.e., miners can steal the mining reward), and the other achieves \textbf{Strong non-outsourceability} (i.e., miners can anonymously steal the mining reward).
 
 In the weak non-outsourceable scratch-off puzzle, mining consists of three steps.
-First, the miner creates a Merkle tree randomly from the nonce.
-Second, the miner produces a hash from the nonce and the Merkle tree.
-If the hash meets the difficulty requirement, then go to the last step.
-Last, the miner binds the nonce and his block template together to produce a valid block.
+First, the miner creates a Merkle tree randomly.
+Second, the miner searches for a valid nonce.
+More specifically, the miner samples some leaves of the Merkle tree randomly according to nonce, and hashes their Merkle proofs together to produce a hash.
+If this hash meets the difficulty requirement, the nonce is considered valid.
+Last, the miner binds the valid nonce and his block template together to produce a valid block.
+
 In order to outsource the mining process, the mining pool should distribute the search space of nonces to miners.
 % how to steal
 Miners can steal the mining reward by repetitively searching for a valid nonce (the first two steps) then binds this valid nonce with his own block template (the last step).
@@ -27,7 +29,7 @@ By exploiting this fact, the pool operator can identify the miner who steals the
 For example, the pool operator can link the nonce in the stolen block with the miner who takes charge of the search space covering this nonce.
 To achieve the \textbf{Strong non-outsourceability} (i.e., make the stealing behaviours anonymous), the strong non-outsourceable scratch-off puzzle replaces the plaintext nonce in the block with a Zero Knowledge Proof proving the statement ``I know a valid nonce''.
 
-As discussed in \S\ref{sec:non_outsourceability}, compared to the non-outsourceable scratch-off puzzle, our VRF-based mining achieves better non-outsourceability, and is much simpler to implement.
+As discussed in \S\ref{sec:non_outsourceability}, compared to the non-outsourceable scratch-off puzzle, our VRF-based mining achieves stronger non-outsourceability, and is more efficient and simpler to implement.
 
 \textbf{2P-PoW.}
 Eyal and Sirer proposes 2P-PoW~\cite{2P-PoW}, a mining protocol that discourages pooled mining.
