@@ -97,7 +97,7 @@ Algorithm~\ref{algo:standard-ecvrf} describes the Elliptic-curve-based VRF (EC-V
         $h = H_{1}(\alpha)$\;
         $\gamma = h^{sk}$\;
         $k = \mathsf{random}(\interval{0}{q-1})$\;
-        $c = H_{3}(g, h, pk, h^{sk}, g^{k}, h^{k})$\;
+        $c = H_{3}(g, h, g^{sk}, h^{sk}, g^{k}, h^{k})$\;
         $s = k - c \cdot sk \pmod{q}$\;
         $\pi = (\gamma, c, s)$\;
         \Return{$\pi$}\;}{}
