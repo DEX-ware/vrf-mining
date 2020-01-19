@@ -24,7 +24,7 @@ Last, Curve25519 is compatible with existing blockchains: numerous blockchains a
 
 
 
-\subsection{$H_{1}(\cdot)$ (Hashing a string to an elliptic curve point)}
+\subsection{Hashing a string to an elliptic curve point $H_{1}(\cdot)$}
 
 % indistinguishable
 $H_{1}(\cdot)$ is a hash-to-curve function, which should prevent distinguishing behaviours: adversaries cannot learn any pattern of the input from its hash.
@@ -37,27 +37,51 @@ Within these hash-to-curve functions, Elligator2 is the recommended one for Curv
 
 
 
-\subsection{$H_{2}(\cdot)$ (Hashing an elliptic curve point to a string)}
+\subsection{Hashing an elliptic curve point to a string $H_{2}(\cdot)$}
 
 $H_{2}(\cdot)$ hashes an elliptic curve point to a fixed-length string.
 It can be divided to two steps: 1) encoding an elliptic curve point to a string, and 2) hashing the string using a normal hash function.
 The encoding step can be bidirectional and unencrypted, so can be done simply by converting a big integer to a string.
 The hashing step should be cryptographically secure, so can adapt any existing cryptographically secure hash functions.
 
-For ASIC-resistant cryptocurrencies using memory-hard hash functions (e.g., Ethereum~\cite{wood2014ethereum} and Monero~\cite{monero}), there are some concerns on choosing hash functions in $H_{2}(\cdot)$.
+
+\subsection{Normal hash function $H_{3}(\cdot)$}
+
+$H_{3}(\cdot)$ is only used in $\mathsf{VRFProve}$ (proving the authorship of hashes) and $\mathsf{VRFVerify}$ (verifying the authorship of hashes).
+The overhead of proving and verification should be minimised, so cryptographically secure hash functions that are designed to be fast (such as Keccak~\cite{bertoni2013keccak} and BLAKE~\cite{aumasson2008sha}) are suitable for $H_{3}(\cdot)$.
+
+\subsection{Memory-hard mining}
+
+For ASIC-resistant cryptocurrencies using memory-hard hash functions (e.g., Ethereum~\cite{wood2014ethereum} and Monero~\cite{monero}), there are some concerns on designing $H_{1}(\cdot)$ and $H_{2}(\cdot)$.
 % VRFHash shoule memory-hard
 To make mining memory-hard, $\mathsf{VRFHash}$ should be memory-hard.
 % vrfhash steps
 $\mathsf{VRFHash}$ of the standardised VRF consists of one $H_{1}(\cdot)$ hashing, one scalar-point multiplication and one $H_{2}(\cdot)$ hashing.
-$H_{1}(\cdot)$ and the encoding step in $H_{2}(\cdot)$ can be fast so less possible to become the performance hotspot.
-The scalar-point multiplication is slow and computation (rather than memory)-intensive.
-% make VRFHash memory hard
-The hash function in $H_{2}(\cdot)$ is the only possibility to make $\mathsf{VRFHash}$ memory-hard, and it should be overwhelmingly slower than the scalar-point multiplication, otherwise the scalar-point multiplication will make $\mathsf{VRFHash}$ computation-intensive.
-This requirement can be achieved by repetitively executing one or multiple different memory-hard hash functions (such as Ethash~\cite{wiki2017ethash}, Equihash~\cite{biryukov2017equihash}, and CryptoNight~\cite{seigenneocortex}).
+Thus, making VRF-based mining memory-hard can be achieved by making $H_{1}(\cdot)$ or $H_{2}(\cdot)$ memory-hard.
+This can be achieved by repetitively executing one or multiple different memory-hard hash functions (such as Ethash~\cite{wiki2017ethash}, Equihash~\cite{biryukov2017equihash}, and CryptoNight~\cite{seigenneocortex}).
 
 
+\subsection{Preventing partial outsourcing}
 
-\subsection{$H_{3}(\cdot)$ (Normal hash function)}
+The pool operator may have opportunity to outsource a part of mining.
+The non-outsourceability is from $\gamma = h^{sk}$, which requires the knowledge of the pool operator's secret key $sk$.
+The pool operator can outsource the pre-processing ($h = H_1(\alpha)$) by distributing different $\alpha$s to miners, and can also outsource the post-processing $\beta = H_2(\gamma)$ by distributing different $\gamma$ to miners.
 
-$H_{3}(\cdot)$ is only used in $\mathsf{VRFProve}$ (proving the authorship of hashes) and $\mathsf{VRFVerify}$ (verifying the authorship of hashes).
-The overhead of proving and verification should be minimised, so cryptographically secure hash functions that are designed to be fast (such as Keccak~\cite{bertoni2013keccak} and BLAKE~\cite{aumasson2008sha}) are suitable for $H_{3}(\cdot)$.
+However, this can be extremely I/O intensive for both the pool operator and miners.
+For each different block template the pool operator should have a round-trip communication with a miner.
+
+In order to make outsourcing maximally I/O intensive, we recommend to make $H_1(\alpha)$ much heavier than $H_2(\gamma)$. 
+This is because outsourcing the post-processing is less I/O intensive than outsourcing the pre-processing for the pool operator.
+Once having $\beta$ (the result of $H_2(\gamma)$), the miner can know whether $\beta$ satisfies the difficulty or not, and can only send valid $\beta$s to the pool operator.
+Thus, if we make pre-processing more computationally intensive than post-processing, outsourcing the post-processing will no longer be profitable.
+This can be achieved by making $H_1(\alpha)$ much heavier than $H_2(\gamma)$.
+
+%%%%%%%%%%%%%%%%%
+% Analysis of non-outsourceability - practical side
+
+%% 1. H1 should be the one that is partly outsourced
+%% Outsourcing H1 is symmetric, but outsourcing H2 is asymmetric
+%% Thus, H1 should be the performance hotspot, or at least equal to H2 (H1 >= H2)
+
+%% 2. H1 = H2 -> IO intensive due to more hashed needed, pool op compute-intensive due to H2
+%%    H1 slow H2 fast -> not good, only IO intensive, but pool op not compute intensive
