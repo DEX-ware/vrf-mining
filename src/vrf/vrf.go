@@ -56,19 +56,12 @@ func expandSecret(sk *[SecretKeySize]byte) (x, skhr *[32]byte) {
 }
 
 func MyCompute(m []byte, sk *[SecretKeySize]byte) []byte {
-	x, _ := expandSecret(sk)
-
 	// h = H_1(\alpha)
 	h := h1(m)
-
 	// \gamma = h^sk
-	var gamma edwards25519.ExtendedGroupElement
-	var gammaBytes [32]byte
-	edwards25519.GeScalarMult(&gamma, x, h)
-	gamma.ToBytes(&gammaBytes)
-
+	gamma := scalarMult(sk, h)
 	// beta = H_2(\gamma)
-	beta := h2(gammaBytes[:], m)
+	beta := h2(gamma, m)
 
 	return beta
 }

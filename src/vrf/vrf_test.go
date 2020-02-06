@@ -29,6 +29,23 @@ func TestHonestComplete(t *testing.T) {
 	}
 }
 
+func TestHonestMyComplete(t *testing.T) {
+	pk, sk, err := GenerateKey(nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	alice := []byte("alice")
+	aliceVRF := MyCompute(alice, sk)
+	aliceVRFFromProof, aliceProof := Prove(alice, sk)
+
+	if !Verify(pk, alice, aliceVRF, aliceProof) {
+		t.Errorf("Gen -> Compute -> Prove -> Verify -> FALSE")
+	}
+	if !bytes.Equal(aliceVRF, aliceVRFFromProof) {
+		t.Errorf("Compute != Prove")
+	}
+}
+
 func TestFlipBitForgery(t *testing.T) {
 	pk, sk, err := GenerateKey(nil)
 	if err != nil {
