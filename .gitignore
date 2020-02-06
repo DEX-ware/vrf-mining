@@ -263,3 +263,5 @@ TSWLatexianTemp*
 
 __latexindent_temp.tex
 *.pdf
+
+.vscode/
