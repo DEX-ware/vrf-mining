@@ -1,0 +1,35 @@
+goos: darwin
+goarch: amd64
+pkg: github.com/SebastianElvis/vrf-mining/src/vrf
+BenchmarkH1-12            	   30000	     41941 ns/op
+BenchmarkH1-12            	   30000	     42005 ns/op
+BenchmarkH1-12            	   30000	     42595 ns/op
+BenchmarkH1-12            	   30000	     42238 ns/op
+BenchmarkH1-12            	   30000	     41895 ns/op
+BenchmarkH1-12            	   30000	     43271 ns/op
+BenchmarkH1-12            	   30000	     42655 ns/op
+BenchmarkH1-12            	   30000	     43618 ns/op
+BenchmarkH1-12            	   30000	     41576 ns/op
+BenchmarkH1-12            	   30000	     42731 ns/op
+BenchmarkScalarMult-12    	    5000	    321476 ns/op
+BenchmarkScalarMult-12    	    5000	    325751 ns/op
+BenchmarkScalarMult-12    	    5000	    323820 ns/op
+BenchmarkScalarMult-12    	    5000	    321185 ns/op
+BenchmarkScalarMult-12    	    5000	    328095 ns/op
+BenchmarkScalarMult-12    	    5000	    323089 ns/op
+BenchmarkScalarMult-12    	    5000	    327969 ns/op
+BenchmarkScalarMult-12    	    5000	    327902 ns/op
+BenchmarkScalarMult-12    	    5000	    328023 ns/op
+BenchmarkScalarMult-12    	    5000	    327374 ns/op
+BenchmarkH2-12            	 2000000	       618 ns/op
+BenchmarkH2-12            	 2000000	       612 ns/op
+BenchmarkH2-12            	 2000000	       615 ns/op
+BenchmarkH2-12            	 2000000	       618 ns/op
+BenchmarkH2-12            	 2000000	       606 ns/op
+BenchmarkH2-12            	 2000000	       609 ns/op
+BenchmarkH2-12            	 2000000	       617 ns/op
+BenchmarkH2-12            	 2000000	       605 ns/op
+BenchmarkH2-12            	 2000000	       617 ns/op
+BenchmarkH2-12            	 2000000	       610 ns/op
+PASS
+ok  	github.com/SebastianElvis/vrf-mining/src/vrf	72.989s

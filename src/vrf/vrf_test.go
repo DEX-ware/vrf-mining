@@ -6,7 +6,7 @@ import (
 	// "fmt"
 )
 
-func TestHonestComplete(t *testing.T) {
+func TestHonestCompute(t *testing.T) {
 	pk, sk, err := GenerateKey(nil)
 	if err != nil {
 		t.Fatal(err)
@@ -29,7 +29,7 @@ func TestHonestComplete(t *testing.T) {
 	}
 }
 
-func TestHonestMyComplete(t *testing.T) {
+func TestHonestMyCompute(t *testing.T) {
 	pk, sk, err := GenerateKey(nil)
 	if err != nil {
 		t.Fatal(err)

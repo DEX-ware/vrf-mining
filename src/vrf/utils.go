@@ -1,9 +1,27 @@
 package vrf
 
 import (
+	"ekyu.moe/cryptonight"
 	"github.com/SebastianElvis/vrf-mining/src/vrf/ed25519/edwards25519"
+	scrypt "github.com/elithrar/simple-scrypt"
+	"github.com/seehuhn/sha256d"
 	"golang.org/x/crypto/sha3"
 )
+
+func sha256df(b []byte) []byte {
+	hash := sha256d.New()
+	hash.Write(b)
+	return hash.Sum(nil)
+}
+
+func scryptf(b []byte) []byte {
+	hash, _ := scrypt.GenerateFromPassword(b, scrypt.DefaultParams)
+	return hash
+}
+
+func cryptonightf(b []byte) []byte {
+	return cryptonight.Sum(b, 0)
+}
 
 func h1(m []byte) *edwards25519.ExtendedGroupElement {
 	return hashToCurve(m)

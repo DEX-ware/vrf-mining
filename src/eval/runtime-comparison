@@ -1,0 +1,55 @@
+goos: darwin
+goarch: amd64
+pkg: github.com/SebastianElvis/vrf-mining/src/vrf
+BenchmarkSHA256D-12        	 3000000	       566 ns/op
+BenchmarkSHA256D-12        	 3000000	       575 ns/op
+BenchmarkSHA256D-12        	 3000000	       579 ns/op
+BenchmarkSHA256D-12        	 3000000	       569 ns/op
+BenchmarkSHA256D-12        	 3000000	       574 ns/op
+BenchmarkSHA256D-12        	 3000000	       573 ns/op
+BenchmarkSHA256D-12        	 3000000	       585 ns/op
+BenchmarkSHA256D-12        	 3000000	       581 ns/op
+BenchmarkSHA256D-12        	 3000000	       569 ns/op
+BenchmarkSHA256D-12        	 3000000	       568 ns/op
+BenchmarkScrypt-12         	      30	  37508420 ns/op
+BenchmarkScrypt-12         	      50	  37203861 ns/op
+BenchmarkScrypt-12         	      50	  36889816 ns/op
+BenchmarkScrypt-12         	      50	  36914552 ns/op
+BenchmarkScrypt-12         	      50	  37017439 ns/op
+BenchmarkScrypt-12         	      50	  37169326 ns/op
+BenchmarkScrypt-12         	      50	  36645620 ns/op
+BenchmarkScrypt-12         	      50	  37056885 ns/op
+BenchmarkScrypt-12         	      50	  37236690 ns/op
+BenchmarkScrypt-12         	      50	  37344453 ns/op
+BenchmarkCryptoNight-12    	     100	  19155536 ns/op
+BenchmarkCryptoNight-12    	     100	  19174834 ns/op
+BenchmarkCryptoNight-12    	     100	  20274541 ns/op
+BenchmarkCryptoNight-12    	     100	  21602543 ns/op
+BenchmarkCryptoNight-12    	     100	  18896130 ns/op
+BenchmarkCryptoNight-12    	     100	  18593796 ns/op
+BenchmarkCryptoNight-12    	     100	  18857593 ns/op
+BenchmarkCryptoNight-12    	     100	  19601230 ns/op
+BenchmarkCryptoNight-12    	     100	  22863742 ns/op
+BenchmarkCryptoNight-12    	     100	  20356535 ns/op
+BenchmarkCompute-12        	    5000	    372895 ns/op
+BenchmarkCompute-12        	    5000	    365480 ns/op
+BenchmarkCompute-12        	    5000	    369334 ns/op
+BenchmarkCompute-12        	    5000	    364883 ns/op
+BenchmarkCompute-12        	    5000	    361058 ns/op
+BenchmarkCompute-12        	    5000	    364337 ns/op
+BenchmarkCompute-12        	    5000	    365090 ns/op
+BenchmarkCompute-12        	    5000	    360172 ns/op
+BenchmarkCompute-12        	    5000	    358336 ns/op
+BenchmarkCompute-12        	    5000	    362281 ns/op
+BenchmarkProve-12          	    2000	    758577 ns/op
+BenchmarkProve-12          	    2000	    762078 ns/op
+BenchmarkProve-12          	    2000	    769799 ns/op
+BenchmarkProve-12          	    2000	    756044 ns/op
+BenchmarkProve-12          	    2000	    762652 ns/op
+BenchmarkProve-12          	    2000	    764076 ns/op
+BenchmarkProve-12          	    2000	    757393 ns/op
+BenchmarkProve-12          	    2000	    762889 ns/op
+BenchmarkProve-12          	    2000	    765244 ns/op
+BenchmarkProve-12          	    2000	    759539 ns/op
+PASS
+ok  	github.com/SebastianElvis/vrf-mining/src/vrf	105.725s

@@ -265,3 +265,5 @@ __latexindent_temp.tex
 *.pdf
 
 .vscode/
+.ipynb_checkpoints
+
