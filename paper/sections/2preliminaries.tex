@@ -54,14 +54,13 @@ Formally, a VRF consists of four algorithms: $\mathsf{VRFKeyGen}$, $\mathsf{VRFH
 \end{itemize}
 
 % refer https://tools.ietf.org/pdf/draft-goldbe-vrf-01.pdf
-VRFs should preserve the following three security properties~\cite{goldberg2017draft}:
+A VRF should preserve the following three security properties~\cite{goldberg2017draft}:
 
 \begin{description}
-    \item[Uniqueness] Given any public VRF key and any input, there is a unique valid output.
-    \item[Collision Resistance] Finding two different inputs that have the same output is computationally hard.
-    \item[Pseudorandomness] Without knowing the corresponding proof, distinguishing a VRF output from a random string is computationally hard.
+    \item[Uniqueness] Given a secret key $sk$ and an input $\alpha$, $\mathsf{VRFHash}(sk, \alpha)$ produces a unique valid output.
+    \item[Collision Resistance] It is computationally hard to find two inputs $\alpha$ and $\alpha'$ that $\mathsf{VRFHash}(sk, \alpha) = \mathsf{VRFHash}(sk, \alpha')$.
+    \item[Pseudorandomness] It is computationally hard to distinguish the output of $\mathsf{VRFHash}(sk, \alpha)$ from a random string if not knowing the corresponding public key $pk$ and proof $\pi$.
 \end{description}
-
 
 Algorithm~\ref{algo:standard-ecvrf} describes the Elliptic-curve-based VRF (EC-VRF) construction standardised in draft-goldbe-vrf~\cite{goldberg2017draft}.
 
