@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ../vrf
+
 stat_tail="-stat.csv"
 
 # runtime of vrfhash/vrfprove with other mining algorithms -> not too much overhead
@@ -15,3 +17,5 @@ echo "Runtime breakdown..."
 go test -bench "(BenchmarkH1|BenchmarkScalarMult|BenchmarkH2)" -count=10 > $vrfhash_breakdown_dir
 benchstat -csv $vrfhash_breakdown_dir > $vrfhash_breakdown_dir$stat_tail
 echo "Okay. See" $vrfhash_breakdown_dir$stat_tail "\n"
+
+cd ../eval
