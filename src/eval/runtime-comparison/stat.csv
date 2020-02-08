@@ -1,0 +1,20 @@
+name,time/op (ns/op),±
+SHA256D-12,5.83300E+02,2%
+Scrypt-12,3.66647E+07,0%
+CryptoNight-12,2.12545E+07,1%
+Compute-12,3.53867E+05,1%
+Prove-12,7.42876E+05,1%
+
+name,alloc/op (B/op),±
+SHA256D-12,3.52000E+02,0%
+Scrypt-12,1.67838E+07,0%
+CryptoNight-12,2.15650E+04,0%
+Compute-12,1.66733E+03,0%
+Prove-12,1.96000E+03,0%
+
+name,allocs/op (allocs/op),±
+SHA256D-12,5.00000E+00,0%
+Scrypt-12,3.30000E+01,0%
+CryptoNight-12,2.00000E+00,0%
+Compute-12,9.00000E+00,0%
+Prove-12,1.40000E+01,0%
