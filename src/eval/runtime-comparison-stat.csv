@@ -1,6 +1,0 @@
-name,time/op (ns/op),±
-SHA256D-12,5.72556E+02,1%
-Scrypt-12,3.64414E+07,0%
-CryptoNight-12,1.86543E+07,2%
-Compute-12,3.57202E+05,1%
-Prove-12,7.66023E+05,1%
