@@ -7,6 +7,7 @@ import (
 	"io"
 
 	"golang.org/x/crypto/sha3"
+
 	// copy & paste code from coname (a slightly extended version of agl's
 	// SUPERCOP implementation); removed some comments
 	"github.com/SebastianElvis/vrf-mining/src/vrf/ed25519/edwards25519"

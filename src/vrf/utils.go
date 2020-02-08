@@ -2,10 +2,11 @@ package vrf
 
 import (
 	"ekyu.moe/cryptonight"
-	"github.com/SebastianElvis/vrf-mining/src/vrf/ed25519/edwards25519"
 	scrypt "github.com/elithrar/simple-scrypt"
 	"github.com/seehuhn/sha256d"
 	"golang.org/x/crypto/sha3"
+
+	"github.com/SebastianElvis/vrf-mining/src/vrf/ed25519/edwards25519"
 )
 
 func sha256df(b []byte) []byte {

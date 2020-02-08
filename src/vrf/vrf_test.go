@@ -3,7 +3,6 @@ package vrf
 import (
 	"bytes"
 	"testing"
-	// "fmt"
 )
 
 func TestHonestCompute(t *testing.T) {
@@ -15,11 +14,11 @@ func TestHonestCompute(t *testing.T) {
 	aliceVRF := Compute(alice, sk)
 	aliceVRFFromProof, aliceProof := Prove(alice, sk)
 
-	// fmt.Printf("pk:           %X\n", pk)
-	// fmt.Printf("sk:           %X\n", *sk)
-	// fmt.Printf("alice(bytes): %X\n", alice)
-	// fmt.Printf("aliceVRF:     %X\n", aliceVRF)
-	// fmt.Printf("aliceProof:   %X\n", aliceProof)
+	t.Logf("pk:           %X\n", pk)
+	t.Logf("sk:           %X\n", *sk)
+	t.Logf("alice(bytes): %X\n", alice)
+	t.Logf("aliceVRF:     %X\n", aliceVRF)
+	t.Logf("aliceProof:   %X\n", aliceProof)
 
 	if !Verify(pk, alice, aliceVRF, aliceProof) {
 		t.Errorf("Gen -> Compute -> Prove -> Verify -> FALSE")
