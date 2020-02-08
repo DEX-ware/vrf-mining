@@ -267,3 +267,5 @@ __latexindent_temp.tex
 .vscode/
 .ipynb_checkpoints
 
+# go test intermediate files
+.test
