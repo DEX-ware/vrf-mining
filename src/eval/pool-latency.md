@@ -50,8 +50,17 @@
 
 ## Dash
 + US
+    * poolin.com
+    * prohashing.com
+    * coinmine.pl
 + Asia
+    * antpool.com
+    * f2pool.com
+    * cybtc.info
 + Euro
+    * mining-dutch.nl
+    * coinmine.pl
+    * suprnova.cc
 
 ## ZEC
 + US
