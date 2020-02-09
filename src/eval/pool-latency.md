@@ -44,9 +44,20 @@
     * f2pool.com
 
 ## XMR
-+ US
++ US    
+    * supportxmr.com
+    * nanopool.org
+    * monerohash.com
+    * moneroocean.stream
 + Asia
+    * f2pool.com
+    * nanopool.org
+    * moneroocean.stream
 + Euro
+    * minexmr.com
+    * nanopool.org
+    * xmrpool.eu
+    * moneroocean.stream
 
 ## Dash
 + US
