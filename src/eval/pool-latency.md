@@ -48,7 +48,21 @@
 + Asia
 + Euro
 
-## ZEC
+## Dash
 + US
 + Asia
 + Euro
+
+## ZEC
++ US
+    * poolin.com
+    * slushpool.com
+    * flypool.org
++ Asia
+    * poolin.com
+    * f2pool.com
+    * antpool.com
++ Euro
+    + flypool.org
+    + luxor.tech
+    + viabtc.com
