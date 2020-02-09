@@ -16,6 +16,21 @@
 
 ## ETH
 + US
+    * ethermine.org
+    * nanopool
+    * poolin
++ Asia
+    * sparkpool
+    * f2pool
+    * nanopool
++ Euro
+    * nanopool
+    * miningpoolhub.com
+    * hiveon.net
+    * dwarfpool.com
+
+## LTC
++ US
 + Asia
 + Euro
 
