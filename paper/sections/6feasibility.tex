@@ -4,7 +4,7 @@
 In this section, we evaluate the feasibility of implementing VRF-based mining.
 Our evaluation is twofold.
 First, we compare the performance of VRFs with three other hash functions used for cryptocurrency mining, namely SHA256D used in Bitcoin, Scrypt used in Litecoin and CryptoNight used in Monero.
-The comparison shows that VRF can be hundred times faster than Ethereum and CryptoNight, so can be highly efficient.
+The comparison shows that VRF can be much faster than Ethereum and CryptoNight.
 Second, we measure the runtime of each step ($H_1$, point multiplication and $H_2$) of $\mathsf{VRFHash}$.
 The profiling shows that the point multiplication takes approximately 88\% of $\mathsf{VRFHash}$'s runtime, which is the performance hotspot and can be optimised in the future.
 
@@ -31,15 +31,17 @@ For each group of experiment, we run an algorithm for ten times, then take the a
     \label{fig:runtime-comparison}
 \end{figure}
 
+First, we compare the performance of VRF with other mining algorithms.
 Figure~\ref{fig:runtime-comparison} shows the runtime of VRF and other algorithms.
 First, SHA256D is much faster than other algorithms.
 This is because SHA256D is simply executing SHA256 hashing twice, which is quite fast.
-Second, Generating proofs is slightly slower than hashing for VRF.
-This is because $\mathsf{VRFProve}$ includes $\mathsf{VRFHash}$ and additionally generates a proof for the hash.
-Last, both $\mathsf{VRFHash}$ and $\mathsf{VRFProve}$ are hundred times faster than Scrypt and CryptoNight.
+Second, $VRFVerify$ is slightly slower than $VRFProve$, and $VRFProve$ is slightly slower than $VRFHash$.
+Last, although without optimisation, all functions of VRF are much faster than Scrypt and CryptoNight.
 This means that VRF is easy to implement and introduces little overhead, so suitable for cryptocurrency mining.
 
 
 
 \subsection{Runtime breakdown of VRF}
 
+Second, we profile $VRFHash$ by evaluating the runtime of its each step.
+\TODO{xxx}
