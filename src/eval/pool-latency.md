@@ -25,7 +25,7 @@ __Asia__
 | - | - | - |
 | tcp | btc.f2pool.com | 1314 |
 | tcp | btc.ss.poolin.com ??? | 1883 |
-| ??? | cn.ss.btc.com or sz.ss.btc.com | 1800 |
+| ??? | cn.ss.btc.com <!-- or sz.ss.btc.com --> | 1800 |
 
 
 __Euro__
@@ -101,7 +101,7 @@ __Asia__
 
 | protocol | host | port |
 | - | - | - |
-| ??? | cn-ltc.ss.btc.com or sz-ltc.ss.btc.com | 1800 |
+| ??? | cn-ltc.ss.btc.com <!-- or sz-ltc.ss.btc.com --> | 1800 |
 | tcp | ltc.f2pool.com | 8888 |
 |  |  |  |
 
