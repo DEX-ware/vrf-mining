@@ -16,10 +16,10 @@ In this section, we discuss considerations on choosing these four components for
 \subsection{Elliptic curve}
 
 As neither blockchains and VRF limits the choice of elliptic curves, any elliptic curve can be adapted.
-Among prominent elliptic curves, Curve25519~\cite{bernstein2006curve25519} can be a promising choice.
-First, Curve25519 works on a prime field with the prime number $2^{255} - 19$, which provides sufficient enumeration space for VRF.
-Second, Curve25519 supports Ed25519~\cite{bernstein2012high}, a fast and secure digital signature algorithm.
-Last, Curve25519 is compatible with existing blockchains: numerous blockchains and projects using VRF adapt Curve25519 as their underlying elliptic curve.
+Among prominent elliptic curves, Ed25519~\cite{bernstein2012high} can be a promising choice.
+First, Ed25519 works on a prime field with the prime number $2^{255} - 19$, which provides sufficient enumeration space for VRF.
+Second, Ed25519 supports EdDSA, a fast and secure digital signature algorithm.
+Last, Ed25519 is compatible with existing blockchains: numerous blockchains and projects using VRF adapt Curve25519 as their underlying elliptic curve.
 
 
 
@@ -58,7 +58,7 @@ To make mining memory-hard, $\mathsf{VRFHash}$ should be memory-hard.
 % vrfhash steps
 $\mathsf{VRFHash}$ of the standardised VRF consists of one $H_{1}(\cdot)$ hashing, one scalar-point multiplication and one $H_{2}(\cdot)$ hashing.
 Thus, making VRF-based mining memory-hard can be achieved by making $H_{1}(\cdot)$ or $H_{2}(\cdot)$ memory-hard.
-This can be achieved by repetitively executing one or multiple different memory-hard hash functions (such as Ethash~\cite{wiki2017ethash}, Equihash~\cite{biryukov2017equihash}, and CryptoNight~\cite{seigenneocortex}).
+This can be achieved by repetitively executing one or multiple different memory-hard hash functions (such as Ethash~\cite{wiki2017ethash} and CryptoNight~\cite{seigenneocortex}).
 
 
 \subsection{Preventing partial outsourcing}
@@ -75,6 +75,7 @@ This is because outsourcing the post-processing is less I/O intensive than outso
 Once having $\beta$ (the result of $H_2(\gamma)$), the miner can know whether $\beta$ satisfies the difficulty or not, and can only send valid $\beta$s to the pool operator.
 Thus, if we make pre-processing more computationally intensive than post-processing, outsourcing the post-processing will no longer be profitable.
 This can be achieved by making $H_1(\alpha)$ much heavier than $H_2(\gamma)$.
+\TODO{making this a separate section}
 
 %%%%%%%%%%%%%%%%%
 % Analysis of non-outsourceability - practical side
