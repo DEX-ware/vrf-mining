@@ -90,7 +90,7 @@ __US__
 | protocol | host | port |
 | - | - | - |
 |  |  |  |
-|  |  |  |
+| ??? | us-ltc.ss.btc.com | 1800 |
 | tcp | ltc-us.f2pool.com | 8888 |
 
 __Asia__
@@ -101,7 +101,7 @@ __Asia__
 
 | protocol | host | port |
 | - | - | - |
-|  |  |  |
+| ??? | cn-ltc.ss.btc.com or sz-ltc.ss.btc.com | 1800 |
 | tcp | ltc.f2pool.com | 8888 |
 |  |  |  |
 
@@ -114,7 +114,7 @@ __Euro__
 | protocol | host | port |
 | - | - | - |
 |  |  |  |
-|  |  |  |
+| ??? | eu-ltc.ss.btc.com | 1800 |
 | tcp | ltc-eu.f2pool.com | 8888 |
 
 ## XMR
