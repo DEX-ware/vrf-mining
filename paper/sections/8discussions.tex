@@ -1,0 +1,68 @@
+\section{Discussions}
+\label{sec:discussions}
+
+While eliminating mining pools can contribute to decentralisation, it will also introduce new problems.
+In this section, we discuss potential problems introduced by VRF-based mining, as well as how to address them.
+In particular, we focus on two problems, namely the high reward variance and the high orphan rate.
+
+\subsection{High reward variance}
+
+As aforementioned, mining is probabilistic, and miners may not obtain stable income via solo mining, leading to the need of pooled mining.
+In other words, unstable income may discourage miners to mine.
+With weaker incentive of mining, the blockchain will have less mining power, which weakens the security of PoW-based consensus.
+In particular, adversaries can make use of external mining power to compromise blockchains with less mining power~\cite{hansucker}.
+
+A promising approach to address this problem is fine-graining the mining reward scheme.
+% multi-tier
+Miller et al.~\cite{miller2015nonoutsourceable} proposes the Multi-tier reward scheme, where the mining difficulty is divided into different levels, and miners can mine blocks satisfying different difficulty levels arbitrarily.
+The multi-tier reward scheme distributes the mining reward in a fine-grained way so lowers the reward variance.
+% strongchain
+StrongChain~\cite{szalachowski2019strongchain} introduces the notion of Collaborative PoW, where miners are incentivised to mine blocks together and the mining reward is distributed in proportion to miners' contributions.
+% prism
+Prism~\cite{bagaria2019prism} decouples the block to core blocks and transaction blocks.
+Core blocks construct the blockchain and only contain metadata, while transaction blocks are anchored on core blocks and contain confirmed transactions.
+Mining core blocks and transaction blocks is different in terms of difficulty, and miners can mine core blocks and transaction blocks simultaneously.
+In this way, miners are also rewarded more stably.
+
+Another approach is to increase the speed of mining blocks.
+With more blocks mined in a time unit, the mining reward can also be more stable.
+For example, proposals on blockchain scalability such as sharding~\cite{wang2019monoxide} and DAG~\cite{li2018scaling} can stabilise the mining reward variance, although they are not designed for it.
+
+
+
+
+
+\subsection{High orphan block rate}
+
+Another problem is the high orphan block rate.
+Due to the network latency, miners may mine blocks on the same height, but the blockchain will only accept one block and discard the rest blocks at last.
+Such discarded blocks are called orphan blocks, and orphan blocks cannot obtain any mining reward.
+As miners cannot mine together with VRF-mining, there will be more miners in the blockchain, leading to more orphan blocks.
+With higher orphan block rate, miners will waste more mining power and obtain less mining reward.
+Similar to high reward variance, miners will be discouraged to mine with high orphan blocks, which weakens the security of PoW-based consensus.
+
+A possible approach that has already been deployed is rewarding orphan blocks instead of discarding them.
+Ethereum~\cite{wood2014ethereum} adapts the GHOST protocol and introduces uncle blocks.
+In Ethereum, orphan blocks can be included in the blockchain as uncle blocks, and miners finding uncle blocks will obtain mining reward, but less than normal blocks.
+
+Another approach is to accelerate the block propagation to let miners know the latest block as soon as possible.
+BIP-152~\cite{corallo2016bip} introduces the block relay protocol.
+In the block relay protocol, miners synchronise their transaction pools in a real-time manner.
+Once finding a block, the miner only broadcasts the compact version of it.
+The compact block includes the block header and hashes of transactions in it, but does not include the transaction content.
+Upon receiving a compact block, the miner reconstructs the block by matching transactions in his transaction pool with transaction hashes.
+As the compact block is much smaller than the full block, broadcasting compact blocks can be much faster, and miners will be less possible to mine on earlier blocks.
+Following BIP-152, several proposals on accelerating the block propagation have been proposed~\cite{ozisik2019graphene}\cite{klarman2018bloxroute}\cite{naumenko2019bandwidth}.
+
+\subsection{Secret key leakage in memory}
+
+Different from hash-based mining, in VRF-based mining the secret key is kept in plaintext in memory all the time, as mining requires the secret key. This gives opportunity for adversaries to steal the secret key from the memory. For instance, the mining software has a bug, and the hacker can exploit this bug (even without logging in to the mining machine) to access the memory space of the mining software. In this way, the hacker can easily steal the secret key.
+
+% why inevitable
+Unfortunately, keeping the secret key in memory is inevitable for achieving the non-outsourceability guarantee that outsourcing leads to secret key leakage. To achieve such non-outsourceability guarantee, the secret key should be combined to the mining process. As long as the mining is continuous and endless, the process should keep the plaintext secret key in memory. Not only VRF-based mining, but also all protocols combining the secret key to mining suffer from this issue.
+
+\TODO{May not important, see HTTPS servers}
+\TODO{Another way is to make mining offline}
+
+% oram, enclave, self-destroy
+To protect secret keys in memory, Oblivious RAM (ORAM) is a promising primitive. ORAM allows CPUs to access data in memory while the data in memory is encrypted and the access pattern is hidden. In addition, one can load secret keys into software or hardware encalves so that reading secret keys is protected. Note that the encalves are unnecessary to be general-purpose. Moreover, the process of the mining software can proactively destroy itself once detecting anomalous memory access attempts.
