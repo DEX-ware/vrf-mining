@@ -25,7 +25,7 @@ __Asia__
 | - | - | - |
 | tcp | btc.f2pool.com | 1314 |
 | tcp | btc.ss.poolin.com ??? | 1883 |
-| ??? | cn.ss.btc.com <!-- or sz.ss.btc.com --> | 1800 |
+| ??? | cn.ss.btc.com (BJ) or sz.ss.btc.com (SZ) | 1800 |
 
 
 __Euro__
@@ -89,7 +89,7 @@ __US__
 
 | protocol | host | port |
 | - | - | - |
-|  |  |  |
+| tcp | us.litecoinpool.org (US East Coast) or us2.litecoinpool.org (US West Coast) | 3333 |
 | ??? | us-ltc.ss.btc.com | 1800 |
 | tcp | ltc-us.f2pool.com | 8888 |
 
@@ -101,7 +101,7 @@ __Asia__
 
 | protocol | host | port |
 | - | - | - |
-| ??? | cn-ltc.ss.btc.com <!-- or sz-ltc.ss.btc.com --> | 1800 |
+| ??? | cn-ltc.ss.btc.com (BJ) or sz-ltc.ss.btc.com (SZ) | 1800 |
 | tcp | ltc.f2pool.com | 8888 |
 |  |  |  |
 
@@ -113,7 +113,7 @@ __Euro__
 
 | protocol | host | port |
 | - | - | - |
-|  |  |  |
+| tcp | litecoinpool.org | 3333 |
 | ??? | eu-ltc.ss.btc.com | 1800 |
 | tcp | ltc-eu.f2pool.com | 8888 |
 
