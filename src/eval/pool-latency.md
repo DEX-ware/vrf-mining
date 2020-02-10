@@ -1,88 +1,234 @@
 # Pool Latency
 
 ## BTC
-+ US
-    * f2pool.com
-    * poolin.com
-    * pool.btc.com
-+ Asia
-    * f2pool.com
-    * poolin.com
-    * pool.btc.com
-+ Euro
-    * f2pool.com
-    * pool.btc.com
-    * sigmapool.com
+
+__US__
+
+* f2pool.com
+* poolin.com
+* pool.btc.com
+
+| protocol | host | port |
+| - | - | - |
+| tcp | btc-us.f2pool.com | 3333 |
+|  |  |  |
+|  |  |  |
+
+
+__Asia__
+
+* f2pool.com
+* poolin.com
+* pool.btc.com
+
+| protocol | host | port |
+| - | - | - |
+| tcp | btc.f2pool.com | 1314 |
+|  |  |  |
+|  |  |  |
+
+
+__Euro__
+
+* f2pool.com
+* pool.btc.com
+* sigmapool.com
+
+| protocol | host | port |
+| - | - | - |
+| tcp | btc-eu.f2pool.com | 3333 |
+|  |  |  |
+|  |  |  |
 
 ## ETH
-+ US
-    * ethermine.org
-    * nanopool.org
-    * poolin.com
-+ Asia
-    * sparkpool
-    * f2pool.com
-    * nanopool.org
-+ Euro
-    * nanopool.org
-    * miningpoolhub.com
-    * hiveon.net
-    * dwarfpool.com
+
+__US__
+
+* ethermine.org
+* nanopool.org
+* poolin.com
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
+__Asia__
+
+* sparkpool
+* f2pool.com
+* nanopool.org
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
+__Euro__
+
+* nanopool.org
+* miningpoolhub.com
+* hiveon.net
+* dwarfpool.com
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
 
 ## LTC
-+ US
-    * litecoinpool.org
-    * pool.btc.com
-    * f2pool.com
-+ Asia
-    * pool.btc.com
-    * f2pool.com
-    * poolin.com
-+ Euro
-    * litecoinpool.org
-    * pool.btc.com
-    * f2pool.com
+
+__US__
+
+* litecoinpool.org
+* pool.btc.com
+* f2pool.com
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
+__Asia__
+
+* pool.btc.com
+* f2pool.com
+* poolin.com
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
+__Euro__
+
+* litecoinpool.org
+* pool.btc.com
+* f2pool.com
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
 
 ## XMR
-+ US    
-    * supportxmr.com
-    * nanopool.org
-    * monerohash.com
-    * moneroocean.stream
-+ Asia
-    * f2pool.com
-    * nanopool.org
-    * moneroocean.stream
-+ Euro
-    * minexmr.com
-    * nanopool.org
-    * xmrpool.eu
-    * moneroocean.stream
+
+__US__    
+
+* supportxmr.com
+* nanopool.org
+* monerohash.com
+* moneroocean.stream
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
+__Asia__
+
+* f2pool.com
+* nanopool.org
+* moneroocean.stream
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
+__Euro__
+
+* minexmr.com
+* nanopool.org
+* xmrpool.eu
+* moneroocean.stream
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
 
 ## Dash
-+ US
-    * poolin.com
-    * prohashing.com
-    * coinmine.pl
-+ Asia
-    * antpool.com
-    * f2pool.com
-    * cybtc.info
-+ Euro
-    * mining-dutch.nl
-    * coinmine.pl
-    * suprnova.cc
+
+__US__
+
+* poolin.com
+* prohashing.com
+* coinmine.pl
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
+__Asia__
+
+* antpool.com
+* f2pool.com
+* cybtc.info
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
+__Euro__
+
+* mining-dutch.nl
+* coinmine.pl
+* suprnova.cc
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
 
 ## ZEC
-+ US
-    * poolin.com
-    * slushpool.com
-    * flypool.org
-+ Asia
-    * poolin.com
-    * f2pool.com
-    * antpool.com
-+ Euro
-    + flypool.org
-    + luxor.tech
-    + viabtc.com
+
+__US__
+
+* poolin.com
+* slushpool.com
+* flypool.org
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
+__Asia__
+
+* poolin.com
+* f2pool.com
+* antpool.com
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
+__Euro__
+
++ flypool.org
++ luxor.tech
++ viabtc.com
+
+| protocol | host | port |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
