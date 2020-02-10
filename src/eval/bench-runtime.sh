@@ -7,7 +7,7 @@ runtime_dir="../eval/runtime-comparison"
 rm -rf $runtime_dir*
 mkdir -p $runtime_dir
 echo "Runtime comparison..."
-go test -bench "(BenchmarkSHA256D|BenchmarkScrypt|BenchmarkCryptoNight|BenchmarkCompute|BenchmarkProve)" -count=10 -cpuprofile=$runtime_dir/cpu.out -benchmem -memprofile=$runtime_dir/mem.out -trace $runtime_dir/trace.out > $runtime_dir/raw.log
+go test -bench "(BenchmarkSHA256D|BenchmarkScrypt|BenchmarkCryptoNight|BenchmarkCompute|BenchmarkProve|BenchmarkVerify)" -count=10 -cpuprofile=$runtime_dir/cpu.out -benchmem -memprofile=$runtime_dir/mem.out -trace $runtime_dir/trace.out > $runtime_dir/raw.log
 # go tool pprof -pdf vrf.test $runtime_dir/cpu.out > $runtime_dir/cpu.pdf
 # go tool pprof -pdf --alloc_space vrf.test $runtime_dir/mem.out > $runtime_dir/alloc_space.pdf
 # go tool pprof -pdf --alloc_objects vrf.test $runtime_dir/mem.out > $runtime_dir/alloc_objects.pdf

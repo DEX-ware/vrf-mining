@@ -6,7 +6,7 @@ Our evaluation is twofold.
 First, we compare the performance of VRFs with three other hash functions used for cryptocurrency mining, namely SHA256D used in Bitcoin, Scrypt used in Litecoin and CryptoNight used in Monero.
 The comparison shows that VRF can be hundred times faster than Ethereum and CryptoNight, so can be highly efficient.
 Second, we measure the runtime of each step ($H_1$, point multiplication and $H_2$) of $\mathsf{VRFHash}$.
-The profiling shows that the point multiplication takes approximately 88\% of $\mathsf{VRFHash}$'s runtime, which is the performance hotspot.
+The profiling shows that the point multiplication takes approximately 88\% of $\mathsf{VRFHash}$'s runtime, which is the performance hotspot and can be optimised in the future.
 
 \subsection{Experimental setting}
 
