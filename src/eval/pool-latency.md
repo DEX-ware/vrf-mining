@@ -63,7 +63,7 @@ __Asia__
 | protocol | host | port |
 | - | - | - |
 |  |  |  |
-|  |  |  |
+| tcp | eth.f2pool.com | 6688 |
 |  |  |  |
 
 __Euro__
@@ -91,7 +91,7 @@ __US__
 | - | - | - |
 |  |  |  |
 |  |  |  |
-|  |  |  |
+| tcp | ltc-us.f2pool.com | 8888 |
 
 __Asia__
 
@@ -102,7 +102,7 @@ __Asia__
 | protocol | host | port |
 | - | - | - |
 |  |  |  |
-|  |  |  |
+| tcp | ltc.f2pool.com | 8888 |
 |  |  |  |
 
 __Euro__
@@ -115,7 +115,7 @@ __Euro__
 | - | - | - |
 |  |  |  |
 |  |  |  |
-|  |  |  |
+| tcp | ltc-eu.f2pool.com | 8888 |
 
 ## XMR
 
