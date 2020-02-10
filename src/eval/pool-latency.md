@@ -11,7 +11,7 @@ __US__
 | protocol | host | port |
 | - | - | - |
 | tcp | btc-us.f2pool.com | 3333 |
-| tcp | btc.ss.poolin.com | 1883 |
+| tcp | btc.ss.poolin.com ??? | 1883 |
 | ??? | us.ss.btc.com | 1800 |
 
 
@@ -24,7 +24,7 @@ __Asia__
 | protocol | host | port |
 | - | - | - |
 | tcp | btc.f2pool.com | 1314 |
-| tcp | btc.ss.poolin.com | 1883 |
+| tcp | btc.ss.poolin.com ??? | 1883 |
 | ??? | cn.ss.btc.com or sz.ss.btc.com | 1800 |
 
 
