@@ -12,7 +12,7 @@ __US__
 | - | - | - |
 | tcp | btc-us.f2pool.com | 3333 |
 |  |  |  |
-|  |  |  |
+| ??? | us.ss.btc.com | 1800 |
 
 
 __Asia__
@@ -25,7 +25,7 @@ __Asia__
 | - | - | - |
 | tcp | btc.f2pool.com | 1314 |
 |  |  |  |
-|  |  |  |
+| ??? | cn.ss.btc.com or sz.ss.btc.com | 1800 |
 
 
 __Euro__
@@ -37,7 +37,7 @@ __Euro__
 | protocol | host | port |
 | - | - | - |
 | tcp | btc-eu.f2pool.com | 3333 |
-|  |  |  |
+| ??? | eu.ss.btc.com | 1800 |
 |  |  |  |
 
 ## ETH
