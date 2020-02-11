@@ -170,7 +170,7 @@ __US__
 
 | protocol | host | port |
 | - | - | - |
-|  |  |  |
+| tcp | dash.ss.poolin.com ??? | 443 |
 |  |  |  |
 |  |  |  |
 
@@ -182,7 +182,7 @@ __Asia__
 
 | protocol | host | port |
 | - | - | - |
-|  |  |  |
+| tcp | stratum-dash.antpool.com | 6099 |
 | tcp | dash.f2pool.com | 5588 |
 |  |  |  |
 
