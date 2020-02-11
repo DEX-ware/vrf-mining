@@ -62,7 +62,7 @@ __Asia__
 
 | protocol | host | port |
 | - | - | - |
-|  |  |  |
+| ??? | cn.sparkpool.com(China) or asia.sparkpool.com (Southeast Asia) | 3333 |
 | tcp | eth.f2pool.com | 6688 |
 | tcp | eth-asia1.nanopool.org | 9999 or 9433(SSL) |
 
