@@ -129,10 +129,10 @@ __US__
 
 | protocol | host | port |
 | - | - | - |
-|  |  |  |
+| ??? | pool.supportxmr.com | 3333<!-- (Low starting diff) 5555 (Medium starting diff) 7777 (High starting diff) --> or 9000(SSL) |
 | tcp | xmr-us-east1.nanopool.org or xmr-us-west1.nanopool.org | 14444 or 14433(SSL) |
-|  |  |  |
-|  |  |  |
+| ??? | monerohash.com | 2222<!-- (Low starting diff) 5555 (Medium starting diff) 7777 (High starting diff) --> or 9999(SSL) or 80(NAT/Firewall friendly) |
+| ??? | gulf.moneroocean.stream (GEO DNS) | 80 |
 
 __Asia__
 
@@ -144,7 +144,7 @@ __Asia__
 | - | - | - |
 | tcp | xmr.f2pool.com | 13531 |
 | tcp | xmr-asia1.nanopool.org | 14444 or 14433(SSL) |
-|  |  |  |
+| ??? | gulf.moneroocean.stream (GEO DNS) | 80 |
 
 __Euro__
 
@@ -155,10 +155,10 @@ __Euro__
 
 | protocol | host | port |
 | - | - | - |
-|  |  |  |
+| ??? | pool.minexmr.com fr.minexmr.com de.minexmr.com | 4444,5555 <!-- 7777, 80(Mid range) 3333(High End) --> or 443,6666(TLS) |
 | tcp | xmr-eu1.nanopool.org or xmr-eu2.nanopool.org | 14444 or 14433(SSL) |
-|  |  |  |
-|  |  |  |
+| ??? | xmrpool.eu | 3333 <!-- 5555(Mid range) 7777(High End) --> or 9999(SSL for Claymore > 9.7) or 443(For firewall bypass) |
+| ??? | gulf.moneroocean.stream (GEO DNS) | 80 |
 
 ## Dash
 
