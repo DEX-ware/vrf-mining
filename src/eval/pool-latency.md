@@ -50,9 +50,9 @@ __US__
 
 | protocol | host | port |
 | - | - | - |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| ??? | us1.ethermine.org or us2.ethermine.org | 4444 or 5555(SSL) |
+| tcp | eth-us-east1.nanopool.org or eth-us-west1.nanopool.org | 9999 or 9433(SSL) |
+| tcp | eth.ss.poolin.com ??? | 443 |
 
 __Asia__
 
@@ -64,7 +64,7 @@ __Asia__
 | - | - | - |
 |  |  |  |
 | tcp | eth.f2pool.com | 6688 |
-|  |  |  |
+| tcp | eth-asia1.nanopool.org | 9999 or 9433(SSL) |
 
 __Euro__
 
@@ -75,6 +75,7 @@ __Euro__
 
 | protocol | host | port |
 | - | - | - |
+| tcp | eth-eu1.nanopool.org or eth-eu2.nanopool.org | 9999 or 9433(SSL) |
 |  |  |  |
 |  |  |  |
 |  |  |  |
@@ -129,6 +130,7 @@ __US__
 | protocol | host | port |
 | - | - | - |
 |  |  |  |
+| tcp | xmr-us-east1.nanopool.org or xmr-us-west1.nanopool.org | 14444 or 14433(SSL) |
 |  |  |  |
 |  |  |  |
 
@@ -141,7 +143,7 @@ __Asia__
 | protocol | host | port |
 | - | - | - |
 |  |  |  |
-|  |  |  |
+| tcp | xmr-asia1.nanopool.org | 14444 or 14433(SSL) |
 |  |  |  |
 
 __Euro__
@@ -154,6 +156,7 @@ __Euro__
 | protocol | host | port |
 | - | - | - |
 |  |  |  |
+| tcp | xmr-eu1.nanopool.org or xmr-eu2.nanopool.org | 14444 or 14433(SSL) |
 |  |  |  |
 |  |  |  |
 
@@ -207,7 +210,7 @@ __US__
 | - | - | - |
 | tcp | zec.ss.poolin.com ??? | 443 |
 | tcp | zec.slushpool.com | 4444 |
-| tcp | us1-zcash.flypool.org | 3333 or 3443(TLS) |
+| tcp | us1-zcash.flypool.org | 3333 or 3443(SSL) |
 
 __Asia__
 
