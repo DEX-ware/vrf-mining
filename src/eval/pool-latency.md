@@ -172,7 +172,7 @@ __US__
 | - | - | - |
 | tcp | dash.ss.poolin.com ??? | 443 |
 |  |  |  |
-|  |  |  |
+| tcp | dash.coinmine.pl ??? | 6099 |
 
 __Asia__
 
@@ -195,7 +195,7 @@ __Euro__
 | protocol | host | port |
 | - | - | - |
 |  |  |  |
-|  |  |  |
+| tcp | dash.coinmine.pl ??? | 6099 |
 |  |  |  |
 
 ## ZEC
