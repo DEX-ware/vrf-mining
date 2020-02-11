@@ -171,7 +171,7 @@ __US__
 | protocol | host | port |
 | - | - | - |
 | tcp | dash.ss.poolin.com ??? | 443 |
-|  |  |  |
+| tcp | prohashing.com | 3334 |
 | tcp | dash.coinmine.pl ??? | 6099 |
 
 __Asia__
@@ -184,7 +184,7 @@ __Asia__
 | - | - | - |
 | tcp | stratum-dash.antpool.com | 6099 |
 | tcp | dash.f2pool.com | 5588 |
-|  |  |  |
+| tcp | dash.cybtc.info | 5588 |
 
 __Euro__
 
@@ -194,9 +194,9 @@ __Euro__
 
 | protocol | host | port |
 | - | - | - |
-|  |  |  |
+| tcp | x11.mining-dutch.nl | 9998 |
 | tcp | dash.coinmine.pl ??? | 6099 |
-|  |  |  |
+| tcp | dash.suprnova.cc | 9991 |
 
 ## ZEC
 
