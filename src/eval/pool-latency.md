@@ -76,9 +76,9 @@ __Euro__
 | protocol | host | port |
 | - | - | - |
 | tcp | eth-eu1.nanopool.org or eth-eu2.nanopool.org | 9999 or 9433(SSL) |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| ??? | europe.ethash-hub.miningpoolhub.com | 20535 |
+| ??? | eu-eth.hiveon.net | 4444 or 24443(SSL) |
+| ??? | eth-eu.dwarfpool.com | 80 or 8008(Stratum-Port, proxy+claymore) |
 
 ## LTC
 
