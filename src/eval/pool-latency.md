@@ -205,9 +205,9 @@ __US__
 
 | protocol | host | port |
 | - | - | - |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| tcp | zec.ss.poolin.com ??? | 443 |
+| tcp | zec.slushpool.com | 4444 |
+| tcp | us1-zcash.flypool.org | 3333 or 3443(TLS) |
 
 __Asia__
 
@@ -217,9 +217,9 @@ __Asia__
 
 | protocol | host | port |
 | - | - | - |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| tcp | zec.ss.poolin.com ??? | 443 |
+| tcp | zec.f2pool.com | 3357 |
+| tcp | stratum-zec.antpool.com | 8899 |
 
 __Euro__
 
@@ -229,6 +229,6 @@ __Euro__
 
 | protocol | host | port |
 | - | - | - |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| tcp | eu1-zcash.flypool.org | 3333 or 3443(TLS) |
+| tcp | zec-eu.luxor.tech | 6666 |
+| tcp | zec.viabtc.com | 3333 |
