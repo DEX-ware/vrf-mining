@@ -142,7 +142,7 @@ __Asia__
 
 | protocol | host | port |
 | - | - | - |
-|  |  |  |
+| tcp | xmr.f2pool.com | 13531 |
 | tcp | xmr-asia1.nanopool.org | 14444 or 14433(SSL) |
 |  |  |  |
 
@@ -183,7 +183,7 @@ __Asia__
 | protocol | host | port |
 | - | - | - |
 |  |  |  |
-|  |  |  |
+| tcp | dash.f2pool.com | 5588 |
 |  |  |  |
 
 __Euro__
