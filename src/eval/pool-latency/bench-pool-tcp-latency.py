@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import csv
+from tcp_latency import measure_latency
+from statistics import mean
 
 def main():
     coins = {}
@@ -17,9 +19,17 @@ def main():
                 coins[coin].append(dest)
 
     for coin, dests in coins.items():
-        print(coin)
+        # print(coin)
         for dest in dests:
-            print(dest)
+            # print(dest)
+            res = measure_latency(host=dest['host'], port=dest['port'], runs=10, timeout=2.5)
+            res = [i for i in res if i] # remove None elements
+            # print(res)
+            try:
+                m = mean(res)
+                print("%s,%f" % (coin, m))
+            except:
+                pass
 
 
 if __name__ == "__main__":
