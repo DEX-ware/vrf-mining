@@ -1,2 +1,9 @@
 coin,host,port
-1,2,3
+btc,btc-us.f2pool.com,3333
+btc,btc.ss.poolin.com,443
+btc,us.ss.btc.com,1800
+btc,btc.f2pool.com,1314
+btc,cn.ss.btc.com,1800
+btc,btc-eu.f2pool.com,3333
+btc,eu.ss.btc.com,1800
+btc,eu1.btc.sigmapool.com,3333
