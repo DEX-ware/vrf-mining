@@ -20,6 +20,9 @@ def main():
 
     for coin, dests in coins.items():
         # print(coin)
+        if coin.startswith("#"):
+            continue
+
         for dest in dests:
             # print(dest)
             res = measure_latency(host=dest['host'], port=dest['port'], runs=10, timeout=2.5)
