@@ -17,7 +17,7 @@ def main():
             row_dict_list.append(row_dict)
 
     with open('latency.csv', 'w') as f:
-        f.write('coin,region,host,port\n')
+        f.write('coin,region,host,port,latency\n')
         for row_dict in row_dict_list:
             # print(row_dict)
             res = measure_latency(host=row_dict['host'], port=row_dict['port'], runs=10, timeout=2.5)
