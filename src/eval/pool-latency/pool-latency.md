@@ -50,7 +50,7 @@ __US__
 
 | protocol | host | port |
 | - | - | - |
-| ??? | us1.ethermine.org or us2.ethermine.org | 4444 or 5555(SSL) |
+| ??? | us1.ethermine.org(US East) or us2.ethermine.org(US West) | 4444 or 5555(SSL) |
 | tcp | eth-us-east1.nanopool.org or eth-us-west1.nanopool.org | 9999 or 9433(SSL) |
 | tcp | eth.ss.poolin.com ??? | 443 |
 
