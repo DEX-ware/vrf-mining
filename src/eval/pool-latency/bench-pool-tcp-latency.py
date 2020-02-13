@@ -2,7 +2,11 @@
 
 import csv
 from tcp_latency import measure_latency
-from statistics import mean
+from statistics import mean, stdev
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+
 
 def main():
     row_dict_list = []
@@ -16,18 +20,28 @@ def main():
             row_dict['port'] = row['port']
             row_dict_list.append(row_dict)
 
+    logging.info(row_dict_list)
+
     with open('latency.csv', 'w') as f:
-        f.write('coin,region,host,port,latency\n')
+        fields = ['coin', 'region', 'host',
+                  'port', 'latency_mean', 'latency_std']
+        f_csv = csv.DictWriter(f, fieldnames=fields)
+        f_csv.writeheader()
+
         for row_dict in row_dict_list:
             # print(row_dict)
-            res = measure_latency(host=row_dict['host'], port=row_dict['port'], runs=10, timeout=2.5)
-            res = [i for i in res if i] # remove None elements
-            # print(res)
-            try:
-                m = mean(res)
-                f.write("%s,%s,%s,%s,%f\n" % (row_dict['coin'], row_dict['region'], row_dict['host'], row_dict['port'], m))
-            except:
-                pass
+            res = measure_latency(
+                host=row_dict['host'], port=row_dict['port'], runs=10, timeout=2.5)
+            # basic data processing
+            res = [i for i in res if i]  # remove None elements
+            if len(res) == 0:
+                continue
+            # mean and std
+            row_dict['latency_mean'] = mean(res)
+            row_dict['latency_std'] = stdev(res)
+            logging.info(row_dict)
+            # write
+            f_csv.writerow(row_dict)
 
 
 if __name__ == "__main__":
