@@ -75,7 +75,9 @@ This is because outsourcing the post-processing is less I/O intensive than outso
 Once having $\beta$ (the result of $H_2(\gamma)$), the miner can know whether $\beta$ satisfies the difficulty or not, and can only send valid $\beta$s to the pool operator.
 Thus, if we make pre-processing more computationally intensive than post-processing, outsourcing the post-processing will no longer be profitable.
 This can be achieved by making $H_1(\alpha)$ much heavier than $H_2(\gamma)$.
-\TODO{making this a separate section}
+\TODO{Have a protocol diagram on this}
+
+Later in \S~\ref{sec:partial-outsourcing}, we will experimentally show that such partial outsourcing is not profitable for both miners and pool operators.
 
 %%%%%%%%%%%%%%%%%
 % Analysis of non-outsourceability - practical side
