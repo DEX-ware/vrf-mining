@@ -59,10 +59,16 @@ Following BIP-152, several proposals on accelerating the block propagation have 
 Different from hash-based mining, in VRF-based mining the secret key is kept in plaintext in memory all the time, as mining requires the secret key. This gives opportunity for adversaries to steal the secret key from the memory. For instance, the mining software has a bug, and the hacker can exploit this bug (even without logging in to the mining machine) to access the memory space of the mining software. In this way, the hacker can easily steal the secret key.
 
 % why inevitable
-Unfortunately, keeping the secret key in memory is inevitable for achieving the non-outsourceability guarantee that outsourcing leads to secret key leakage. To achieve such non-outsourceability guarantee, the secret key should be combined to the mining process. As long as the mining is continuous and endless, the process should keep the plaintext secret key in memory. Not only VRF-based mining, but also all protocols combining the secret key to mining suffer from this issue.
+Unfortunately, keeping the secret key in memory is inevitable. To achieve non-outsourceability, the secret key should be combined to the mining process. As long as the mining is continuous and endless, the process should keep the plaintext secret key in memory. Not only VRF-based mining, but also all protocols combining the secret key to mining suffer from this issue.
 
-\TODO{May not important, see HTTPS servers}
-\TODO{Another way is to make mining offline}
-
-% oram, enclave, self-destroy
-To protect secret keys in memory, Oblivious RAM (ORAM) is a promising primitive. ORAM allows CPUs to access data in memory while the data in memory is encrypted and the access pattern is hidden. In addition, one can load secret keys into software or hardware encalves so that reading secret keys is protected. Note that the encalves are unnecessary to be general-purpose. Moreover, the process of the mining software can proactively destroy itself once detecting anomalous memory access attempts.
+There are several different ways to protect secret keys in memory.
+% enclave
+First, the miner can isolate the scalar multiplication to a software or hardware enclave. Note that the encalves are unnecessary to be general-purpose. Moreover, the process of the mining software can proactively destroy itself once detecting anomalous memory access attempts.
+% isolation
+Furthermore, the miner can isolate mining from the blockchain node.
+For example, he can run the mining process independently with his blockchain node process.
+In this way, if an adversary compromises his node but not the operating system, the adversary still cannot read the private key in another process.
+In addition, he can run the mining process in an offline machine that can only communicate with his blockchain node.
+% oram
+Moreoever, Oblivious RAM (ORAM) is a promising primitive to protect sensitive data in memory.
+ORAM allows CPUs to access data in memory while the data in memory is encrypted and the access pattern is hidden.
