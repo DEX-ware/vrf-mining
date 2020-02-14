@@ -61,7 +61,22 @@ Thus, making VRF-based mining memory-hard can be achieved by making $H_{1}(\cdot
 This can be achieved by repetitively executing one or multiple different memory-hard hash functions (such as Ethash~\cite{wiki2017ethash} and CryptoNight~\cite{seigenneocortex}).
 
 
+
 \subsection{Preventing partial outsourcing}
+
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=.7\linewidth]{figs/outsource-h1.png}
+    \caption{Outsourcing $H_1$.}
+    \label{fig:outsource-h1}
+\end{figure}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=.7\linewidth]{figs/outsource-h2.png}
+    \caption{Outsourcing $H_2$.}
+    \label{fig:outsource-h2}
+\end{figure}
 
 The pool operator may have opportunity to outsource a part of mining.
 The non-outsourceability is from $\gamma = h^{sk}$, which requires the knowledge of the pool operator's secret key $sk$.
