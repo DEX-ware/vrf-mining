@@ -58,4 +58,4 @@ To make mining memory-hard, $\mathsf{VRFHash}$ should be memory-hard.
 % vrfhash steps
 $\mathsf{VRFHash}$ of the standardised VRF consists of one $H_{1}(\cdot)$ hashing, one scalar-point multiplication and one $H_{2}(\cdot)$ hashing.
 Thus, making VRF-based mining memory-hard can be achieved by making $H_{1}(\cdot)$ or $H_{2}(\cdot)$ memory-hard.
-This can be achieved by repetitively executing one or multiple different memory-hard hash functions (such as Ethash~\cite{wiki2017ethash} and CryptoNight~\cite{seigenneocortex}).
+This can be achieved by embedding a memory-hard hash function (such as Ethash~\cite{wiki2017ethash} and CryptoNight~\cite{seigenneocortex}) in $H_1(\cdot)$ or $H_2(\cdot)$.

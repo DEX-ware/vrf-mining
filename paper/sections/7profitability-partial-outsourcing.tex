@@ -7,10 +7,7 @@ The non-outsourceability is from the second step $\gamma = h^{sk}$, as it requir
 The pool operator can outsource the first step $h = H_1(\alpha)$ by distributing different $\alpha$s to miners, and also the last step $\beta = H_2(\gamma)$ by distributing different $\gamma$s to miners.
 
 However, such partial outsourcing is very inefficient and unprofitable compared to outsourcing in hash-based mining, due to the computing and I/O overhead.
-In this section, we theoretically and experimentally show the (un)profitability of such partial outsourcing.
-First, we compare the process of outsourcing in hash-based mining and VRF-based mining.
-Then, we model and compare their overhead of outsourcing.
-Our result is \TODO{xxxxxxxx}
+In this section, we discuss why the partial outsourcing in VRF-based mining is unprofitable, and how to make it even more unprofitable.
 
 \subsection{Pooled mining protocols}
 
@@ -54,33 +51,24 @@ Similarly, the pool operator optionally verifies the correctness of each of $\Ga
 \subsection{The cost of verifying hashes from miners}
 
 The first obstacle of partial outsourcing is verifying hashes from miners.
-If the pool operator does not trust miners, he should verify both $H_1$ and $H_2$ hashes from miners, which is identical to miners' work.
-For $H_1$, the pool operator should verify all of $h_1, h_2, \dots, h_m$.
-For $H_2$, the pool operator should only verify $\Sigma$ i.e., $\sigma$s satisfying $PoolTarget$.
-\TODO{xxx}
+If the pool operator does not trust miners, he should verify both $H_1$ and $H_2$ hashes from miners.
+Outsourcing $H_1$ is symmetric: The pool operator should verify all of $h_1, h_2, \dots, h_m$.
+Outsourcing $H_2$ is asymmetric: The pool operator should only verify $\Sigma$ i.e., $\sigma$s satisfying $PoolTarget$.
+This introduces significant overhead, and makes outsourcing less profitable than mining by himself for the pool operator.
 
 
 \subsection{Partial outsourcing is I/O intensive}
 
-First, partially outsourcing VRF-based mining is I/O intensive.
-\TODO{xxx}
+The pool operator and miners are still possible to collaborate, as pooled mining is beneficial for them.
+For the pool operator, he can earn some fees from the miners.
+For the miners, they can stabilise their revenue from mining.
 
+Even if they trust each other, partial outsourcing can still be unprofitable.
+This is because of the second obstacle: the I/O overhead.
+In hash-based mining, the pool operator only sends and receives constant-size data for each task.
+To outsource $H_1$, the pool operator should receive all $H_1$ hashes computed by the miner.
+To outsource $H_2$, the pool operator should send all $\gamma$s to the miner.
 
-\subsection{Mining speedup is limited by etwork latency}
-
-\begin{table}
-    \centering
-    \begin{tabular}{|c|c|c|}
-        \hline
-        Region     & Mean latency & Std. of latency \\\hline
-        asia   & 222.432500    & 20.921093    \\\hline
-        eu     & 244.542182    & 18.354686    \\\hline
-        us     & 213.937091    & 12.389635    \\\hline
-    \end{tabular}
-\end{table}
-
-
-
-
-
-\subsection{The number of miners can be limited by making $\mathsf{VRFHash}$ slow}
+To make VRF-based mining maximally I/O-intensive, the mining algorithm embedded in VRFs should be lightweight.
+Given the total mining power from miners, if the VRF is lightweight, the network hashrate will be higher.
+With higher hashrate, the pool operator and the miners will exchange more data, leading to more communication overhead.
