@@ -19,25 +19,25 @@ We also show that making VRF fast can make VRF-based mining even more costly.
     \label{fig:outsource-vrf}
 \end{figure}
 
-Figure~\ref{fig:outsource-vrf} describe the process of outsourcing $H_1$ and $H_2$.
-In VRF-based mining, the second step $h^{sk}$ is non-outsourceable, but the pool operator can outsource $H_1$ or $H_2$ interactively.
+Figure~\ref{fig:outsource-vrf} describe the process of outsourcing $H_1(\cdot)$ and $H_2(\cdot)$.
+In VRF-based mining, the second step $h^{sk}$ is non-outsourceable, but the pool operator can outsource $H_1(\cdot)$ or $H_2(\cdot)$ interactively.
 
-To outsource $H_1$, the pool operator generates a search interval $[n_1, n_m]$ of nonces, then sends the interval and the block template $t$ to a miner.
-After that, the miner computes $H_1$ with each nonce in $[n_1, n_m]$ as input, then sends back all $H_1$ hashes to the pool operator.
-If the pool operator does not trust miners (which reflects to the real world), he will verify these $H_1$ hashes before the second step i.e., multiplying each hash with his secret key $sk$.
+To outsource $H_1(\cdot)$, the pool operator generates a search interval $[n_1, n_m]$ of nonces, then sends the interval and the block template $t$ to a miner.
+After that, the miner computes $H_1(\cdot)$ with each nonce in $[n_1, n_m]$ as input, then sends back all $H_1(\cdot)$ hashes to the pool operator.
+If the pool operator does not trust miners (which reflects to the real world), he will verify these $H_1(\cdot)$ hashes before the second step i.e., multiplying each hash with his secret key $sk$.
 
-After the second step, the pool operator obtains a series of $(\gamma_1, \gamma_2, \dots, \gamma_m)$, and he can outsource $H_2$ as follows.
+After the second step, the pool operator obtains a series of $(\gamma_1, \gamma_2, \dots, \gamma_m)$, and he can outsource $H_2(\cdot)$ as follows.
 The pool operator first sends these $\gamma$s as well as the pool difficulty $PoolTarget$ to the miner.
-Then, the miner calculates $H_2$ hashes of these $\gamma$s, compare the hashes with $PoolTarget$, and sends back $\gamma$s that satisfy the difficulty (denoted as $\Gamma$).
+Then, the miner calculates $H_2(\cdot)$ hashes of these $\gamma$s, compare the hashes with $PoolTarget$, and sends back $\gamma$s that satisfy the difficulty (denoted as $\Gamma$).
 Similarly, the pool operator optionally verifies the correctness of each of $\Gamma$, and accumulates the mined shares to the miner's total contribution.
 
 
 \subsection{The cost of verifying hashes from miners}
 
 The first obstacle of partial outsourcing is verifying hashes from miners.
-If the pool operator does not trust miners, he should verify both $H_1$ and $H_2$ hashes from miners.
-Outsourcing $H_1$ is symmetric: The pool operator should verify all of $h_1, h_2, \dots, h_m$.
-Outsourcing $H_2$ is asymmetric: The pool operator should only verify $\Sigma$ i.e., $\sigma$s satisfying $PoolTarget$.
+If the pool operator does not trust miners, he should verify both $H_1(\cdot)$ and $H_2(\cdot)$ hashes from miners.
+Outsourcing $H_1(\cdot)$ is symmetric: The pool operator should verify all of $h_1, h_2, \dots, h_m$.
+Outsourcing $H_2(\cdot)$ is asymmetric: The pool operator should only verify $\Sigma$ i.e., $\sigma$s satisfying $PoolTarget$.
 This introduces significant overhead, and makes outsourcing less profitable than mining by himself for the pool operator.
 
 
@@ -50,8 +50,8 @@ For the miners, they can stabilise their revenue from mining.
 Even if they trust each other, partial outsourcing can still be unprofitable.
 This is because of the second obstacle: the I/O overhead.
 In hash-based mining, the pool operator only sends and receives constant-size data for each task.
-To outsource $H_1$, the pool operator should receive all $H_1$ hashes computed by the miner.
-To outsource $H_2$, the pool operator should send all $\gamma$s to the miner.
+To outsource $H_1(\cdot)$, the pool operator should receive all $H_1(\cdot)$ hashes computed by the miner.
+To outsource $H_2(\cdot)$, the pool operator should send all $\gamma$s to the miner.
 
 To make VRF-based mining maximally I/O-intensive, the mining algorithm embedded in VRFs should be lightweight.
 Given the total mining power from miners, if the VRF is lightweight, the network hashrate will be higher.
