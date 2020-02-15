@@ -7,6 +7,7 @@ Three hash functions are:
 $H_{1}(\cdot)$ mapping an arbitrary-length string into an elliptic curve element,
 $H_{2}(\cdot)$ mapping an elliptic curve element into a fixed-length string, and
 $H_{3}(\cdot)$ mapping an arbitrary-length string into a fixed-length string.
+
 In this section, we discuss considerations on choosing these four components for VRF-based mining.
 
 
@@ -16,10 +17,10 @@ In this section, we discuss considerations on choosing these four components for
 \subsection{Elliptic curve}
 
 As neither blockchains and VRF limits the choice of elliptic curves, any elliptic curve can be adapted.
-Among prominent elliptic curves, Ed25519~\cite{bernstein2012high} can be a promising choice.
+For example, among prominent elliptic curves, Ed25519~\cite{bernstein2012high} can be a promising choice.
 First, Ed25519 works on a prime field with the prime number $2^{255} - 19$, which provides sufficient enumeration space for VRF.
 Second, Ed25519 supports EdDSA, a fast and secure digital signature algorithm.
-Last, Ed25519 is compatible with existing blockchains: numerous blockchains and projects using VRF adapt Curve25519 as their underlying elliptic curve.
+Last, Ed25519 is compatible with existing blockchains, as numerous blockchains and projects using VRF adapt Ed25519 as their underlying elliptic curve.
 
 
 
@@ -48,7 +49,7 @@ The hashing step should be cryptographically secure, so can adapt any existing c
 \subsection{Normal hash function $H_{3}(\cdot)$}
 
 $H_{3}(\cdot)$ is only used in $\mathsf{VRFProve}$ (proving the authorship of hashes) and $\mathsf{VRFVerify}$ (verifying the authorship of hashes).
-The overhead of proving and verification should be minimised, so cryptographically secure hash functions that are designed to be fast (such as Keccak~\cite{bertoni2013keccak} and BLAKE~\cite{aumasson2008sha}) are suitable for $H_{3}(\cdot)$.
+The overhead of proving and verification should be minimised, so fast and cryptographically secure hash functions (such as Keccak~\cite{bertoni2013keccak} and BLAKE~\cite{aumasson2008sha}) are suitable for $H_{3}(\cdot)$.
 
 \subsection{Memory-hard mining}
 

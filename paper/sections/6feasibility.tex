@@ -1,20 +1,20 @@
 \section{Practicality of VRF-based mining}
 \label{sec:practicality}
 
-In this section, we experimentally show that VRF-based mining is easy to implement and introduce little overhead.
+In this section, we experimentally show that VRF-based mining is easy to implement and introduces little overhead.
 Our experiment is twofold.
 First, we compare the performance of VRFs with three other hash functions used for cryptocurrency mining, namely SHA256D used in Bitcoin, Scrypt used in Litecoin and CryptoNight used in Monero.
 The comparison shows that VRF can be much faster than Ethereum and CryptoNight.
 Second, we measure the runtime of each step ($H_1$, point multiplication and $H_2$) of $\mathsf{VRFHash}$.
-The profiling shows that the elliptic curve scalar multiplication dominates $\mathsf{VRFHash}$'s runtime, which can be optimised in the future.
+The result shows that the elliptic curve scalar multiplication dominates $\mathsf{VRFHash}$'s runtime, which can be optimised in the future.
 
 \subsection{Experimental setting}
 
 We implement the standardised EC-VRF in Algorithm~\ref{algo:standard-ecvrf} using Go programming language.
 In particular, we use Ed25519~\cite{bernstein2012high} as the underlying elliptic curve, Elligator~\cite{bernstein2013elligator} as $H_1(\cdot)$, SHA-3 as the hash function.
 Ed25519, SHA-3 and the encoding of points on Ed25519 are supported by Go's standard library.
-We do not apply any optimisations on the EC-VRF implementation.
-We use open-source implementations for SHA256D~\ref{github.com/seehuhn/sha256d}, Scrypt~\ref{github.com/elithrar/simple-scrypt}, and CryptoNight~\ref{ekyu.moe/cryptonight}.
+We do not apply any optimisation on the EC-VRF implementation.
+We use open-source implementations for SHA256D~\footnote{github.com/seehuhn/sha256d}, Scrypt~\footnote{github.com/elithrar/simple-scrypt}, and CryptoNight~\footnote{ekyu.moe/cryptonight}.
 
 All experiments run on a MacBook Pro with a 2.2 GHz Intel Core i7 Processor, a 16 GB DDR4 RAM and 256 SSD storage disk.
 For each group of experiment, we run an algorithm for ten times, then take the average data as the experimental results.
