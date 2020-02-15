@@ -34,8 +34,8 @@
 \titlerunning{VRF-based mining}
 
 \author{
-    Runchao Han\thanks{equal contribution}\inst{1,2}
-    \and Haoyu Lin\printfnsymbol{1}
+    Runchao Han\inst{1,2}
+    \and Haoyu Lin
     \and Jiangshan Yu\inst{1}
 }
 \authorrunning{Han et al.}
@@ -45,13 +45,14 @@
 \maketitle
 
 \begin{abstract}
-  In this paper, we describe VRF-based mining, a simple and effective way of making pooled mining impossible.
+  In this paper, we introduce VRF-based mining, a simple and effective way of making pooled mining impossible.
   Instead of using hash functions, VRF-based mining uses Verifiable Random Functions (VRFs) for Proof-of-work (PoW)-based consensus.
-  As VRF binds the authorship with hashes, a pool operator should reveal his private key to outsource the mining process to miners, and miners can easily steal cryptocurrency in the pool operator's wallet anonymously.
+  As VRF binds the authorship with hashes, a pool operator should reveal his private key to outsource the mining process to miners, and miners can anonymously steal cryptocurrency in the pool operator's wallet.
   
-  In addition, we informally revisit the definition of non-outsourceability in existing research, and show VRF-based mining achieves stronger non-outsourceability than all existing proposals.
-  Moreover, we describe how to instantiate VRFs for VRF-based mining.
-  Last, we discuss potential problems of having no mining pools, and how to address them.
+  We informally revisit the definition of non-outsourceability in existing research, and show VRF-based mining achieves stronger non-outsourceability than all existing proposals.
+  We also discuss several considerations on instantiating VRFs for VRF-based mining.
+  In addition, we experimentally show that VRF-based mining is easy to implement, and introduces little overhead compared to hash-based mining.
+  Moreover, we discuss why partial outsourcing in VRF-based mining is unprofitable, and how to make it even more unprofitable.
   \keywords{Blockchain \and Cryptocurrency mining \and Mining pool.}
 \end{abstract}
 
