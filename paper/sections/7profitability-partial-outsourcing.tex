@@ -7,16 +7,11 @@ The non-outsourceability is from the second step $\gamma = h^{sk}$, as it requir
 The pool operator can outsource the first step $h = H_1(\alpha)$ by distributing different $\alpha$s to miners, and also the last step $\beta = H_2(\gamma)$ by distributing different $\gamma$s to miners.
 
 However, such partial outsourcing is very inefficient and unprofitable compared to outsourcing in hash-based mining, due to the computing and I/O overhead.
-In this section, we discuss why the partial outsourcing in VRF-based mining is unprofitable, and how to make it even more unprofitable.
+In this section, we show that partial outsourcing in VRF-based mining is unprofitable as it's computation-intensive and I/O intensive.
+We also show that making VRF fast can make VRF-based mining even more costly.
 
-\subsection{Pooled mining protocols}
+\subsection{Partial outsourcing in VRF-based mining}
 
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=.7\linewidth]{figs/outsource-original.png}
-    \caption{Outsourcing in hash-based mining.}
-    \label{fig:outsource-original}
-\end{figure}
 \begin{figure}[htp]
     \centering
     \includegraphics[width=.7\linewidth]{figs/outsource-vrf.png}
@@ -24,19 +19,8 @@ In this section, we discuss why the partial outsourcing in VRF-based mining is u
     \label{fig:outsource-vrf}
 \end{figure}
 
-Figure~\ref{fig:outsource-original} describes the outsourcing process in hash-based mining, and Figure~\ref{fig:outsource-vrf} describe the process of outsourcing $H_1$ and $H_2$.
-
-\textbf{Outsourcing in hash-based mining.}
-Conventional mining pools employ the Stratum mining protocol~\cite{}, which works as follows.
-First, a pool operator specifies the pool difficulty $PoolTarget$ - a difficulty lower than the blockchain network - and a search interval $[n_1, n_m]$ of nonces.
-Then, the pool operator sends the block template $t$, $PoolTarget$, $n_1$ and $n_m$ to the miner, and the miner starts to find a nonce in $[n_1, n_m]$ which satisfies $PoolTarget$.
-Once finding a valid nonce $n_k$, the miner sends $n_k$ back to the pool operator.
-The pool operator then verifies whether $n_k$ produces a hash satisfying $PoolTarget$, and records the miner's contribution (a.k.a. a share) if valid.
-As $PoolTarget$ is easier to solve, the pool operator can recover the real mining power from miners from submitted shares in a more fine-grained way.
-Thus, the pool operator can distribute the reward also in a fine-grained way, thus mitigate the mining reward variance.
-
-\textbf{Partial outsourcing in VRF-based mining.}
-As aforementioned, in VRF-based mining the second step $h^{sk}$ is non-outsourceable, but the pool operator can outsource $H_1$ or $H_2$ interactively.
+Figure~\ref{fig:outsource-vrf} describe the process of outsourcing $H_1$ and $H_2$.
+In VRF-based mining, the second step $h^{sk}$ is non-outsourceable, but the pool operator can outsource $H_1$ or $H_2$ interactively.
 
 To outsource $H_1$, the pool operator generates a search interval $[n_1, n_m]$ of nonces, then sends the interval and the block template $t$ to a miner.
 After that, the miner computes $H_1$ with each nonce in $[n_1, n_m]$ as input, then sends back all $H_1$ hashes to the pool operator.

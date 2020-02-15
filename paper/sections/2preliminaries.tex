@@ -21,20 +21,22 @@ For example, Bitcoin controls the difficulty of finding a nonce by specifying th
 
 \subsection{Mining pools}
 
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=.7\linewidth]{figs/outsource-original.png}
+    \caption{Outsourcing in hash-based mining.}
+    \label{fig:outsource-original}
+\end{figure}
+
 In a mining pool, the pool operator outsources the mining process by allowing miners to find nonces for him.
-% distribute
-More specifically, the pool operator distributes his block template, a search interval of nonces, and a ``share difficulty'' to each miner.
-The share difficulty is much lower than the difficulty of the blockchain.
-% submit
-Miners then look for nonces in the search interval that makes the block hash to satisfy the share difficulty, and submitting valid nonces to the pool operator.
-% reward
-As nonces satisfying the blockchain difficulty must satisfy the share difficulty, the pool operator can find nonces satisfying the blockchain difficulty from nonces submitted by miners.
-After a time period (say 24 hours), the pool operator calculates the number of shares submitted by each miner, and distributes the mining reward to miners according to their submitted shares.
+First, a pool operator specifies the pool difficulty $PoolTarget$ - a difficulty lower than the blockchain network - and a search interval $[n_1, n_m]$ of nonces.
+Then, the pool operator sends the block template $t$, $PoolTarget$, $n_1$ and $n_m$ to the miner, and the miner starts to find a nonce in $[n_1, n_m]$ which satisfies $PoolTarget$.
+Once finding a valid nonce $n_k$, the miner sends $n_k$ back to the pool operator.
+The pool operator then verifies whether $n_k$ produces a hash satisfying $PoolTarget$, and records the miner's contribution (a.k.a. a share) if valid.
+After a time period (say 24 hours), the pool operator calculates the total contribution of each miner, and distributes the mining reward to miners according to their submitted shares.
 % why stable
-As finding a valid share is much easier than finding a valid block, calculating the mining power of a miner using shares is more fine-grained than using blocks.
+As $PoolTarget$ is easier to solve, calculating the mining power of a miner using shares is more fine-grained than using blocks.
 In this way, each miner is rewarded in a more fine-grained way, so more stably.
-
-
 
 
 \subsection{Verifiable random functions}
