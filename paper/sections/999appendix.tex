@@ -42,6 +42,7 @@
 Algorithm~\ref{algo:standard-ecvrf} describes the Elliptic-curve-based VRF (EC-VRF) construction standardised in draft-goldbe-vrf~\cite{goldberg2017draft}.
 
 \begin{algorithm}[]
+    \caption{The Elliptic-curve-based VRF (EC-VRF) construction standardised in draft-goldbe-vrf~\cite{goldberg2017draft}.}\label{algo:standard-ecvrf}
     \SetAlgoLined\DontPrintSemicolon
     \SetKwFunction{VRFKeyGen}{$(sk, pk) \gets \mathsf{VRFKeyGen}$}
     \SetKwFunction{VRFHash}{$\beta \gets \mathsf{VRFHash}$}
@@ -89,7 +90,4 @@ Algorithm~\ref{algo:standard-ecvrf} describes the Elliptic-curve-based VRF (EC-V
             \Return{$0$}\;
         }
         \Return{$1$}\;}{}
-
-    \label{algo:standard-ecvrf}
-    \caption{The Elliptic-curve-based VRF (EC-VRF) construction standardised in draft-goldbe-vrf~\cite{goldberg2017draft}.}
 \end{algorithm}

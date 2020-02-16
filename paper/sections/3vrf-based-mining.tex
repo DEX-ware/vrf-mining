@@ -9,8 +9,7 @@ Thus, to outsource the mining process, the pool operator should show his secret 
 However, with the secret key, any miner in the mining pool can steal all coins of the pool operator.
 
 \begin{algorithm}[]
-\caption{$\mathsf{Work}(sk, t, Target)$.}
-\label{algo:work}
+\caption{$\mathsf{Work}(sk, t, Target)$.}\label{algo:work}
 \SetAlgoLined\DontPrintSemicolon
 \KwIn{The secret key $sk$, the block template $t$, and the difficulty parameter $Target$}
 \KwOut{The block $blk$, the VRF output $out$, and the VRF proof $\pi$}
@@ -29,8 +28,7 @@ However, with the secret key, any miner in the mining pool can steal all coins o
 
 
 \begin{algorithm}[h]
-\caption{$\mathsf{Verify}(blk, out, \pi, Target)$}
-\label{algo:verify}
+\caption{$\mathsf{Verify}(blk, out, \pi, Target)$}\label{algo:verify}
 \SetAlgoLined\DontPrintSemicolon
 $pk \gets blk . txs[0] . scriptPubKey$ \Comment*[r]{Find pubkey in coinbase tx}
 $\mathsf{require}(out < Target)$ \Comment*[r]{Hash should meet diff requirement}
