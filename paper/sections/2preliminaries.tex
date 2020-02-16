@@ -59,7 +59,7 @@ A VRF should preserve the following three security properties~\cite{goldberg2017
 
 \begin{itemize}
     \item \textbf{Uniqueness}: Given a secret key $sk$ and an input $\alpha$, $\mathsf{VRFHash}(sk, \alpha)$ produces a unique valid output.
-    \item \textbf{Collision}: Resistance It is computationally hard to find two inputs $\alpha$ and $\alpha'$ that $\mathsf{VRFHash}(sk, \alpha) = \mathsf{VRFHash}(sk, \alpha')$.
+    \item \textbf{Collision Resistance}: It is computationally hard to find two inputs $\alpha$ and $\alpha'$ that $\mathsf{VRFHash}(sk, \alpha) = \mathsf{VRFHash}(sk, \alpha')$.
     \item \textbf{Pseudorandomness}: It is computationally hard to distinguish the output of $\mathsf{VRFHash}(sk, \alpha)$ from a random string if not knowing the corresponding public key $pk$ and proof $\pi$.
 \end{itemize}
 
