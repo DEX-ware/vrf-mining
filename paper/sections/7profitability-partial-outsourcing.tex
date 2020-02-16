@@ -58,12 +58,14 @@ By increasing the share difficulty, the pool operator will receive fewer shares 
 
 We model the maximum hashrate the pool operator can support as follows.
 Consider a pool operator with bandwidth $BW$ (in Bytes/s), and the pool operator can achieve optimal bandwidth utilisation on mining.
+Assume the pool operator should transfer $N$ bytes per hash.
+Thus, the maximum hashrate is
+
+$$\text{Maximum bandwidth} = \frac{BW}{B}$$
+
 Either a $H_1(\cdot)$ hash and a $\gamma$ (a point on the elliptic curve) at least takes 32 bytes.
 If outsourcing both $H_1(\cdot)$ and $H_2(\cdot)$, the maximum hashrate the pool operator can support is $\text{Maximum Hashrate} = \frac{BW}{64} (h/s)$.
 If outsourcing only one of them, the maximum hashrate is $\text{Maximum Hashrate} = \frac{BW}{32} (h/s)$.
-
-% hashrate data https://www.coinwarz.com/cryptocurrency?sort=hashrate&dir=desc
-% aws bandwidth data https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html
 
 \begin{figure}[htp]
     \centering
