@@ -5,22 +5,46 @@ To the best of our knowledge, VRF-based mining is the first construction that ma
 In this section, we briefly review related research on preventing mining pools, and compare them with VRF-based mining.
 We classify related research to two types, namely mining protocols trying to address pooled mining, and decentralised mining pools.
 
-\subsection{Mining protocols}
-
-\begin{table}[]
+\begin{table*}[]
+    \caption{Comparison with related work.}
+    \renewcommand\arraystretch{1.5}
+    \footnotesize
     \centering
-    \caption{Comparison between mining protocols.}
-    \begin{tabular}{lllll}
-        \hline
-                            & VRF-based mining & Puzzle-1~\cite{miller2015nonoutsourceable} & Puzzle-2~\cite{miller2015nonoutsourceable} & 2P-PoW~\cite{2P-PoW} \\ \hline
-        Punishment          & Wallet           & New reward                                 & New reward                                 & Wallet               \\
-        Stealing            & Unlinkable       & Linkable                                   & Unlinkable                                 & Unlinkable           \\
-        No part. out.       & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
-        No need deter. sig. & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
-        No compl. crypto.   & \cmark           & \cmark                                     & \xmark                                     & \cmark               \\ \hline
-    \end{tabular}
-    \label{table:comparison-mining-protocols}
-\end{table}
+
+    \begin{subtable}[t]{\linewidth}
+        \centering
+        \caption{Comparison between mining protocols.}
+        \begin{tabular}{lllll}
+            \hline
+                                          & VRF-based mining & Puzzle-1~\cite{miller2015nonoutsourceable} & Puzzle-2~\cite{miller2015nonoutsourceable} & 2P-PoW~\cite{2P-PoW} \\ \hline
+            Punishment                    & Wallet           & New reward                                 & New reward                                 & Wallet               \\
+            Stealing                      & Unlinkable       & Linkable                                   & Unlinkable                                 & Unlinkable           \\
+            No partial outsourcing        & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
+            Support randomised signatures & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
+            No complex cryptography       & \cmark           & \cmark                                     & \xmark                                     & \cmark               \\ \hline
+        \end{tabular}
+        \label{table:comparison-mining-protocols}
+    \end{subtable}
+
+    \quad
+
+    \begin{subtable}[t]{\linewidth}
+        \centering
+        \caption{Comparison with decentralised mining pools.}
+        \begin{tabular}{ccccc}
+            \hline
+                             & VRF-based mining & P2Pool~\cite{voight2011p2pool} & SmartPool~\cite{luu2017smartpool} & BetterHash~\cite{draft-bip-BetterHash} \\ \hline
+            Complexity       & -                & Blockchain                     & Smart contract                    & -                                      \\
+            Decentralisation & Mining           & Mining                         & Mining                            & Select txs                             \\ \hline
+        \end{tabular}
+        \label{table:comparison-pools}
+    \end{subtable}
+
+    \label{tab:comparisons}
+\end{table*}
+
+
+\subsection{Mining protocols}
 
 There are two mining protocols aiming at discouraging or breaking mining pools: the \textit{non-outsourceable scratch-off puzzle}~\cite{miller2015nonoutsourceable} and the \textit{Two Phase Proof-of-Work} (\textit{2P-PoW})~\cite{2P-PoW}.
 Table~\ref{table:comparison-mining-protocols} summarises our comparisons.
@@ -63,18 +87,6 @@ Moreover, how to adjust two difficulties still remains unknown and requires some
 
 
 \subsection{Decentralised mining pools}
-
-\begin{table}[]
-    \centering
-    \caption{Comparison with decentralised mining pools.}
-    \begin{tabular}{ccccc}
-        \hline
-                         & VRF-based mining & P2Pool~\cite{voight2011p2pool}             & SmartPool~\cite{luu2017smartpool}      & BetterHash~\cite{draft-bip-BetterHash} \\ \hline
-        Complexity       & -                & Blockchain & Smart contract & -          \\
-        Decentralisation & Mining           & Mining             & Mining         & Select txs \\ \hline
-    \end{tabular}
-    \label{table:comparison-pools}
-\end{table}
 
 
 % ref: https://www.alexeizamyatin.me/files/Decentralized_Mining-Security_and_Attacks.pdf
