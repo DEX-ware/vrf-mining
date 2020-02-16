@@ -48,11 +48,34 @@ For the pool operator, he can earn some fees from the miners.
 For the miners, they can stabilise their revenue from mining.
 
 Even if they trust each other, partial outsourcing can still be unprofitable.
-This is because of the second obstacle: the I/O overhead.
-In hash-based mining, the pool operator only sends and receives constant-size data for each task.
-To outsource $H_1(\cdot)$, the pool operator should receive all $H_1(\cdot)$ hashes computed by the miner.
-To outsource $H_2(\cdot)$, the pool operator should send all $\gamma$s to the miner.
+VRF-based mining can be extremely I/O intensive, while the pool operator's server suffers from limited bandwidth.
+To outsource a single $H_1(\cdot)$ in VRF-based mining, the pool operator should at least receive a $H_1(\cdot)$ hash from the miner
+To outsource a single $H_2(\cdot)$, the pool operator should at least send a $\sigma$ to the miner.
+% hash based mining does not suffer from this problem
+Hash-based mining does not suffer from this problem.
+In hash-based mining, the pool operator only sends and receives constant-size data for each share.
+By increasing the share difficulty, the pool operator will receive fewer shares and support more miners.
 
-To make VRF-based mining maximally I/O-intensive, the mining algorithm embedded in VRFs should be lightweight.
-Given the total mining power from miners, if the VRF is lightweight, the network hashrate will be higher.
-With higher hashrate, the pool operator and the miners will exchange more data, leading to more communication overhead.
+We model the maximum hashrate the pool operator can support as follows.
+Consider a pool operator with bandwidth $BW$ (in Bytes/s), and the pool operator can achieve optimal bandwidth utilisation on mining.
+Either a $H_1(\cdot)$ hash and a $\gamma$ (a point on the elliptic curve) at least takes 32 bytes.
+If outsourcing both $H_1(\cdot)$ and $H_2(\cdot)$, the maximum hashrate the pool operator can support is $\text{Maximum Hashrate} = \frac{BW}{64} (h/s)$.
+If outsourcing only one of them, the maximum hashrate is $\text{Maximum Hashrate} = \frac{BW}{32} (h/s)$.
+
+% hashrate data https://www.coinwarz.com/cryptocurrency?sort=hashrate&dir=desc
+% aws bandwidth data https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=\linewidth]{figs/max-hashrate.eps}
+    \caption{Server bandwidth v.s. maximum hashrate.
+    Data of server bandwidth and hashrate were fetched from \cite{aws} and \cite{coinwarz}.}
+    \label{fig:max-hashrate}
+\end{figure}
+
+Figure~\ref{fig:max-hashrate} shows relationship between the pool operator's network bandwidth maximum and the maximum hashrate.
+The result shows that, even a server with most bandwidth from AWS (I3EN Metal with 3,500 MB/s) can only support less than $\frac{1}{10}$ of Monero's total mining power.
+Within those mainstream cryptocurrencies, Monero's hashrate is the least.
+Even if the pool operator rents a cluster of I3EN Metal machines for more bandwidth, I3EN Metal is quite expensive (10.848 USD per hour), leading to high expense of maintaining a mining pool.
+Therefore, partial outsourcing in VRF-based mining is costly and unrealistic.
+By embedding lightweight mining algorithms in VRFs such as SHA256D, VRF-based mining can be maximally I/O-intensive.
