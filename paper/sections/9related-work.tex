@@ -67,7 +67,7 @@ Miners can steal the mining reward by repetitively searching for a valid nonce (
 However, in this protocol, all miners with the same view of the blockchain share the same search space of nonces, as the search space of nonces only relies on the previous block hash, rather than both the previous block hash and the block template like in Bitcoin.
 By exploiting this fact, the pool operator can identify the miner who steals the mining reward.
 For example, the pool operator can link the nonce in the stolen block with the miner who takes charge of the search space covering this nonce.
-To achieve the \textbf{Strong non-outsourceability} (i.e., make the stealing behaviours anonymous), the strong non-outsourceable scratch-off puzzle replaces the plaintext nonce in the block with a Zero Knowledge Proof proving the statement ``I know a valid nonce''.
+To achieve \textbf{Strong non-outsourceability} (i.e., make the stealing behaviours anonymous), the strong non-outsourceable scratch-off puzzle replaces the plaintext nonce in the block with a Zero Knowledge Proof proving the statement ``I know a valid nonce''.
 
 As discussed in \S\ref{sec:non_outsourceability}, compared to the non-outsourceable scratch-off puzzle, our VRF-based mining achieves stronger non-outsourceability, and is more efficient and simpler to implement.
 
