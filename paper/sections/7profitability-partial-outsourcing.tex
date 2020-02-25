@@ -1,7 +1,7 @@
 \section{Profitability of partial outsourcing}
 \label{sec:partial-outsourcing}
 
-The pool operator may still have opportunity to outsource mining partially.
+The pool operator may still have opportunity to partially outsource mining.
 $\mathsf{VRFHash}$ consists of three steps: $h \gets H_1(\alpha)$, $\gamma \gets h^{sk}$ and $\beta \gets H_2(\gamma)$.
 The non-outsourceability is from the second step $\gamma = h^{sk}$, as it requires the knowledge of the pool operator's secret key $sk$.
 The pool operator can outsource the first step $h = H_1(\alpha)$ by distributing different $\alpha$s to miners, and also the last step $\beta = H_2(\gamma)$ by distributing different $\gamma$s to miners.
@@ -36,18 +36,20 @@ Similarly, the pool operator optionally verifies the correctness of each of $\Ga
 
 The first obstacle of partial outsourcing is verifying hashes from miners.
 If the pool operator does not trust miners, he should verify both $H_1(\cdot)$ and $H_2(\cdot)$ hashes from miners.
-Outsourcing $H_1(\cdot)$ is symmetric: The pool operator should verify all of $h_1, h_2, \dots, h_m$.
-Outsourcing $H_2(\cdot)$ is asymmetric: The pool operator should only verify $\Sigma$ i.e., $\sigma$s satisfying $PoolTarget$.
-This introduces significant overhead, and makes outsourcing less profitable than mining by himself for the pool operator.
+For outsourcing $H_1(\cdot)$, the pool operator should verify all of $h_1, h_2, \dots, h_m$.
+For outsourcing $H_2(\cdot)$, The pool operator should verify $\sigma$s satisfying $PoolTarget$.
+This introduces significant overhead, which is equivalent to mining by the pool operator himself.
+Thus, partial outsourcing unprofitable.
 
 
 \subsection{Partial outsourcing is I/O intensive}
 
+To workaround the verification overhead, the pool operator and the miners should trust each other.
 The pool operator and miners are still possible to collaborate, as pooled mining is beneficial for them.
 For the pool operator, he can earn some fees from the miners.
 For the miners, they can stabilise their revenue from mining.
 
-Even if they trust each other, partial outsourcing can still be unprofitable.
+However, even if they trust each other, partial outsourcing can still be unprofitable.
 VRF-based mining can be extremely I/O intensive, while the pool operator's server suffers from limited bandwidth.
 To outsource a single $H_1(\cdot)$ in VRF-based mining, the pool operator should at least receive a $H_1(\cdot)$ hash from the miner
 To outsource a single $H_2(\cdot)$, the pool operator should at least send a $\sigma$ to the miner.

@@ -14,7 +14,7 @@
 \subsection{Revised definitions}
 
 Miller et al. \cite{miller2015nonoutsourceable} first formalises cryptocurrency mining as scratch-off puzzles, and formally defines non-outsourceability.
-In particular, they define two levels of non-outsourceability, namely \textbf{Weak non-outsourceability} and \textbf{Strong non-outsourceability}.
+They define two levels of non-outsourceability, namely \textbf{Weak non-outsourceability} and \textbf{Strong non-outsourceability}.
 
 \begin{itemize}
     \item \textbf{Weak non-outsourcability}: If the pool operator outsources the mining process, miners can always steal the reward of mining.
@@ -23,9 +23,9 @@ In particular, they define two levels of non-outsourceability, namely \textbf{We
 
 Basically, \textbf{Weak non-outsourceability} defines the punishment of outsourcing, while \textbf{Strong non-outsourceability} covers both the punishment and the anonymity of malicious miners.
 We call the property defining the punishment of outsourcing \textbf{Punish-mining-reward}.
-The anonymity of malicious miners defined in~\cite{miller2015nonoutsourceable} is a special case of \textbf{Transaction Unlinkability}~\cite{van2013cryptonote}: given two arbitrary transactions, distinguishing whether they have the same output address requires knowing the private keys holding their outputs.
-To steal the mining reward, the miner should create a transaction, of which the input is the mining reward and the output is his owned address.
-Identifying who steals the mining reward is equivalent to finding out who holds the output address, and we call the property making such attempt infeasible \textbf{Stealing-unlinkability}.
+The anonymity of malicious miners defined in~\cite{miller2015nonoutsourceable} is a special case of \textbf{Transaction Unlinkability}~\cite{van2013cryptonote}: Given two arbitrary transactions, it is hard to know whether their outputs belong to the same secret key.
+To steal the mining reward in \cite{miller2015nonoutsourceable}, the miner should create a transaction, of which the input is the mining reward and the output points to his address.
+Finding out who steals the mining reward is equivalent to finding out the address holding the output, and we call the property making such attempt infeasible \textbf{Stealing-unlinkability}.
 
 
 \subsection{Punish-secret-key-leakage}
