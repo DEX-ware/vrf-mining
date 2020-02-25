@@ -12,12 +12,72 @@ We also show that making VRF fast can make VRF-based mining even more costly.
 
 \subsection{Partial outsourcing in VRF-based mining}
 
-\begin{figure}[htp]
+\begin{figure}[]
     \centering
-    \includegraphics[width=\linewidth]{figs/outsource-vrf.png}
+    \begin{msc}{}
+        \setlength{\envinstdist}{2.5cm}
+
+        \setlength{\instdist}{4cm}
+        \setlength{\instwidth}{1.5cm}
+        
+        \declinst{pool}{}{Pool}
+        \declinst{miner}{}{Miner}
+
+        \action*{\parbox{4.5cm}{
+            Get block template $t$\\
+            Get pool mining difficulty $PT$\\
+            Get nonce interval $[n_1, n_m]$
+        }}{pool}
+
+        \nextlevel[4]
+        \mess{$n_1, n_m, t$}{pool}{miner}
+
+        \nextlevel
+        \action*{\parbox{3cm}{
+            For all $k \in [1, m]$\\
+            \tab $h_k \gets H_1(t||n_k)$
+        }}{miner}
+
+        \nextlevel[3]
+        \mess{$h_1, h_2, \dots, h_m$}{miner}{pool}
+
+        \nextlevel
+        \action*{\parbox{3.8cm}{
+            For all $k \in [1, m]$\\
+            \tab Check if $h_k = H(t||n_k)$\\
+            \tab $\gamma_k \gets {h_k}^{sk}$
+        }}{pool}
+
+        \nextlevel[5]
+        \mess{$\gamma_1, \gamma_2, \dots, \gamma_m, PT$}{pool}{miner}
+
+        \nextlevel
+        \action*{\parbox{3.5cm}{
+            $\Gamma \gets []$\\
+            For all $k \in [1, m]$\\
+            \tab $out_k \gets H_2(\gamma_k)$\\
+            \tab if $out_k < PT$\\
+            \tab\tab Append $\gamma_k$ to $\Gamma$
+        }}{miner}
+
+        \nextlevel[6]
+        \mess{$\Gamma$}{miner}{pool}
+
+        \nextlevel
+        \action*{\parbox{4.5cm}{
+            (Optional) For all $\gamma_j \in \Gamma$\\
+            \tab Check if $\gamma_j \in (\gamma_1, \dots, \gamma_m)$\\
+            \tab if $H_2(\gamma_j) < PT$\\
+            \tab\tab Mined a share 
+        }}{pool}
+
+        \nextlevel[5]
+
+    \end{msc}
     \caption{Partial outsourcing in VRF-based mining.}
     \label{fig:outsource-vrf}
 \end{figure}
+
 
 Figure~\ref{fig:outsource-vrf} describe the process of outsourcing $H_1(\cdot)$ and $H_2(\cdot)$.
 In VRF-based mining, the second step $h^{sk}$ is non-outsourceable, but the pool operator can outsource $H_1(\cdot)$ or $H_2(\cdot)$ interactively.
