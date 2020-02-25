@@ -87,8 +87,8 @@ After that, the miner computes $H_1(\cdot)$ with each nonce in $[n_1, n_m]$ as i
 If the pool operator does not trust miners (which reflects to the real world), he will verify these $H_1(\cdot)$ hashes before the second step i.e., multiplying each hash with his secret key $sk$.
 
 After the second step, the pool operator obtains a series of $(\gamma_1, \gamma_2, \dots, \gamma_m)$, and he can outsource $H_2(\cdot)$ as follows.
-The pool operator first sends these $\gamma$s as well as the pool difficulty $PoolTarget$ to the miner.
-Then, the miner calculates $H_2(\cdot)$ hashes of these $\gamma$s, compare the hashes with $PoolTarget$, and sends back $\gamma$s that satisfy the difficulty (denoted as $\Gamma$).
+The pool operator first sends these $\gamma$s as well as the pool difficulty $PT$ to the miner.
+Then, the miner calculates $H_2(\cdot)$ hashes of these $\gamma$s, compare the hashes with $PT$, and sends back $\gamma$s that satisfy the difficulty (denoted as $\Gamma$).
 Similarly, the pool operator optionally verifies the correctness of each of $\Gamma$, and accumulates the mined shares to the miner's total contribution.
 
 
@@ -97,7 +97,7 @@ Similarly, the pool operator optionally verifies the correctness of each of $\Ga
 The first obstacle of partial outsourcing is verifying hashes from miners.
 If the pool operator does not trust miners, he should verify both $H_1(\cdot)$ and $H_2(\cdot)$ hashes from miners.
 For outsourcing $H_1(\cdot)$, the pool operator should verify all of $h_1, h_2, \dots, h_m$.
-For outsourcing $H_2(\cdot)$, The pool operator should verify $\sigma$s satisfying $PoolTarget$.
+For outsourcing $H_2(\cdot)$, The pool operator should verify $\sigma$s satisfying $PT$.
 This introduces significant overhead, which is equivalent to mining by the pool operator himself.
 Thus, partial outsourcing unprofitable.
 

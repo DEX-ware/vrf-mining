@@ -63,13 +63,13 @@ For example, Bitcoin controls the difficulty of finding a nonce by specifying th
 \end{figure}
 
 In a mining pool, the pool operator outsources the mining process by allowing miners to find nonces for him.
-First, a pool operator specifies the pool difficulty $PoolTarget$ - a difficulty lower than the blockchain network - and a search interval $[n_1, n_m]$ of nonces.
-Then, the pool operator sends the block template $t$, $PoolTarget$, $n_1$ and $n_m$ to the miner, and the miner starts to find a nonce in $[n_1, n_m]$ which satisfies $PoolTarget$.
+First, a pool operator specifies the pool difficulty $PT$ - a difficulty lower than the blockchain network - and a search interval $[n_1, n_m]$ of nonces.
+Then, the pool operator sends the block template $t$, $PT$, $n_1$ and $n_m$ to the miner, and the miner starts to find a nonce in $[n_1, n_m]$ which satisfies $PT$.
 Once finding a valid nonce $n_k$, the miner sends $n_k$ back to the pool operator.
-The pool operator then verifies whether $n_k$ produces a hash satisfying $PoolTarget$, and records the miner's contribution (a.k.a. a share) if valid.
+The pool operator then verifies whether $n_k$ produces a hash satisfying $PT$, and records the miner's contribution (a.k.a. a share) if valid.
 After a time period (say 24 hours), the pool operator calculates the total contribution of each miner, and distributes the mining reward to miners according to their submitted shares.
 % why stable
-As $PoolTarget$ is easier to solve, calculating the mining power of a miner using shares is more fine-grained than using blocks.
+As $PT$ is easier to solve, calculating the mining power of a miner using shares is more fine-grained than using blocks.
 In this way, each miner is rewarded in a more fine-grained way, so more stably.
 
 
