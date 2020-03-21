@@ -42,7 +42,7 @@ Our contributions are as follows:
 \textbf{We propose the idea of VRF-based mining, and describe its detailed construction.} 
 We replace the hash function in PoW-based consensus with a VRF, and a block in the blockchain should contain the VRF hash and its proof, but does not need to contain the digital signature. Verifying the VRF hash can prove both the correctness of the hash and the authorship of the block in the same time.
 
-\textbf{We revisit the definition of non-outsourceable cryptocurrency mining.} In particular, we show non-outsourceability consists of punishing pool operators and the unaccountability of punishing. We then show how VRF-based mining achieves stronger punishment of outsourcing than non-outsourceable scratch-off puzzle of Miller et al.~\cite{miller2015nonoutsourceable}.
+\textbf{We revisit the definition of non-outsourceable cryptocurrency mining.} In particular, we show non-outsourceability consists of punishing pool operators and the unaccountability of punishing. We then show how VRF-based mining achieves the same level of non-outsourceability as Miller et al.~\cite{miller2015nonoutsourceable}.
 
 \textbf{We discuss how to instantiate VRFs for VRF-based mining.} VRF has four tweakable components, namely the elliptic curve and two hash functions mapping strings from/to elliptic curve elements, and a normal hash function. We discuss considerations on choosing them for VRF-based mining.
 
