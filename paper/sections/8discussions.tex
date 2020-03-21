@@ -27,36 +27,42 @@ For example, proposals on blockchain scalability such as sharding~\cite{wang2019
 
 
 
-\subsection{High orphan block rate}
+% \subsection{High orphan block rate}
 
-Another problem is the high orphan block rate.
-Due to the network latency, miners may mine blocks on the same height, but the blockchain will only accept one block and discard the rest blocks at last.
-Such discarded blocks are called orphan blocks, and orphan blocks cannot obtain any mining reward.
-As miners cannot mine together with VRF-mining, there will be more miners in the blockchain, leading to more orphan blocks.
-With higher orphan block rate, miners will waste more mining power and obtain less mining reward.
-Similar to high reward variance, miners will be discouraged to mine with high orphan blocks, which weakens the security of PoW-based consensus.
+% Another problem is the high orphan block rate.
+% Due to the network latency, miners may mine blocks on the same height, but the blockchain will only accept one block and discard the rest blocks at last.
+% Such discarded blocks are called orphan blocks, and orphan blocks will not receive mining reward or only receive a part of mining reward.
+% As miners cannot mine together with VRF-mining, there will be more miners in the blockchain, which leads to more orphan blocks in the presence of block propagation delay.
+% With higher orphan block rate, miners will waste more mining power and obtain less mining reward.
+% Similar to high reward variance, miners will be discouraged to mine with high orphan blocks, which weakens the security of PoW-based consensus.
 
-An approach that has already been deployed is rewarding orphan blocks instead of discarding them.
-Ethereum~\cite{wood2014ethereum} adapts the GHOST protocol and introduces uncle blocks.
-In GHOST, orphan blocks can be included in the blockchain as uncle blocks, and miners finding uncle blocks will obtain mining reward, but less than normal blocks.
+% An approach that has already been deployed is rewarding orphan blocks instead of discarding them.
+% Ethereum~\cite{wood2014ethereum} adapts the GHOST protocol and introduces uncle blocks.
+% In GHOST, orphan blocks can be included in the blockchain as uncle blocks, and miners finding uncle blocks will obtain mining reward, but less than normal blocks.
 
-Another approach is to accelerate the block propagation to let miners know the latest block as soon as possible.
-BIP-152~\cite{corallo2016bip} introduces the block relay protocol.
-In the block relay protocol, miners synchronise their transaction pools in a real-time manner.
-Once finding a block, the miner only broadcasts the compact version of it.
-The compact block includes the block header and hashes of transactions in it, but does not include the transaction content.
-Upon receiving a compact block, the miner reconstructs the block by matching transactions in his transaction pool with transaction hashes.
-As the compact block is much smaller than the full block, broadcasting compact blocks can be much faster, and miners will be less possible to mine on earlier blocks.
-Following BIP-152, several proposals on accelerating the block propagation have been proposed~\cite{ozisik2019graphene}\cite{klarman2018bloxroute}\cite{naumenko2019bandwidth}.
+% Another approach is to accelerate the block propagation to let miners know the latest block as soon as possible.
+% BIP-152~\cite{corallo2016bip} introduces the block relay protocol.
+% In the block relay protocol, miners synchronise their transaction pools in a real-time manner.
+% Once finding a block, the miner only broadcasts the compact version of it.
+% The compact block includes the block header and hashes of transactions in it, but does not include the transaction content.
+% Upon receiving a compact block, the miner reconstructs the block by matching transactions in his transaction pool with transaction hashes.
+% As the compact block is much smaller than the full block, broadcasting compact blocks can be much faster, and miners will be less possible to mine on earlier blocks.
+% Following BIP-152, several proposals on accelerating the block propagation have been proposed~\cite{ozisik2019graphene}\cite{klarman2018bloxroute}\cite{naumenko2019bandwidth}.
+
 
 \subsection{Secret key leakage in memory}
 
 Different from hash-based mining, in VRF-based mining the secret key is kept in plaintext in memory all the time, as mining requires the secret key. This gives opportunity for adversaries to steal the secret key from the memory. For instance, the mining software has a bug, and the hacker can exploit this bug (even without logging in to the mining machine) to access the memory space of the mining software. In this way, the hacker can easily steal the secret key.
 
 % why inevitable
-Unfortunately, keeping the secret key in memory is inevitable. To achieve non-outsourceability, the secret key should be combined to the mining process. As long as the mining is continuous and endless, the process should keep the plaintext secret key in memory. Not only VRF-based mining, but also all protocols combining the secret key to mining suffer from this issue.
+Unfortunately, keeping secret keys in memory is inevitable for VRF-based mining. To achieve non-outsourceability, the secret key should be combined to the mining process. As long as the mining is continuous and endless, the process should keep the plaintext secret key in memory. Not only VRF-based mining, but also all protocols combining the secret key to mining suffer from this issue.
 
-There are several different ways to protect secret keys in memory.
+Nevertheless, keeping secret keys in memory does not make VRF-based mining to be impractical.
+VRF-based mining is not the only protocol that requires in-memory secret keys.
+For example, TLS protocol requires servers to keep secret keys of their SSL certificates in memory.
+Also, the miner can use a new secret key for each block, so leaking a secret key does not lead to the stealing of mining reward in the future.
+
+There have been several different ways to protect in-memory secret keys.
 % enclave
 First, the miner can isolate the scalar multiplication to a software or hardware enclave. Note that the encalves are unnecessary to be general-purpose. Moreover, the process of the mining software can proactively destroy itself once detecting anomalous memory access attempts.
 % isolation
@@ -67,3 +73,4 @@ In addition, he can run the mining process in an offline machine that can only c
 % oram
 Moreoever, Oblivious RAM (ORAM) is a promising primitive to protect sensitive data in memory.
 ORAM allows CPUs to access data in memory while the data in memory is encrypted and the access pattern is hidden.
+

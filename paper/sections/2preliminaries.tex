@@ -4,14 +4,14 @@
 \subsection{Cryptocurrency mining}
 
 
-A miner mines on a blockchain with PoW-based consensus by solving PoW puzzles.
-The PoW puzzle is usually constructed using cryptographic hash functions, and works as follows.
+A miner mines on a blockchain with PoW-based consensus by solving crypto puzzles.
+The crypto puzzle is usually constructed using cryptographic hash functions, and works as follows.
 % how mining works
 First, a miner constructs a block template $t$, which consists of transactions to include, hash of the last block, and other block metadata.
-Second, the miner should find a nonce $n$ which makes the hash of $t || n$ to satisfy a difficulty parameter.
+Second, the miner should find a nonce $n$ such that the hash of $t || n$ is smaller than a difficulty parameter.
 Once the miner find a valid nonce, he can append this block to the blockchain.
 % how diff works
-To solve a PoW puzzle, miners can only repetitively hash different nonces until finding a hash satisfying the difficulty parameter.
+To solve a PoW puzzle, miners iteratively computes hash values of different nonces until finding a hash satisfying the difficulty parameter.
 The difficulty can be parametrised by limiting the interval of hashes.
 For example, Bitcoin controls the difficulty of finding a nonce by specifying the number of leading zeros of hashes.
 
@@ -85,7 +85,7 @@ Formally, a VRF consists of four algorithms: $\mathsf{VRFKeyGen}$, $\mathsf{VRFH
     \item $\mathsf{VRFKeyGen}(1^{\lambda}) \to (sk, pk)$: On input a security parameter $1^{\lambda}$, outputs the secret/public key pair $(sk, pk)$.
     \item $\mathsf{VRFHash}(sk, \alpha) \to \beta $: On input $sk$ and an arbitrary-length string $\alpha$, outputs a fixed-length hash $\beta$.
     \item $\mathsf{VRFProve}(sk, \alpha) \to \pi$: On input $sk$ and $\alpha$, outputs the proof $\pi$ for $\beta$.
-    \item $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi) \to \{0, 1\}$: On input $pk$, $\alpha$, $\beta$, $\pi$, outputs the verification result 0 or 1.
+    \item $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi) \to \{True, False\}$: On input $pk$, $\alpha$, $\beta$, $\pi$, outputs the verification result $True$ or $False$.
 \end{itemize}
 
 % refer https://tools.ietf.org/pdf/draft-goldbe-vrf-01.pdf

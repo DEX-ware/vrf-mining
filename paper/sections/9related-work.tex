@@ -17,7 +17,7 @@ We classify related research to two types, namely mining protocols trying to add
         \begin{tabular}{ccccc}
             \hline
                                           & VRF-based mining & Puzzle-1~\cite{miller2015nonoutsourceable} & Puzzle-2~\cite{miller2015nonoutsourceable} & 2P-PoW~\cite{2P-PoW} \\ \hline
-            Punishment                    & SK leakage           & New reward                                 & New reward                                 & SK leakage               \\
+            Punishment                    & New reward           & New reward                                 & New reward                                 & New reward               \\
             Stealing                      & Unlinkable       & Linkable                                   & Unlinkable                                 & Unlinkable           \\
             No partial outsourcing        & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
             Support randomised signatures & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
@@ -69,7 +69,7 @@ By exploiting this fact, the pool operator can identify the miner who steals the
 For example, the pool operator can link the nonce in the stolen block with the miner who takes charge of the search space covering this nonce.
 To achieve \textbf{Strong non-outsourceability} (i.e., make the stealing behaviours anonymous), the strong non-outsourceable scratch-off puzzle replaces the plaintext nonce in the block with a Zero Knowledge Proof proving the statement ``I know a valid nonce''.
 
-As discussed in \S\ref{sec:non_outsourceability}, compared to the non-outsourceable scratch-off puzzle, our VRF-based mining achieves stronger non-outsourceability, and is more efficient and simpler to implement.
+As discussed in \S\ref{sec:non_outsourceability}, while being simpler and more efficient than non-outsourceable scratch-off puzzle, our VRF-based mining achieves \textbf{Strong non-outsourceability}.
 
 \textbf{2P-PoW.}
 Eyal and Sirer proposes 2P-PoW~\cite{2P-PoW}, a mining protocol that discourages pooled mining.
