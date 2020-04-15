@@ -13,7 +13,7 @@ We introduce VRF-based mining, a surprisingly simple and effective way of making
 
 We thank the following people for insightful discussions and feedback (alphabetical order):
 
-- Cheng Wang
 - Omer Shlomovits 
 - John Trump
+- Cheng Wang
 - Jiangshan Yu
