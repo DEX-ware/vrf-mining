@@ -21,9 +21,6 @@
 # *.eps
 # *.pdf
 
-## Generated if empty string is given at "Please type another file name for output:"
-.pdf
-
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
 *.bcf
@@ -268,10 +265,14 @@ __latexindent_temp.tex
 .ipynb_checkpoints
 
 # go test intermediate files
-.test
 
 # sftp plugin config
 sftp-config.json
+
+
+## Generated if empty string is given at "Please type another file name for output:"
+.pdf
+!main.pdf
 
 main.ps
 
