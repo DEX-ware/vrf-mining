@@ -3,55 +3,59 @@
 
 Bitcoin~\cite{nakamoto2008bitcoin} started the era of cryptocurrency.
 % blockchain
-In Bitcoin, each participant maintains its own ledger, called blockchain.
-A blockchain is formed as a chain of blocks, and each block contains a batch of transactions.
-Blockchain is designed to be append-only.
+In Bitcoin, each participant maintains its own ledger.
+The ledger is structured as a blockchain, i.e., a chain of blocks of transactions.
 % proof of work
-Participants keep appending blocks to the blockchain.
-To add a new block, a participant should solve a Proof-of-Work (PoW)~\cite{dwork1992pricing} puzzle, which is computationally hard.
-Once solving the puzzle, the participant appends his block to the blockchain, and get some coins as reward.
-By adaptively adjusting the difficulty of PoW puzzles, PoW-based consensus can stabilise the speed of generating blocks.
+Participants keep executing Proof-of-Work (PoW)-based consensus to agree on blocks and append them to the blockchain.
+In PoW-based consensus, each participant keeps trying to solve a computationally hard PoW puzzle~\cite{dwork1992pricing}.
+Once solving the puzzle, the participant appends his block to the blockchain and gets some coins as reward.
+By adaptively adjusting the difficulty of PoW puzzles, PoW-based consensus can ensure only one participant solves the puzzle for each time period with high probability.
 Participants of PoW-based consensus are also known as miners, the process of solving PoW puzzles is known as mining, and the computation power used for mining is known as mining power.
 
 % why pooled mining
-Today, mining pools dominate the mining power of most blockchains using PoW-based consensus.
-Due to the limited rate of producing blocks, miners' rewards are highly volatile.
+Due to the limited rate of producing blocks, a miner's reward can be highly volatile if he chooses to mine by himself.
+To stabilise mining rewards, miners usually choose to join mining pools.
 A mining pool allows miners to mine on blockchain in the name of the pool operator, and the pool operator distributes the mining reward to solo miners in a fine-grained way.
-In this way, a miner can get reward more stably by joining a mining pool.
-
 % Problems of having mining pools
-However, mining pools lead to the centralisation of mining power, which contradicts Bitcoin's design objective - decentralisation.
+While miners are willing to participate in mining pools, mining pools are considered harmful to blockchain ecosystem.
+Mining pools lead to the centralisation of mining power, which contradicts Bitcoin's design objective - decentralisation.
 % problem of centralisation
 Mining power centralisation weakens PoW-based consensus' security.
-A mining pool with sufficient mining power can perform numerous types of attacks to break the consensus, such as selfish mining attacks~\cite{eyal2018majority} and 51\% attacks~\cite{nakamoto2008bitcoin}.
-In addition, mining pools can censor the blockchain by deciding which transactions to include.
+A mining pool with sufficient mining power can perform various attacks to break PoW-based consensus, such as selfish mining~\cite{eyal2018majority} and 51\% attacks~\cite{nakamoto2008bitcoin}.
+In addition, mining pools can censor transactions, i.e., decide which transactions to include in the blockchain.
 % to date...
-To date (01/12/2019), four largest mining pools control more than 51\% Bitcoin mining power~\cite{btc-com}, which can be a lurking threat of Bitcoin~\cite{yu2019repucoin, hansucker}.
+To date (01/12/2019), four largest mining pools control more than 51\% Bitcoin mining power~\cite{btc-com}, which can be a lurking threat to blockchain ecosystem.
 
+This paper introduces \textit{VRF-based mining}, a surprisingly simple but effective approach to make pooled mining impossible.
+VRF-based mining replaces hash functions in PoW-based consensus with Verifiable Random Functions (VRFs)~\cite{micali1999verifiable}.
+VRF requires a miner to input its secret key to compute the output, so a pool operator should reveal his secret key to miners in order to outsource mining.
+Thus, any miner can steal mining reward of a block owned by the pool operator anonymously.
+Concretely, our contributions are as follows.
 
+\textbf{VRF-based mining.} 
+We replace the hash function in PoW-based consensus with a VRF.
+A block in the blockchain should contain the VRF hash and its proof, but does not need to contain the digital signature.
+Verifying the VRF hash can prove both the correctness of the hash and the authorship of the block in the same time.
 
+\textbf{Non-outsourceability analysis.}
+Miller et al.~\cite{miller2015nonoutsourceable} first formalises the \emph{non-outsourceable} mining problem and its \emph{non-outsourceability} property.
+We find two orthogonal properties in \emph{non-outsourceability}, namely the punishment on pool operators and the unaccountability of punishing.
+We then show VRF-based mining achieves the strongest notion of \emph{non-outsourceability} defined in Miller et al.~\cite{miller2015nonoutsourceable}.
 
-\subsection{Our contributions.}
-In this work, we introduce \textit{VRF-based mining}, a surprisingly simple but effective approach to make pooled mining impossible.
-It employs Verifiable Random Functions (VRFs)~\cite{micali1999verifiable} rather than hash functions for mining.
-With VRF, mining takes one's secret key as input, so a pool operator should reveal his secret key to miners in order to outsource mining.
-In this way, any miner can steal mining reward of a block owned by the pool operator anonymously.
+\textbf{Instantiating VRF-based mining.}
+VRF has four customisable components, namely the elliptic curve, two hash functions between strings and elliptic curve elements, and a normal hash function.
+We discuss considerations on choosing them for VRF-based mining.
 
-Our contributions are as follows:
+\textbf{Feasibility of VRF-based mining.}
+We implement Elliptic curve-based VRF specified in~\cite{goldberg2017draft} using Go programming language, and compare its performance with three mainstream mining algorithms SHA256D, Scrypt and CryptoNight.
+Our results show that VRF-based mining is easy to implement and introduces little overhead.
 
-\textbf{We propose the idea of VRF-based mining, and describe its detailed construction.} 
-We replace the hash function in PoW-based consensus with a VRF, and a block in the blockchain should contain the VRF hash and its proof, but does not need to contain the digital signature. Verifying the VRF hash can prove both the correctness of the hash and the authorship of the block in the same time.
+\textbf{Partial outsourcing is unrealistic.}
+Partial outsourcing is that, a pool operator interactively outsources computation that does not need the secret key to miners.
+We show that partial outsourcing is unprofitable, as it's both computation-intensive and I/O-intensive.
+We also discuss how to instantiate VRFs to make it even more costly.
 
-\textbf{We revisit the definition of non-outsourceable cryptocurrency mining.} In particular, we show non-outsourceability consists of punishing pool operators and the unaccountability of punishing. We then show how VRF-based mining achieves the same level of non-outsourceability as Miller et al.~\cite{miller2015nonoutsourceable}.
-
-\textbf{We discuss how to instantiate VRFs for VRF-based mining.} VRF has four tweakable components, namely the elliptic curve and two hash functions mapping strings from/to elliptic curve elements, and a normal hash function. We discuss considerations on choosing them for VRF-based mining.
-
-\textbf{We evaluate the feasibility of VRF-based mining.} We implement Elliptic curve-based VRF (EC-VRF) specified in~\cite{goldberg2017draft} using Go programming language. We compare its performance with three mining algorithms (SHA256D, Scrypt and CryptoNight), and evaluate its performance. Our results show that VRF-based mining is easy to implement and introduces small overhead.
-
-\textbf{We show that partial outsourcing in VRF-based mining is unrealistic.} Partial outsourcing is that, a pool operator interactively outsources computation that does not need the secret key to miners. We show that partial outsourcing is unprofitable, as it's both computation-intensive and I/O-intensive. We also discuss how to instantiate VRFs to make it even more costly.
-
-
-\subsection{Paper organisation.}
+This paper is organised as follows.
 \S\ref{sec:preliminaries} and \S\ref{sec:construction} describes preliminaries and the construction of VRF-based mining, respectively.
 \S\ref{sec:non_outsourceability} revisits the definition of non-outsourceability, and shows VRF-based mining achieves better non-outsourceability than existing proposals.
 \S\ref{sec:instantiation} discusses concerns of instantiating VRFs for VRF-based mining.
