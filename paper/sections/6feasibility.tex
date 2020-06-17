@@ -18,17 +18,25 @@ We use open-source implementations basing on their popularity on \url{https://gi
 All experiments run on a MacBook Pro with a 2.2 GHz Intel Core i7 Processor and a 16 GB DDR4 RAM.
 For each group of experiment, we run an algorithm for ten times, then take the average data as the experimental results.
 
-
-
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figs/runtime-comparison.eps}
+        \caption{Comparing the runtime of VRF and other mining algorithms.}
+        \label{fig:runtime-comparison}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figs/runtime-breakdown.eps}
+        \caption{Runtime breakdown of $\mathsf{VRFHash}$.}
+        \label{fig:runtime-breakdown}
+    \end{subfigure}
+    \caption{Evaluation of VRF.}
+\end{figure}
 
 \subsection{Comparison between VRF and other mining algorithms}
-
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=\linewidth]{figs/runtime-comparison.eps}
-    \caption{Comparing the runtime of VRF and other mining algorithms.}
-    \label{fig:runtime-comparison}
-\end{figure}
 
 We compare the performance of VRF with other mining algorithms.
 Figure~\ref{fig:runtime-comparison} shows the runtime of VRF and other algorithms.
@@ -40,13 +48,6 @@ This means that VRF is easy to implement and introduces little overhead, so suit
 
 
 \subsection{Runtime breakdown of VRF}
-
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=\linewidth]{figs/runtime-breakdown.eps}
-    \caption{Runtime breakdown of $\mathsf{VRFHash}$.}
-    \label{fig:runtime-breakdown}
-\end{figure}
 
 We profile $\mathsf{VRFHash}$ by evaluating its runtime of each step.
 Figure~\ref{fig:runtime-breakdown} shows that, the elliptic curve scalar multiplication $\gamma \gets h^{sk}$ takes 88\% of $\mathsf{VRFHash}$'s running time.

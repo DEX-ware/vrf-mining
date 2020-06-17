@@ -21,46 +21,46 @@ For example, Bitcoin controls the difficulty of finding a nonce by specifying th
 
 \subsection{Mining pools}
 
-\begin{figure}[]
-    \centering
-    \begin{msc}{}
-        \setlength{\envinstdist}{2.5cm}
+% \begin{figure}[]
+%     \centering
+%     \begin{msc}{}
+%         \setlength{\envinstdist}{2.5cm}
 
-        \setlength{\instdist}{3.5cm}
-        \setlength{\instwidth}{1.5cm}
+%         \setlength{\instdist}{3.5cm}
+%         \setlength{\instwidth}{1.5cm}
         
-        \declinst{pool}{}{Pool}
-        \declinst{miner}{}{Miner}
+%         \declinst{pool}{}{Pool}
+%         \declinst{miner}{}{Miner}
 
-        \action*{\parbox{4.5cm}{
-            Get block template $t$\\
-            Get pool mining difficulty $PT$\\
-            Get nonce interval $[n_1, n_m]$
-        }}{pool}
+%         \action*{\parbox{4.5cm}{
+%             Get block template $t$\\
+%             Get pool mining difficulty $PT$\\
+%             Get nonce interval $[n_1, n_m]$
+%         }}{pool}
 
-        \nextlevel[4]
-        \mess{$n_1, n_m, t, PT$}{pool}{miner}
+%         \nextlevel[4]
+%         \mess{$n_1, n_m, t, PT$}{pool}{miner}
 
-        \nextlevel
-        \action*{\parbox{3.5cm}{
-            Find an $n_k \in [n_1, n_m]$ \\
-            that $H(t||n_k) < PT$ 
-        }}{miner}
+%         \nextlevel
+%         \action*{\parbox{3.5cm}{
+%             Find an $n_k \in [n_1, n_m]$ \\
+%             that $H(t||n_k) < PT$ 
+%         }}{miner}
 
-        \nextlevel[3]
-        \mess{$n_k$}{miner}{pool}
+%         \nextlevel[3]
+%         \mess{$n_k$}{miner}{pool}
 
-        \nextlevel
-        \action*{\parbox{3cm}{
-            (Optional) Check if \\
-            $H(t||n_k) < PT$
-        }}{pool}
+%         \nextlevel
+%         \action*{\parbox{3cm}{
+%             (Optional) Check if \\
+%             $H(t||n_k) < PT$
+%         }}{pool}
 
-        \nextlevel[2]
-    \end{msc}
-    \caption{Outsourcing in hash-based mining.}
-    \label{fig:outsource-original}
-\end{figure}
+%         \nextlevel[2]
+%     \end{msc}
+%     \caption{Outsourcing in hash-based mining.}
+%     \label{fig:outsource-original}
+% \end{figure}
 
 In a mining pool, the pool operator outsources the mining process by allowing miners to find nonces for him.
 First, a pool operator specifies the pool difficulty $PT$ - a difficulty lower than the blockchain network - and a search interval $[n_1, n_m]$ of nonces.
