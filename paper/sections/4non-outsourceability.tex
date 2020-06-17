@@ -1,34 +1,33 @@
 \section{Non-outsourceability analysis}
 \label{sec:non_outsourceability}
 
-In this section, we revisit existing definitions on non-outsourceability, and show that VRF-based mining achieves the same level of non-outsourceability as the state-of-the-art construction - the Strongly non-outsourceable scratch-off puzzle~\cite{miller2015nonoutsourceable}.
+In this section, we revisit existing definitions on \emph{non-outsourceability}, and show that VRF-based mining achieves the strongtest notion of \emph{non-outsourceability} defined in Miller et al.~\cite{miller2015nonoutsourceable}.
 
 \subsection{Revised definitions}
 
-Miller et al. \cite{miller2015nonoutsourceable} first formalise cryptocurrency mining as scratch-off puzzles, and formally define non-outsourceability.
-They define two levels of non-outsourceability, namely \textbf{Weak non-outsourceability} and \textbf{Strong non-outsourceability}.
+Miller et al. \cite{miller2015nonoutsourceable} first formalise cryptocurrency mining as \emph{scratch-off puzzles}, and formally define two levels of \emph{non-outsourceability}, namely \emph{weak non-outsourceability} and \emph{strong non-outsourceability}.
 
 \begin{itemize}
-    \item \textbf{Weak non-outsourcability}: If the pool operator outsources the mining process, miners can always steal the reward of mining.
-    \item \textbf{Strong non-outsourcability}: In addition to \textbf{Weak non-outsourcability}, the pool operator cannot link the stolen mining reward with the miner who steals it.
+    \item \emph{Weak non-outsourcability}: If the pool operator outsources the mining process, miners can always steal the reward of mining.
+    \item \emph{Strong non-outsourcability}: In addition to \emph{weak non-outsourcability}, the pool operator cannot link the stolen mining reward with the miner who steals it.
 \end{itemize}
 
-Basically, \textbf{Weak non-outsourceability} defines the punishment of outsourcing, while \textbf{Strong non-outsourceability} covers both the punishment and the anonymity of the stealer.
-We call the property defining the punishment of outsourcing \textbf{Punish-mining-reward}.
-The anonymity of thieves defined in~\cite{miller2015nonoutsourceable} is a special case of \textbf{Transaction Unlinkability}~\cite{van2013cryptonote}: Given two arbitrary transactions, it is hard to know whether their outputs belong to the same secret key.
+Basically, \emph{weak non-outsourceability} defines the punishment of outsourcing, while \emph{strong non-outsourceability} covers both the punishment and the anonymity of the stealer.
+We call the property defining the punishment of outsourcing \emph{punish-mining-reward}.
+The anonymity of thieves defined in~\cite{miller2015nonoutsourceable} is a special case of \emph{transaction unlinkability}~\cite{van2013cryptonote}: Given two arbitrary transactions, it is hard to know whether their outputs belong to the same secret key.
 To steal the mining reward in \cite{miller2015nonoutsourceable}, the miner should create a transaction, of which the input is the mining reward and the output points to his address.
-Finding out who steals the mining reward is equivalent to finding out the address holding the output, and we call the property making such attempt infeasible \textbf{Stealing-unlinkability}.
+Finding out who steals the mining reward is equivalent to finding out the address holding the output, and we call the property making such attempt infeasible \emph{stealing-unlinkability}.
 
 
 
 
 \subsection{Non-outsourceability of VRF-based mining}
 
-VRF-based mining achieves both \textbf{Punish-mining-reward} and \textbf{Stealing-unlinkability}.
+VRF-based mining achieves both \emph{punish-mining-reward} and \emph{stealing-unlinkability}.
 In VRF-based mining, the pool operator outsources mining by revealing his secret key to miners.
 The best thing the pool operator can do is to use a new secret for each block, and stealers can only steal the mining reward of a single block with a secret key.
-Thus, VRF-based mining achieves \textbf{Punish-mining-reward}.
-Similar with the Strongly non-outsourceable scratch-off puzzle~\cite{miller2015nonoutsourceable}, VRF-based mining achieves \textbf{Stealing-unlinkability} by allowing a stealer to use a freshly generated address to steal cryptocurrency.
+Thus, VRF-based mining achieves \emph{punish-mining-reward}.
+Similar with the Strongly non-outsourceable scratch-off puzzle~\cite{miller2015nonoutsourceable}, VRF-based mining achieves \emph{Stealing-unlinkability} by allowing a stealer to use a freshly generated address to steal cryptocurrency.
 To receive the stolen cryptocurrency of the pool operator, the stealer can create a new address, and construct a transaction of which the stolen cryptocurrency directs to this address.
 As this new address has no historical transactions, linking the transaction stealing cryptocurrency with other transactions can be impossible.
 Then the stealer can then spend his stolen cryptocurrency anonymously using numerous techniques, such as mixing services~\cite{maxwell2013coinjoin}\cite{bonneau2014mixcoin}\cite{ruffing2014coinshuffle}\cite{heilman2017tumblebit} and stealth addresses~\cite{van2013cryptonote}.

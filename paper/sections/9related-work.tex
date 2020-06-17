@@ -40,8 +40,8 @@ There are two mining protocols aiming at discouraging or breaking mining pools: 
 Table~\ref{table:comparison-mining-protocols} summarises our comparisons.
 
 \textbf{Non-outsourceable scratch-off puzzle.}
-Miller et al.~\cite{miller2015nonoutsourceable} formalises cryptocurrency mining as \textit{Scratch-off puzzles}, defines \textit{Non-outsourceable scratch-off puzzles}, and proposes two constructions.
-One of these two constructions achieves \textbf{Weak non-outsourceability} (i.e., miners can steal the mining reward), and the other achieves \textbf{Strong non-outsourceability} (i.e., miners can anonymously steal the mining reward).
+Miller et al.~\cite{miller2015nonoutsourceable} formalises cryptocurrency mining as \emph{scratch-off puzzles}, defines \emph{non-outsourceable scratch-off puzzles}, and proposes two constructions.
+One of these two constructions achieves \emph{weak non-outsourceability} (i.e., miners can steal the mining reward), and the other achieves \emph{strong non-outsourceability} (i.e., miners can anonymously steal the mining reward).
 
 In the weak non-outsourceable scratch-off puzzle, mining consists of three steps.
 First, the miner creates a Merkle tree randomly.
@@ -57,9 +57,9 @@ Miners can steal the mining reward by repetitively searching for a valid nonce (
 However, in this protocol, all miners with the same view of the blockchain share the same search space of nonces, as the search space of nonces only relies on the previous block hash, rather than both the previous block hash and the block template like in Bitcoin.
 By exploiting this fact, the pool operator can identify the miner who steals the mining reward.
 For example, the pool operator can link the nonce in the stolen block with the miner who takes charge of the search space covering this nonce.
-To achieve \textbf{Strong non-outsourceability} (i.e., make the stealing behaviours anonymous), the strong non-outsourceable scratch-off puzzle replaces the plaintext nonce in the block with a Zero Knowledge Proof proving the statement ``I know a valid nonce''.
+To achieve \emph{strong non-outsourceability} (i.e., make the stealing behaviours anonymous), the strong non-outsourceable scratch-off puzzle replaces the plaintext nonce in the block with a Zero Knowledge Proof proving the statement ``I know a valid nonce''.
 
-As discussed in \S\ref{sec:non_outsourceability}, while being simpler and more efficient than non-outsourceable scratch-off puzzle, our VRF-based mining achieves \textbf{Strong non-outsourceability}.
+As discussed in \S\ref{sec:non_outsourceability}, while being simpler and more efficient than non-outsourceable scratch-off puzzle, our VRF-based mining achieves \emph{strong non-outsourceability}.
 
 \textbf{2P-PoW.}
 Eyal and Sirer proposes 2P-PoW~\cite{2P-PoW}, a mining protocol that discourages pooled mining.
@@ -112,6 +112,6 @@ Verifying blocks introduces significant overhead on computing (so expensive tran
 
 
 
-\textbf{BetterHash}~\cite{draft-bip-BetterHash} is another decentralised mining protocol, which has been integrated into \textbf{Stratum V2}~\cite{stratum-v2}, the next generation of the \textit{Stratum}~\cite{stratum} pooled mining protocol.
+\textbf{BetterHash}~\cite{draft-bip-BetterHash} is another decentralised mining protocol, which has been integrated into \emph{Stratum V2}~\cite{stratum-v2}, the next generation of the \textit{Stratum}~\cite{stratum} pooled mining protocol.
 In \textit{BetterHash}, the block operator allows miners to choose transactions and construct blocks in his name, rather than constructing block templates by himself.
 Thus, \textit{BetterHash} only contributes to the decentralisation of constructing blocks, but does not contribute to the decentralisation of mining power.
