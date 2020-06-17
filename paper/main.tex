@@ -1,4 +1,4 @@
-\documentclass[conference]{IEEEtran}
+\documentclass[]{llncs}
 
 \usepackage{pgf,interval}
 
@@ -10,8 +10,6 @@
 \usepackage{tikz}
 \usepackage[ruled,vlined]{algorithm2e}
 \usepackage{algpseudocode}
-
-\usepackage{subcaption}
 
 \usepackage{msc}
 % \drawframe{no}
@@ -49,22 +47,23 @@
 
 \begin{document}
 
-\title{VRF-based mining\\
-\LARGE Simple non-outsourceable cryptocurrency mining\\
-\vspace*{5pt} \large  (Last update: \today{})}
+\title{
+  VRF-based mining\\
+  \large Simple non-outsourceable cryptocurrency mining\\
+  \vspace*{5pt} \large  (Last update: \today{})
+}
 
-\author{
-    \IEEEauthorblockN{
-        Runchao Han\IEEEauthorrefmark{1}\IEEEauthorrefmark{2}, 
-        Haoyu Lin\IEEEauthorrefmark{3}\IEEEauthorrefmark{4}, 
-        Jiangshan Yu\IEEEauthorrefmark{1}
-    }
-    \IEEEauthorblockA{
-        \IEEEauthorrefmark{1}Monash University
-        \IEEEauthorrefmark{2}CSIRO-Data61
-        \IEEEauthorrefmark{3}Bytom Foundation
-        \IEEEauthorrefmark{4}KZen Research
-    }
+
+\author{%
+Runchao Han\inst{1, 2}  \and 
+Haoyu Lin\inst{3, 4} \and
+Jiangshan Yu\inst{1}
+}%
+\institute{
+Monash University \and
+CSIRO-Data61 \and
+Bytom Foundation \and
+KZen Research
 }
 
 \maketitle

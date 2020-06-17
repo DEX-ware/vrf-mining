@@ -5,43 +5,33 @@ To the best of our knowledge, VRF-based mining is the first construction that ma
 In this section, we briefly review related research on preventing mining pools, and compare them with VRF-based mining.
 We classify related research to two types, namely mining protocols trying to address pooled mining, and decentralised mining pools.
 
-\begin{table*}[]
-    \caption{Comparison with related work.}
-    \renewcommand\arraystretch{1.5}
-    \footnotesize
+\begin{table}[t]
     \centering
+    \caption{Comparison between mining protocols.}
+    \begin{tabular}{ccccc}
+        \hline
+                                        & VRF-based mining & Puzzle-1~\cite{miller2015nonoutsourceable} & Puzzle-2~\cite{miller2015nonoutsourceable} & 2P-PoW~\cite{2P-PoW} \\ \hline
+        Punishment                    & New reward           & New reward                                 & New reward                                 & New reward               \\
+        Stealing                      & Unlinkable       & Linkable                                   & Unlinkable                                 & Unlinkable           \\
+        No partial outsourcing        & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
+        Support randomised signatures & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
+        No complex cryptography       & \cmark           & \cmark                                     & \xmark                                     & \cmark               \\ \hline
+    \end{tabular}
+    \label{table:comparison-mining-protocols}
+\end{table}
 
-    \begin{subtable}[t]{\linewidth}
-        \centering
-        \caption{Comparison between mining protocols.}
-        \begin{tabular}{ccccc}
-            \hline
-                                          & VRF-based mining & Puzzle-1~\cite{miller2015nonoutsourceable} & Puzzle-2~\cite{miller2015nonoutsourceable} & 2P-PoW~\cite{2P-PoW} \\ \hline
-            Punishment                    & New reward           & New reward                                 & New reward                                 & New reward               \\
-            Stealing                      & Unlinkable       & Linkable                                   & Unlinkable                                 & Unlinkable           \\
-            No partial outsourcing        & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
-            Support randomised signatures & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
-            No complex cryptography       & \cmark           & \cmark                                     & \xmark                                     & \cmark               \\ \hline
-        \end{tabular}
-        \label{table:comparison-mining-protocols}
-    \end{subtable}
+\begin{table}[t]
+    \centering
+    \caption{Comparison with decentralised mining pools.}
+    \begin{tabular}{ccccc}
+        \hline
+                            & VRF-based mining & P2Pool~\cite{voight2011p2pool} & SmartPool~\cite{luu2017smartpool} & BetterHash~\cite{draft-bip-BetterHash} \\ \hline
+        Complexity       & -                & Blockchain                     & Smart contract                    & -                                      \\
+        Decentralisation & Mining           & Mining                         & Mining                            & Select txs                             \\ \hline
+    \end{tabular}
+    \label{table:comparison-pools}
+\end{table}
 
-    \quad
-
-    \begin{subtable}[t]{\linewidth}
-        \centering
-        \caption{Comparison with decentralised mining pools.}
-        \begin{tabular}{ccccc}
-            \hline
-                             & VRF-based mining & P2Pool~\cite{voight2011p2pool} & SmartPool~\cite{luu2017smartpool} & BetterHash~\cite{draft-bip-BetterHash} \\ \hline
-            Complexity       & -                & Blockchain                     & Smart contract                    & -                                      \\
-            Decentralisation & Mining           & Mining                         & Mining                            & Select txs                             \\ \hline
-        \end{tabular}
-        \label{table:comparison-pools}
-    \end{subtable}
-
-    \label{tab:comparisons}
-\end{table*}
 
 
 \subsection{Mining protocols}
