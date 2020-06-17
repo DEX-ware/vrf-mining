@@ -1,25 +1,29 @@
 \section{Preliminaries}
 \label{sec:preliminaries}
 
-\subsection{Cryptocurrency mining}
-
-
-A miner mines on a blockchain with PoW-based consensus by solving crypto-puzzles.
-The crypto-puzzle is usually constructed from hash functions, and works as follows.
+\subsection{PoW-based consensus and mining}
+Miners participate in PoW-based consensus by \emph{mining}, which works as follows.
 % how mining works
-First, a miner constructs a block template $t$, which consists of transactions to include, hash of the last block, and other block metadata.
-Second, the miner should find a nonce $n$ such that the hash of $t || n$ is smaller than a difficulty parameter.
-Once the miner find a valid nonce, he can append this block to the blockchain.
-% how diff works
-To solve a PoW puzzle, miners iteratively computes hash values of different nonces until finding a hash satisfying the difficulty parameter.
-The difficulty can be parametrised by limiting the interval of hashes.
-For example, Bitcoin controls the difficulty of finding a nonce by specifying the number of leading zeros of hashes.
-
+Given the blockchain's latest view, the miner creates a block template $t$, which consists of transactions to include, hash of the last block, and other metadata.
+The miner then tries to solve a PoW puzzle with $t$ as input.
+To solve this PoW puzzle, the miner should find a nonce $n$ such that $H(t || n)$ is smaller than a difficulty parameter $T$, where $H(\cdot)$ is a hash function specified by the PoW-based consensus.
+As $H(\cdot)$ is one-way and its output is pseudorandom, the miner can only try different nonces until finding a valid one.
+Once the miner find a valid nonce, he can assemble this nonce and $t$ to a block, and append this block to the blockchain.
+The miner will get some coins as the reward of mining.
+% diff adjustment
+By adaptively adjusting $T$, the rate of new blocks remains stable.
+If miners mine too many blocks in a previous time period, the protocol will increase $T$ so that miners will mine slower.
+Otherwise, the protocol will decrease $T$.
 
 \subsection{Mining pools}
+As the rate of new blocks is limited, the mining reward of miners is highly volatile, especially for miners with less powerful hardware.
+To stabilise mining reward, miners usually participate in mining pools.
+Mining pools enable miners to mine collaboratively and distribute reward in a fine-grained way.
+A mining pool usually relies on a centralised pool operator.
+All miners mine in the name of the pool operator, and the pool operator distributes rewards in proportion to miners' contribution.
 
-In a mining pool, the pool operator outsources the mining process by allowing miners to find nonces for him.
-First, a pool operator specifies the pool difficulty $PT$ - a difficulty lower than the blockchain network - and a search interval $[n_1, n_m]$ of nonces.
+Concretely, a mining pool works as follows.
+First, a pool operator specifies the pool difficulty $PT$ --- a difficulty lower than the blockchain network --- and a search interval $[n_1, n_m]$ of nonces.
 Then, the pool operator sends the block template $t$, $PT$, $n_1$ and $n_m$ to the miner, and the miner starts to find a nonce in $[n_1, n_m]$ which satisfies $PT$.
 Once finding a valid nonce $n_k$, the miner sends $n_k$ back to the pool operator.
 The pool operator then verifies whether $n_k$ produces a hash satisfying $PT$, and records the miner's contribution (a.k.a. a share) if valid.
@@ -38,14 +42,14 @@ Anyone knowing the associated public key can verify the correctness of the hash,
 Formally, a VRF consists of four algorithms: $\mathsf{VRFKeyGen}$, $\mathsf{VRFHash}$, $\mathsf{VRFProve}$ and $\mathsf{VRFVerify}$.
 
 \begin{itemize}
-    \item $\mathsf{VRFKeyGen}(1^{\lambda}) \to (sk, pk)$: On input a security parameter $1^{\lambda}$, outputs the secret/public key pair $(sk, pk)$.
+    \item $\mathsf{VRFKeyGen}(1^{\lambda}) \to (sk, pk)$: On input security parameter $1^{\lambda}$, outputs a secret/public key pair $(sk, pk)$.
     \item $\mathsf{VRFHash}(sk, \alpha) \to \beta $: On input $sk$ and an arbitrary-length string $\alpha$, outputs a fixed-length hash $\beta$.
     \item $\mathsf{VRFProve}(sk, \alpha) \to \pi$: On input $sk$ and $\alpha$, outputs the proof $\pi$ for $\beta$.
     \item $\mathsf{VRFVerify}(pk, \alpha, \beta, \pi) \to \{True, False\}$: On input $pk$, $\alpha$, $\beta$, $\pi$, outputs the verification result $True$ or $False$.
 \end{itemize}
 
 % refer https://tools.ietf.org/pdf/draft-goldbe-vrf-01.pdf
-A VRF should preserve the following three security properties~\cite{goldberg2017draft}:
+Informally, VRF should preserve the following three security properties~\cite{goldberg2017draft}:
 
 \begin{itemize}
     \item \emph{Uniqueness}: Given a secret key $sk$ and an input $\alpha$, $\mathsf{VRFHash}(sk, \alpha)$ produces a unique valid output.

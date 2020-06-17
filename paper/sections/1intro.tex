@@ -23,7 +23,7 @@ Mining power centralisation weakens PoW-based consensus' security.
 A mining pool with sufficient mining power can perform various attacks to break PoW-based consensus, such as selfish mining~\cite{eyal2018majority} and 51\% attacks~\cite{nakamoto2008bitcoin}.
 In addition, mining pools can censor transactions, i.e., decide which transactions to include in the blockchain.
 % to date...
-To date (01/12/2019), four largest mining pools control more than 51\% Bitcoin mining power~\cite{btc-com}, which can be a lurking threat to blockchain ecosystem.
+Nowadays, four largest mining pools control more than 51\% Bitcoin mining power~\cite{btc-com}, which can be a lurking threat to blockchain ecosystem.
 
 This paper introduces \textit{VRF-based mining}, a surprisingly simple but effective approach to make pooled mining impossible.
 VRF-based mining replaces hash functions in PoW-based consensus with Verifiable Random Functions (VRFs)~\cite{micali1999verifiable}.
@@ -33,13 +33,13 @@ Concretely, our contributions are as follows.
 
 \textbf{VRF-based mining.} 
 We replace the hash function in PoW-based consensus with a VRF.
-A block in the blockchain should contain the VRF hash and its proof, but does not need to contain the digital signature.
+As mining requires secret keys, the pool operator should publish his secret key to outsource mining, which enables miners to steal his mining reward.
 Verifying the VRF hash can prove both the correctness of the hash and the authorship of the block in the same time.
 
 \textbf{Non-outsourceability analysis.}
-Miller et al.~\cite{miller2015nonoutsourceable} first formalises the \emph{non-outsourceable} mining problem and its \emph{non-outsourceability} property.
-We find two orthogonal properties in \emph{non-outsourceability}, namely the punishment on pool operators and the unaccountability of punishing.
-We then show VRF-based mining achieves the strongest notion of \emph{non-outsourceability} defined in Miller et al.~\cite{miller2015nonoutsourceable}.
+Miller et al.~\cite{miller2015nonoutsourceable} first formalises the \emph{non-outsourceability} of mining in PoW-based consensus.
+We find \emph{non-outsourceability} consists of two orthogonal properties, namely the punishment on pool operators and the unaccountability of punishing.
+We then informally prove VRF-based mining achieves the strongest guarantee on both properties.
 
 \textbf{Instantiating VRF-based mining.}
 VRF has four customisable components, namely the elliptic curve, two hash functions between strings and elliptic curve elements, and a normal hash function.
@@ -52,7 +52,6 @@ Our results show that VRF-based mining is easy to implement and introduces littl
 \textbf{Partial outsourcing is unrealistic.}
 Partial outsourcing is that, a pool operator interactively outsources computation that does not need the secret key to miners.
 We show that partial outsourcing is unprofitable, as it's both computation-intensive and I/O-intensive.
-We also discuss how to instantiate VRFs to make it even more costly.
 
 This paper is organised as follows.
 \S\ref{sec:preliminaries} and \S\ref{sec:construction} describes preliminaries and the construction of VRF-based mining, respectively.

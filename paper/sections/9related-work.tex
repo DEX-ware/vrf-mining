@@ -2,8 +2,8 @@
 \label{sec:related}
 
 To the best of our knowledge, VRF-based mining is the first construction that makes pooled mining \textit{impossible}.
-In this section, we briefly review related research on preventing mining pools, and compare them with VRF-based mining.
-We classify related research to two types, namely mining protocols trying to address pooled mining, and decentralised mining pools.
+We briefly review related research on preventing mining pools, and compare them with VRF-based mining.
+We classify related research to two types, namely pooled-mining-unfriendly mining protocols and decentralised mining pools.
 
 \begin{table}[t]
     \centering
@@ -14,7 +14,7 @@ We classify related research to two types, namely mining protocols trying to add
         Punishment                    & New reward           & New reward                                 & New reward                                 & New reward               \\
         Stealing                      & Unlinkable       & Linkable                                   & Unlinkable                                 & Unlinkable           \\
         No partial outsourcing        & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
-        Support randomised signatures & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
+        Support rand. signatures & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
         No complex cryptography       & \cmark           & \cmark                                     & \xmark                                     & \cmark               \\ \hline
     \end{tabular}
     \label{table:comparison-mining-protocols}
@@ -40,37 +40,39 @@ There are two mining protocols aiming at discouraging or breaking mining pools: 
 Table~\ref{table:comparison-mining-protocols} summarises our comparisons.
 
 \textbf{Non-outsourceable scratch-off puzzle.}
-Miller et al.~\cite{miller2015nonoutsourceable} formalises cryptocurrency mining as \emph{scratch-off puzzles}, defines \emph{non-outsourceable scratch-off puzzles}, and proposes two constructions.
-One of these two constructions achieves \emph{weak non-outsourceability} (i.e., miners can steal the mining reward), and the other achieves \emph{strong non-outsourceability} (i.e., miners can anonymously steal the mining reward).
+Miller et al.~\cite{miller2015nonoutsourceable} formalises mining as \emph{scratch-off puzzles}, defines \emph{non-outsourceability}, and proposes two \emph{non-outsourceable scratch-off puzzles}.
+One achieves \emph{weak non-outsourceability} --- miners can steal the mining reward, and the other achieves \emph{strong non-outsourceability} --- miners can steal the mining reward anonymously.
 
-In the weak non-outsourceable scratch-off puzzle, mining consists of three steps.
-First, the miner creates a Merkle tree randomly.
-Second, the miner searches for a valid nonce.
-More specifically, the miner samples some leaves of the Merkle tree randomly according to nonce, and hashes their Merkle proofs together to produce a hash.
-If this hash meets the difficulty requirement, the nonce is considered valid.
-Last, the miner binds the valid nonce and his block template together to produce a valid block.
+The weak non-outsourceable scratch-off puzzle works as follows.
+First, the miner randomly generates a Merkle tree.
+Second, the miner randomly chooses a nonce, samples some leaves of the Merkle tree according to the nonce, and hashes their Merkle proofs together to a single hash.
+If this hash meets the difficulty requirement, then the nonce is valid.
+Last, the miner binds the valid nonce and its block template together to a valid block.
 
 In order to outsource the mining process, the mining pool should distribute the search space of nonces to miners.
 % how to steal
-Miners can steal the mining reward by repetitively searching for a valid nonce (the first two steps) then binds this valid nonce with his own block template (the last step).
+A miner can steal the mining reward by binding valid nonces it finds with his own block template.
 % why weak
-However, in this protocol, all miners with the same view of the blockchain share the same search space of nonces, as the search space of nonces only relies on the previous block hash, rather than both the previous block hash and the block template like in Bitcoin.
-By exploiting this fact, the pool operator can identify the miner who steals the mining reward.
-For example, the pool operator can link the nonce in the stolen block with the miner who takes charge of the search space covering this nonce.
-To achieve \emph{strong non-outsourceability} (i.e., make the stealing behaviours anonymous), the strong non-outsourceable scratch-off puzzle replaces the plaintext nonce in the block with a Zero Knowledge Proof proving the statement ``I know a valid nonce''.
+However, this stealing process is not anonymous.
+Unlike existing PoW-based consensus where miners can choose both nonces and block templates, the weak non-outsourceable scratch-off puzzle only allows miners to choose nonces, so all miners share the same search space of nonces.
+Thus, the pool operator can link the nonce in the stolen block with the miner who is assigned with the search space covering this nonce.
+To achieve \emph{strong non-outsourceability}, the strong non-outsourceable scratch-off puzzle replaces the plaintext nonce in the block with a Zero Knowledge Proof proving the statement ``I know a valid nonce''.
 
 As discussed in \S\ref{sec:non_outsourceability}, while being simpler and more efficient than non-outsourceable scratch-off puzzle, our VRF-based mining achieves \emph{strong non-outsourceability}.
 
 \textbf{2P-PoW.}
 Eyal and Sirer proposes 2P-PoW~\cite{2P-PoW}, a mining protocol that discourages pooled mining.
-In 2P-PoW, there are two phases, and each phase has a difficulty parameter.
-A miner should find a nonce that makes the block to pass two phases: 1) the Sha256d hash of the block meets the first difficulty, 2) the Sha256 hash of the signature of the block meets the second difficulty.
+In 2P-PoW, mining consists of two phases, and each phase has a difficulty parameter.
+A miner should find a nonce that makes the block to pass two phases: 1) the SHA256D hash of the block meets the first difficulty, 2) the SHA256 hash of the signature of the block meets the second difficulty.
 As the second requirement requires the private key, pool operators cannot outsource the second phase.
 
-Compared to VRF-based mining that makes pooled mining impossible, 2P-PoW is partially outsourceable, as its first phase is outsourceable.
-In addition, 2P-PoW should use deterministic digital signatures, while commonly used digital signatures (e.g., ECDSA, EdDSA) rely on randomisation.
-If the signature is non-deterministic, the pool operator can make use of all nonces that are generated by miners and meet the first difficulty.
-For example, given a nonce meeting the first difficulty, the pool operator repetitively generates signatures to meet the second requirement.
+% first phase outsourceable
+Compared to VRF-based mining that makes pooled mining impossible, 2P-PoW is partially outsourceable by outsourcing the first phase.
+% det sig
+In addition, 2P-PoW requires the digital signature algorithm to be deterministic, while commonly used digital signatures such as ECDSA rely on randomisation.
+If the signature is randomised, the pool operator can make use of all nonces from miners that meet the first phase but fail the second phase.
+Given a nonce meeting the first difficulty, the pool operator repetitively generates signatures to meet the second requirement.
+% diff
 Moreover, how to adjust two difficulties still remains unknown and requires some simulations.
 
 
@@ -81,37 +83,39 @@ Moreover, how to adjust two difficulties still remains unknown and requires some
 
 % ref: https://www.alexeizamyatin.me/files/Decentralized_Mining-Security_and_Attacks.pdf
 
-
-Decentralised mining pool is a type of mining pool that works in a decentralised way.
-More specifically, miners mine in the name of themselves rather than the pool operator, but they share reward in a fine-grained way.
-In this way, miners are rewarded stably while mining power is not aggregated to pool operators.
-Table~\ref{table:comparison-pools} summarises the comparison between VRF-based mining with decentralised mining pool approaches.
+Decentralised mining pool is a type of mining pools that work in a decentralised way: miners mine in the name of themselves and share reward in a fine-grained way.
+In this way, miners are rewarded stably while mining power is not controlled by pool operators.
+Table~\ref{table:comparison-pools} summarises the comparison between VRF-based mining with decentralised mining pools.
 
 
 \textbf{P2Pool}~\cite{voight2011p2pool} is a decentralised mining pool for Bitcoin.
 % how p2pool works
-P2Pool runs a share-chain among all miners in the pool, and the share-chain includes shares submitted to the pool in sequence.
-During mining, the coinbase transaction records the number of shares submitted by each miner, and distributes the mining reward according to miners' contribution.
-In this way, once mining a Bitcoin block, the coinbase transaction will become valid, and miners will be rewarded according to their contribution.
+Instead of using a centralised server, P2Pool uses a blockchain called \emph{share-chain} to receive shares from miners.
+All miners in P2Pool participate in the PoW-based consensus of share-chain.
+Once a miner finds a share on Bitcoin, he appends a block to the share-chain.
+The block consists of the share and a coinbase transaction that rewards miners in proportion to their shares.
+Once a miner mines a block that also satisfies Bitcoin's difficulty, he submits this block to the Bitcoin blockchain, and and miners are rewarded according to the coinbase transaction.
 % challenges
-However, P2Pool suffers from several challenges.
-First, handling the difficulty of mining shares in P2Pool is hard.
-If the difficulty is high, a miner's reward will still be volatile.
-If the difficulty is low, there will be numerous low-difficulty shares, which introduces huge overhead on broadcasting shares or even spamming attacks.
-Second, frequent share submissions amplifies the influence of network latency which leads to high orphan share rate.
-Last, P2Pool is vulnerable to temporary dishonest majority~\cite{decentralised-mining-pool-security}.
+P2Pool suffers from several limitations.
+First, handling the difficulty of mining shares is hard.
+If the difficulty is high, miners' reward will still be volatile.
+If the difficulty is low, there will be numerous low-difficulty shares, which introduces huge overhead on broadcasting and receiving shares.
+Second, shares on share-chain are much more frequent than blocks on Bitcoin blockchain, and the share-chain suffers from high orphan rate.
+Last, existing research shows that P2Pool is vulnerable to temporary dishonest majority~\cite{decentralised-mining-pool-security}.
 
-\textbf{SmartPool}~\cite{luu2017smartpool} is another decentralised mining pool, which uses a smart contract to replace the centralised pool operator.
+\textbf{SmartPool}~\cite{luu2017smartpool} is another decentralised mining pool.
+Instead of using a blockchain, SmartPool employs smart contracts to track shares from miners.
 % con 1: smart contract
-As relying on smart contracts, SmartPool cannot work on blockchains without smart contracts.
+This implies that SmartPool cannot work on blockchains without smart contracts.
 % con 2: network delay
-In addition, as blockchains achieve limited throughput, transaction processing might be congested and mining reward might be delayed, especially when a large number of miners participate in the SmartPool.
+In addition, as blockchains achieve limited throughput, blockchains can only handle a limited number of shares for each time unit.
+In this way, distributing mining reward may also be delayed, especially when a large number of miners participate in the SmartPool.
 % con 3: compute and storage overhead
-Moreover, as the SmartPool smart contract should verify the validity of blocks, miners should submit the whole block (with transactions) to the SmartPool.
-Verifying blocks introduces significant overhead on computing (so expensive transaction fees), and storing blocks in the SmartPool smart contract also introduces significant overhead on storing the blockchain.
+Moreover, as the SmartPool smart contract should verify the validity of blocks, miners should submit the entire block --- including transactions --- to the SmartPool.
+Verifying blocks introduces non-negligible computing overhead and transaction fee, and storing blocks in smart contracts also introduces non-negligible overhead on storage.
 
 
 
 \textbf{BetterHash}~\cite{draft-bip-BetterHash} is another decentralised mining protocol, which has been integrated into \emph{Stratum V2}~\cite{stratum-v2}, the next generation of the \textit{Stratum}~\cite{stratum} pooled mining protocol.
 In \textit{BetterHash}, the block operator allows miners to choose transactions and construct blocks in his name, rather than constructing block templates by himself.
-Thus, \textit{BetterHash} only contributes to the decentralisation of constructing blocks, but does not contribute to the decentralisation of mining power.
+Thus, \textit{BetterHash} only contributes to the decentralisation of constructing blocks, but does not improve the decentralisation of mining power.
