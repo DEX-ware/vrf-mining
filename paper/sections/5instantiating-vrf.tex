@@ -23,11 +23,7 @@ Last, Ed25519 is compatible with existing blockchains, as numerous blockchains a
 
 
 \subsection{Hashing a string to an elliptic curve point $H_{1}(\cdot)$}
-% indistinguishable
 The first hash function $H_{1}(\cdot)$ hashes a string to an elliptic curve point.
-It should prevent adversaries from learning any knowledge of the input from its hash.
-% deterministic
-In addition, the $H_{1}(\cdot)$ function used in VRF should be deterministic, otherwise the hash will be unreproducible.
 A standardisation document~\cite{scott2019hashing} specifies several hash-to-curve functions~\cite{icart2009hash}~\cite{ulas2007rational}~\cite{brier2010efficient}~\cite{bernstein2013elligator} that fit into different elliptic curves and satisfy our requirements.
 Within these functions, Elligator2~\cite{bernstein2013elligator} is the recommended one for Ed25519.
 

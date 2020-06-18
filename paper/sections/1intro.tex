@@ -3,7 +3,7 @@
 
 Bitcoin~\cite{nakamoto2008bitcoin} started the era of cryptocurrency.
 % blockchain
-In Bitcoin, each participant maintains its own ledger.
+In Bitcoin, each participant maintains his own ledger.
 The ledger is structured as a blockchain, i.e., a chain of blocks of transactions.
 % proof of work
 Participants keep executing Proof-of-Work (PoW)-based consensus to agree on blocks and append them to the blockchain.
@@ -27,7 +27,7 @@ Nowadays, four largest mining pools control more than 51\% Bitcoin mining power~
 
 This paper introduces \textit{VRF-based mining}, a surprisingly simple but effective approach to make pooled mining impossible.
 VRF-based mining replaces hash functions in PoW-based consensus with Verifiable Random Functions (VRFs)~\cite{micali1999verifiable}.
-VRF requires a miner to input its secret key to compute the output, so a pool operator should reveal his secret key to miners in order to outsource mining.
+VRF requires a miner to input his secret key to compute the output, so a pool operator should reveal his secret key to miners in order to outsource mining.
 Thus, any miner can steal mining reward of a block owned by the pool operator anonymously.
 Concretely, our contributions are as follows.
 
