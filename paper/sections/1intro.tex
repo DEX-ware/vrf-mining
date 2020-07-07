@@ -29,27 +29,22 @@ This paper introduces \textit{VRF-based mining}, a surprisingly simple but effec
 VRF-based mining replaces hash functions in PoW-based consensus with Verifiable Random Functions (VRFs)~\cite{micali1999verifiable}.
 VRF requires a miner to input his secret key to compute the output, so a pool operator should reveal his secret key to miners in order to outsource mining.
 Thus, any miner can steal mining reward of a block owned by the pool operator anonymously.
-Concretely, our contributions are as follows.
+Our contributions are as follows.
 
-\textbf{VRF-based mining.} 
-We replace the hash function in PoW-based consensus with a VRF.
-As mining requires secret keys, the pool operator should publish his secret key to outsource mining, which enables miners to steal his mining reward.
-Verifying the Vrf output can prove both the correctness of the VRF output and the authorship of the block in the same time.
-
-\textbf{Non-outsourceability analysis.}
+\textbf{We analyse the non-outsourceability of VRF-based mining.}
 Miller et al.~\cite{miller2015nonoutsourceable} first formalises the \emph{non-outsourceability} of mining in PoW-based consensus.
 We find \emph{non-outsourceability} consists of two orthogonal properties, namely the punishment on pool operators and the unaccountability of punishing.
 We then informally prove VRF-based mining achieves the strongest guarantee on both properties.
 
-\textbf{Instantiating VRF-based mining.}
+\textbf{We discuss considerations for instantiating VRF-based mining.}
 VRF has four customisable components, namely the elliptic curve, two hash functions between strings and elliptic curve elements, and a normal hash function.
 We discuss considerations on choosing them for VRF-based mining.
 
-\textbf{Feasibility of VRF-based mining.}
+\textbf{We evaluate feasibility of VRF-based mining.}
 We implement Elliptic curve-based VRF specified in~\cite{goldberg2017draft} using Go programming language, and compare its performance with three mainstream mining algorithms SHA256D, Scrypt and CryptoNight.
 Our results show that VRF-based mining is easy to implement and introduces negligible overhead compared to hash-based mining.
 
-\textbf{Partial outsourcing is unrealistic.}
+\textbf{We show that partial outsourcing is unrealistic.}
 Partial outsourcing is that, a pool operator interactively outsources computation that does not need the secret key to miners.
 We show that partial outsourcing is unprofitable, as it's both computation-intensive and I/O-intensive.
 

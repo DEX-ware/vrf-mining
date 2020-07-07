@@ -1,9 +1,8 @@
 \section{Practicality of VRF-based mining}
 \label{sec:practicality}
 
-In this section, we experimentally show that VRF-based mining is easy to implement and introduces negligible overhead compared to hash-based mining.
-First, we show that VRFs can be much more efficient than hash functions used for mining, including Scrypt and CryptoNight.
-Second, we profile the performance of $\mathsf{VRFHash}$, and show that the elliptic curve scalar multiplication dominates $\mathsf{VRFHash}$'s runtime, which can be optimised in the future.
+In this section, we benchmark VRFs and compare their performance with existing hash functions for mining.
+The experimental results show that VRF-based mining is easy to implement and introduces negligible overhead compared to hash-based mining.
 
 \subsection{Experimental setting}
 
@@ -39,9 +38,6 @@ Figure~\ref{fig:runtime-comparison} shows the runtime of VRF and other algorithm
 SHA256D is much faster than other algorithms, as SHA256D is simply executing SHA256 twice.
 In addition, $\mathsf{VRFVerify}$ is slightly slower than $\mathsf{VRFProve}$, and $\mathsf{VRFProve}$ is slightly slower than $\mathsf{VRFHash}$.
 Last, although without optimisation, all functions of VRF are much faster than Scrypt and CryptoNight.
-This means that VRF is easy to implement and introduces negligible overhead compared to hash functions for mining, so suitable for cryptocurrency mining.
-
-
 
 \subsection{Runtime breakdown of VRF}
 
@@ -50,4 +46,3 @@ Figure~\ref{fig:runtime-breakdown} shows that, the elliptic curve scalar multipl
 This is because we use SHA-3 as the hash function in $H_1(\cdot)$ and $H_2(\cdot)$, and SHA-3 is designed to be fast.
 Meanwhile, we calculate the elliptic curve scalar multiplication using the trivial double-and-add method without any optimisation, thus is much slower than $H_1(\cdot)$ and $H_2(\cdot)$.
 Even so, $\mathsf{VRFHash}$ is still much faster than Scrypt and CryptoNight.
-This further proves that VRFs introduce negligible overhead compared to hash functions for mining.
