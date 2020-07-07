@@ -7,10 +7,10 @@ We classify related research to two types, namely pooled-mining-unfriendly minin
 
 \begin{table}[t]
     \centering
-    \caption{Comparison between mining protocols.}
+    \caption{Comparison between mining protocols. NSP is short for Non-outsourceable scratch-off puzzle.}
     \begin{tabular}{ccccc}
         \hline
-                                        & VRF-based mining & Puzzle-1~\cite{miller2015nonoutsourceable} & Puzzle-2~\cite{miller2015nonoutsourceable} & 2P-PoW~\cite{2P-PoW} \\ \hline
+                                        & VRF-based mining & NSP-1 & NSP-2 & 2P-PoW \\ \hline
         Punishment                    & New reward           & New reward                                 & New reward                                 & New reward               \\
         Stealing                      & Unlinkable       & Linkable                                   & Unlinkable                                 & Unlinkable           \\
         No partial outsourcing        & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
@@ -25,7 +25,7 @@ We classify related research to two types, namely pooled-mining-unfriendly minin
     \caption{Comparison with decentralised mining pools.}
     \begin{tabular}{ccccc}
         \hline
-                            & VRF-based mining & P2Pool~\cite{voight2011p2pool} & SmartPool~\cite{luu2017smartpool} & BetterHash~\cite{draft-bip-BetterHash} \\ \hline
+                            & VRF-based mining & P2Pool & SmartPool & BetterHash \\ \hline
         Complexity       & -                & Blockchain                     & Smart contract                    & -                                      \\
         Decentralisation & Mining           & Mining                         & Mining                            & Select txs                             \\ \hline
     \end{tabular}

@@ -34,7 +34,7 @@ Concretely, our contributions are as follows.
 \textbf{VRF-based mining.} 
 We replace the hash function in PoW-based consensus with a VRF.
 As mining requires secret keys, the pool operator should publish his secret key to outsource mining, which enables miners to steal his mining reward.
-Verifying the VRF hash can prove both the correctness of the hash and the authorship of the block in the same time.
+Verifying the Vrf output can prove both the correctness of the VRF output and the authorship of the block in the same time.
 
 \textbf{Non-outsourceability analysis.}
 Miller et al.~\cite{miller2015nonoutsourceable} first formalises the \emph{non-outsourceability} of mining in PoW-based consensus.
@@ -47,18 +47,18 @@ We discuss considerations on choosing them for VRF-based mining.
 
 \textbf{Feasibility of VRF-based mining.}
 We implement Elliptic curve-based VRF specified in~\cite{goldberg2017draft} using Go programming language, and compare its performance with three mainstream mining algorithms SHA256D, Scrypt and CryptoNight.
-Our results show that VRF-based mining is easy to implement and introduces little overhead.
+Our results show that VRF-based mining is easy to implement and introduces negligible overhead compared to hash-based mining.
 
 \textbf{Partial outsourcing is unrealistic.}
 Partial outsourcing is that, a pool operator interactively outsources computation that does not need the secret key to miners.
 We show that partial outsourcing is unprofitable, as it's both computation-intensive and I/O-intensive.
 
 This paper is organised as follows.
-\S\ref{sec:preliminaries} and \S\ref{sec:construction} describes preliminaries and the construction of VRF-based mining, respectively.
-\S\ref{sec:non_outsourceability} revisits the definition of non-outsourceability, and shows VRF-based mining achieves better non-outsourceability than existing proposals.
-\S\ref{sec:instantiation} discusses concerns of instantiating VRFs for VRF-based mining.
-\S\ref{sec:practicality} provides an experimental analysis on the practicality of VRF-based mining.
-\S\ref{sec:partial-outsourcing} discusses why partial outsourcing in VRF-based mining is unprofitable.
-\S\ref{sec:discussions} discusses potential problems in VRF-based mining and their solutions.
-\S\ref{sec:related} summaries related work, and \S\ref{sec:conclusion} concludes this paper.
+Section~\ref{sec:preliminaries} and Section~\ref{sec:construction} describes preliminaries and the construction of VRF-based mining, respectively.
+Section~\ref{sec:non_outsourceability} revisits the definition of non-outsourceability, and shows VRF-based mining achieves better non-outsourceability than existing proposals.
+Section~\ref{sec:instantiation} discusses concerns of instantiating VRFs for VRF-based mining.
+Section~\ref{sec:practicality} provides an experimental analysis on the practicality of VRF-based mining.
+Section~\ref{sec:partial-outsourcing} discusses why partial outsourcing in VRF-based mining is unprofitable.
+Section~\ref{sec:discussions} discusses potential problems in VRF-based mining and their solutions.
+Section~\ref{sec:related} summaries related work, and Section~\ref{sec:conclusion} concludes this paper.
 We attach the pseudocode of the standardised EC-VRF construction~\cite{goldberg2017draft} in Appendix.
