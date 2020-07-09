@@ -6,7 +6,7 @@ The experimental results show that VRF-based mining is easy to implement and int
 
 \subsection{Experimental setting}
 
-We implement the standardised EC-VRF in Algorithm~\ref{algo:standard-ecvrf} using Go programming language, without any optimisation.
+We implement the standardised EC-VRF~\cite{goldberg2017draft} using Go programming language, without any optimisation.
 We use Ed25519~\cite{bernstein2012high} as the underlying elliptic curve, Elligator~\cite{bernstein2013elligator} as $H_1(\cdot)$, SHA-3 as the hash function.
 Ed25519, SHA-3 and the encoding of points on Ed25519 are supported by Go's standard library.
 We use open-source implementations of SHA256D~\footnote{\url{https://github.com/seehuhn/sha256d}}, Scrypt~\footnote{\url{https://github.com/elithrar/simple-scrypt}}, and CryptoNight~\footnote{\url{https://github.com/Equim-chan/cryptonight}}.
