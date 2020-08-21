@@ -27,7 +27,7 @@ For example, although of independent interest, protocols for scaling blockchains
 
 \subsection{Secret key leakage in memory}
 
-VRF-mining requires the secret key, so a miner should keep his secret key in plaintext in memory \emph{all the time}.
+VRF-mining requires the secret key, so a miner should keep its secret key in plaintext in memory \emph{all the time}.
 This gives adversaries opportunity to steal the secret key from the memory.
 For example, if the mining software has a bug that enables hackers to access the memory space of the mining software, then the hacker can easily steal the secret key.
 
@@ -45,10 +45,10 @@ Note that the encalves are unnecessary to be general-purpose.
 Second, the process of the mining software can destroy itself once detecting anomalous memory access attempts.
 % isolation
 Third, the miner can isolate mining from the blockchain node.
-For example, it can run the mining process independently with his blockchain node process.
-In this way, if an adversary compromises his node but not the operating system, the adversary still cannot read the private key in another process.
+For example, it can run the mining process independently with its blockchain node process.
+In this way, if an adversary compromises its node but not the operating system, the adversary still cannot read the private key in another process.
 % offline
-Fourth, it can run the mining process in an offline machine that can only communicate with his blockchain node.
+Fourth, it can run the mining process in an offline machine that can only communicate with its blockchain node.
 % oram
 Fifth, Oblivious RAM (ORAM) is a promising primitive to protect sensitive data in memory.
 ORAM allows CPUs to access data in memory while the data in memory is encrypted and the access pattern is hidden.

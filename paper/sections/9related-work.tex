@@ -47,11 +47,11 @@ The weak non-outsourceable scratch-off puzzle works as follows.
 First, the miner randomly generates a Merkle tree.
 Second, the miner randomly chooses a nonce, samples some leaves of the Merkle tree according to the nonce, and hashes their Merkle proofs together to a single hash.
 If this hash meets the difficulty requirement, then the nonce is valid.
-Last, the miner binds the valid nonce and his block template together to a valid block.
+Last, the miner binds the valid nonce and its block template together to a valid block.
 
 In order to outsource the mining process, the mining pool should distribute the search space of nonces to miners.
 % how to steal
-A miner can steal the mining reward by binding valid nonces it finds with his own block template.
+A miner can steal the mining reward by binding valid nonces it finds with its own block template.
 % why weak
 However, this stealing process is not anonymous.
 Unlike existing PoW-based consensus where miners can choose both nonces and block templates, the weak non-outsourceable scratch-off puzzle only allows miners to choose nonces, so all miners share the same search space of nonces.
@@ -117,5 +117,5 @@ Verifying blocks introduces non-negligible computing overhead and transaction fe
 
 
 \textbf{BetterHash}~\cite{draft-bip-BetterHash} is another decentralised mining protocol, which has been integrated into \emph{Stratum V2}~\cite{stratum-v2}, the next generation of the \textit{Stratum}~\cite{stratum} pooled mining protocol.
-In \textit{BetterHash}, the block operator allows miners to choose transactions and construct blocks in his name, rather than constructing block templates by himself.
+In \textit{BetterHash}, the block operator allows miners to choose transactions and construct blocks in its name, rather than constructing block templates by himself.
 Thus, \textit{BetterHash} only contributes to the decentralisation of constructing blocks, but does not improve the decentralisation of mining power.

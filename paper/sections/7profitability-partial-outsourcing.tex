@@ -15,7 +15,7 @@ In VRF-based mining, the pool operator can outsource $H_1(\cdot)$ or $H_2(\cdot)
 % outsource h1
 To outsource $H_1(\cdot)$, the pool operator generates a series of nonces $\{n_1, \dots, n_m\}$, then sends the series and the block template $t$ to a miner.
 Then, the miner computes $H_1(n_i)$ for each $i \in [1, m]$, then sends back all $h_i = H_1(\cdot)$ hashes to the pool operator.
-The pool operator should verify $\{h_1, \dots, h_m\}$ before starting the second step --- multiplying each of $\{h_1, \dots, h_m\}$ with his secret key $sk$.
+The pool operator should verify $\{h_1, \dots, h_m\}$ before starting the second step --- multiplying each of $\{h_1, \dots, h_m\}$ with its secret key $sk$.
 
 % outsource h2
 After the second step, the pool operator obtains a series of $\{\gamma_1, \dots, \gamma_m\}$.

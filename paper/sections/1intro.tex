@@ -3,12 +3,12 @@
 
 Bitcoin~\cite{nakamoto2008bitcoin} started the era of cryptocurrency.
 % blockchain
-In Bitcoin, each participant maintains his own ledger.
+In Bitcoin, each participant maintains its own ledger.
 The ledger is structured as a blockchain, i.e., a chain of blocks of transactions.
 % proof of work
 Participants keep executing Proof-of-Work (PoW)-based consensus to agree on blocks and append them to the blockchain.
 In PoW-based consensus, each participant keeps trying to solve a computationally hard PoW puzzle~\cite{dwork1992pricing}.
-Once solving the puzzle, the participant appends his block to the blockchain and gets some coins as reward.
+Once solving the puzzle, the participant appends its block to the blockchain and gets some coins as reward.
 By adaptively adjusting the difficulty of PoW puzzles, PoW-based consensus can ensure only one participant solves the puzzle for each time period with high probability.
 Participants of PoW-based consensus are also known as miners, the process of solving PoW puzzles is known as mining, and the computation power used for mining is known as mining power.
 
@@ -26,7 +26,7 @@ However, existing approaches are either inefficient or ineffective, which will b
 
 This paper introduces \textit{VRF-based mining}, a surprisingly simple but effective approach to make pooled mining impossible.
 VRF-based mining replaces hash functions in PoW-based consensus with Verifiable Random Functions (VRFs)~\cite{micali1999verifiable}.
-VRF requires a miner to input his secret key to compute the output, so a pool operator should reveal his secret key to miners in order to outsource mining.
+VRF requires a miner to input its secret key to compute the output, so a pool operator should reveal its secret key to miners in order to outsource mining.
 Thus, any miner can steal mining reward of a block owned by the pool operator anonymously.
 Our contributions are as follows.
 
