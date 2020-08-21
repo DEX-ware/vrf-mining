@@ -7,7 +7,7 @@ Miners participate in PoW-based consensus by \emph{mining}, which works as follo
 Given the blockchain's latest view, the miner creates a block template $t$, which consists of transactions to include, hash of the last block, and other metadata.
 The miner then tries to solve a PoW puzzle that, the miner should find a nonce $n$ such that $H(t || n)$ is smaller than a difficulty parameter $T$.
 Note that $H(\cdot)$ is a one-way hash function, and the miner can only try different nonces until finding a valid one.
-Once the miner find a valid nonce, he can assemble this nonce and $t$ to a block, and append this block to the blockchain.
+Once the miner find a valid nonce, it can assemble this nonce and $t$ to a block, and append this block to the blockchain.
 The miner will get some coins as the reward of mining.
 % diff adjustment
 By adaptively adjusting $T$, the rate of new blocks remains stable.

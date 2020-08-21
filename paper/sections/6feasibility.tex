@@ -25,7 +25,7 @@ Each group of experiments consists of ten runs, and we take the average value of
     \begin{subfigure}[]{0.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{figs/runtime-breakdown.eps}
-        \caption{Runtime breakdown of $\mathsf{VRFHash}$.}
+        \caption{Runtime breakdown of $\mathsf{VRFHash}(\cdot)$.}
         \label{fig:runtime-breakdown}
     \end{subfigure}
     \caption{Evaluation of VRF.}
@@ -36,13 +36,13 @@ Each group of experiments consists of ten runs, and we take the average value of
 We compare the performance of VRF with existing mining algorithms.
 Figure~\ref{fig:runtime-comparison} shows the runtime of VRF and other algorithms.
 SHA256D is much faster than other algorithms, as SHA256D is simply executing SHA256 twice.
-In addition, $\mathsf{VRFVerify}$ is slightly slower than $\mathsf{VRFProve}$, and $\mathsf{VRFProve}$ is slightly slower than $\mathsf{VRFHash}$.
+In addition, $\mathsf{VRFVerify}(\cdot)$ is slightly slower than $\mathsf{VRFProve}(\cdot)$, and $\mathsf{VRFProve}(\cdot)$ is slightly slower than $\mathsf{VRFHash}(\cdot)$.
 Last, although without optimisation, all functions of VRF are much faster than Scrypt and CryptoNight.
 
 \subsection{Runtime breakdown of VRF}
 
-We profile $\mathsf{VRFHash}$ by evaluating its runtime of each step.
-Figure~\ref{fig:runtime-breakdown} shows that, the elliptic curve scalar multiplication $\gamma \gets h^{sk}$ takes 88\% of $\mathsf{VRFHash}$'s running time.
+We profile $\mathsf{VRFHash}(\cdot)$ by evaluating its runtime of each step.
+Figure~\ref{fig:runtime-breakdown} shows that, the elliptic curve scalar multiplication $\gamma \gets h^{sk}(\cdot)$ takes 88\% of $\mathsf{VRFHash}(\cdot)$'s running time.
 This is because we use SHA-3 as the hash function in $H_1(\cdot)$ and $H_2(\cdot)$, and SHA-3 is designed to be fast.
 Meanwhile, we calculate the elliptic curve scalar multiplication using the trivial double-and-add method without any optimisation, thus is much slower than $H_1(\cdot)$ and $H_2(\cdot)$.
-Even so, $\mathsf{VRFHash}$ is still much faster than Scrypt and CryptoNight.
+Even so, $\mathsf{VRFHash}(\cdot)$ is still much faster than Scrypt and CryptoNight.

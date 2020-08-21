@@ -39,7 +39,7 @@ The hashing step should be cryptographically secure, so can adapt any existing c
 
 \subsection{Normal hash function $H_{3}(\cdot)$}
 The third hash function $H_{3}(\cdot)$ hashes an arbitrary string to a fixed-length string.
-It is only used in $\mathsf{VRFProve}$ and $\mathsf{VRFVerify}$ i.e., producing and verifying proofs of VRF outputs.
+It is only used in $\mathsf{VRFProve}(\cdot)$ and $\mathsf{VRFVerify}(\cdot)$ i.e., producing and verifying proofs of VRF outputs.
 The overhead of proving and verification should be minimised, so fast and cryptographically secure hash functions such as Keccak~\cite{bertoni2013keccak} and BLAKE~\cite{aumasson2008sha} are suitable for $H_{3}(\cdot)$.
 
 
@@ -49,8 +49,8 @@ Different from normal hash functions, the performance of computing memory-hard h
 As memory access is much harder to optimise compared to arithmetic operations in processors, high-end hardware cannot outperform low-end hardware greatly in terms of memory-hard functions.
 
 % VRFHash should memory-hard
-To make VRF-based mining memory-hard, $\mathsf{VRFHash}$ should be memory-hard.
+To make VRF-based mining memory-hard, $\mathsf{VRFHash}(\cdot)$ should be memory-hard.
 % vrfhash steps
-$\mathsf{VRFHash}$ of the standardised VRF consists of one $H_{1}(\cdot)$ hashing, one scalar-point multiplication and one $H_{2}(\cdot)$ hashing.
+$\mathsf{VRFHash}(\cdot)$ of the standardised VRF consists of one $H_{1}(\cdot)$ hashing, one scalar-point multiplication and one $H_{2}(\cdot)$ hashing.
 By making $H_{1}(\cdot)$ or $H_{2}(\cdot)$ memory-hard, VRF-based mining will be memory-hard.
 This can be achieved by embedding a memory-hard hash function such as Ethash~\cite{wiki2017ethash} and CryptoNight~\cite{seigenneocortex} in $H_1(\cdot)$ or $H_2(\cdot)$.

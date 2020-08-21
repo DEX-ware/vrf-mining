@@ -92,9 +92,9 @@ Table~\ref{table:comparison-pools} summarises the comparison between VRF-based m
 % how p2pool works
 Instead of using a centralised server, P2Pool uses a blockchain called \emph{share-chain} to receive shares from miners.
 All miners in P2Pool participate in the PoW-based consensus of share-chain.
-Once a miner finds a share on Bitcoin, he appends a block to the share-chain.
+Once a miner finds a share on Bitcoin, it appends a block to the share-chain.
 The block consists of the share and a coinbase transaction that rewards miners in proportion to their shares.
-Once a miner mines a block that also satisfies Bitcoin's difficulty, he submits this block to the Bitcoin blockchain, and and miners are rewarded according to the coinbase transaction.
+Once a miner mines a block that also satisfies Bitcoin's difficulty, it submits this block to the Bitcoin blockchain, and and miners are rewarded according to the coinbase transaction.
 % challenges
 P2Pool suffers from several limitations.
 First, handling the difficulty of mining shares is hard.
