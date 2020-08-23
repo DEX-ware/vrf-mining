@@ -82,12 +82,8 @@ Algorithm~\ref{algo:standard-ecvrf} describes the Elliptic-curve-based VRF (EC-V
     \myalg{\VRFVerify{$pk, \alpha, \beta, \pi$}}{
         $u = pk^{c} \cdot g^{s}$\;
         $h = H_{1}(\alpha)$\;
-        \If{$\gamma \notin G$}{
-            \Return{$0$}\;
-        }
+        \lIf{$\gamma \notin G$}{\Return{$0$}}
         $v = \gamma^{c} \cdot h^{s}$\;
-        \If{$c \neq H_{3}(g, h, pk, \gamma, u, v)$}{
-            \Return{$0$}\;
-        }
+        \lIf{$c \neq H_{3}(g, h, pk, \gamma, u, v)$}{\Return{$0$}}
         \Return{$1$}\;}{}
 \end{algorithm}
