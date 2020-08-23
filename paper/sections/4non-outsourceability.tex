@@ -1,7 +1,7 @@
 \section{Non-outsourceability analysis}
 \label{sec:non_outsourceability}
 
-In this section, we revisit existing definitions on \emph{non-outsourceability}, and show that VRF-based mining achieves the strongest notion of \emph{non-outsourceability}.
+In this section, we revisit existing definitions on \emph{non-outsourceability}, and show that VRF-based mining achieves strong \emph{non-outsourceability}.
 
 \subsection{Revised definitions}
 
@@ -23,13 +23,15 @@ Finding out who steals the mining reward is equivalent to finding out the addres
 
 \subsection{Non-outsourceability of VRF-based mining}
 
-VRF-based mining achieves both \emph{punish-mining-reward} and \emph{stealing-unlinkability}.
-In VRF-based mining, the pool operator outsources mining by revealing its secret key to miners.
-The best thing the pool operator can do is to use a new secret for each block, and stealers can only steal the mining reward of a single block with a secret key.
-Thus, VRF-based mining achieves \emph{punish-mining-reward}.
-Similar with the Strongly non-outsourceable scratch-off puzzle~\cite{miller2015nonoutsourceable}, VRF-based mining achieves \emph{Stealing-unlinkability} by allowing a stealer to use a freshly generated address to steal cryptocurrency.
-To receive the stolen cryptocurrency of the pool operator, the stealer can create a new address, and construct a transaction of which the stolen cryptocurrency directs to this address.
-As this new address has no historical transactions, linking the transaction stealing cryptocurrency with other transactions can be impossible.
-Then the stealer can then spend its stolen cryptocurrency anonymously using numerous techniques, such as mixing services~\cite{maxwell2013coinjoin}\cite{bonneau2014mixcoin}\cite{ruffing2014coinshuffle}\cite{heilman2017tumblebit} and stealth addresses~\cite{van2013cryptonote}.
+VRF-based mining achieves \emph{punish-mining-reward}, but not \emph{stealing-unlinkability}.
+To outsource mining to a miner, the pool operator should share a secret key with it.
+This enables the miner to steal the mining reward, so VRF-based mining achieves \emph{punish-mining-reward}.
+% linkability
+The pool operator can give a new secret key and a block template to each miner at every height.
+If a miner steals mining reward, the pool operator can identify the stealer by the secret key in the transaction stealing the reward.
+Thus, VRF-based mining does not satisfy \emph{stealing-unlinkability}.
 
-
+% expensive
+Nevertheless, VRF-based mining makes maintaining mining pools quite expensive.
+First, the pool operator should monitor stealing behaviours by examining new blocks' coinbase transactions all the time.
+In addition, every time the pool operator's miners mine a block, the pool operator should transfer mining reward to its own wallet before a miner steals it.

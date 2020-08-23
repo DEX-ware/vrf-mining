@@ -32,8 +32,11 @@ Our contributions are as follows.
 
 \textbf{We analyse the non-outsourceability of VRF-based mining.}
 Miller et al.~\cite{miller2015nonoutsourceable} first formalises the \emph{non-outsourceability} of mining in PoW-based consensus.
-We find \emph{non-outsourceability} consists of two orthogonal properties, namely the punishment on pool operators and the unaccountability of punishing.
-We then show that VRF-based mining achieves the strongest guarantee on both properties.
+We find \emph{non-outsourceability} consists of two orthogonal properties, namely \emph{punish-mining-reward} and \emph{stealing-unlinkability}.
+\emph{Punish-mining-reward} specifies that miners can steal mining reward if the pool operator outsources mining.
+\emph{Stealing-unlinkability} specifies that the pool operator cannot know who steals mining reward.
+We then show that VRF-based mining achieves \emph{punish-mining-reward}, but not \emph{stealing-unlinkability}.
+Nevertheless, the pool operator should take extra effort -- which makes maintaining mining pools expensive -- to identify mining reward stealers and transfer mining reward before being stolen.
 
 \textbf{We discuss considerations for instantiating VRF-based mining.}
 VRF has four customisable components, namely the elliptic curve, two hash functions between strings and elliptic curve elements, and a normal hash function.

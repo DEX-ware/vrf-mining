@@ -1,8 +1,7 @@
 \section{Related work}
 \label{sec:related}
 
-To the best of our knowledge, VRF-based mining is the first construction that makes pooled mining \textit{impossible}.
-We briefly review related research on preventing mining pools, and compare them with VRF-based mining.
+We review related research on preventing mining pools, and compare them with VRF-based mining.
 We classify related research to two types, namely pooled-mining-unfriendly mining protocols and decentralised mining pools.
 
 \begin{table}[t]
@@ -10,12 +9,18 @@ We classify related research to two types, namely pooled-mining-unfriendly minin
     \caption{Comparison between mining protocols. NSP is short for Non-outsourceable scratch-off puzzle.}
     \begin{tabular}{ccccc}
         \hline
-                                        & VRF-based mining & NSP-1 & NSP-2 & 2P-PoW \\ \hline
-        Punishment                    & New reward           & New reward                                 & New reward                                 & New reward               \\
-        Stealing                      & Unlinkable       & Linkable                                   & Unlinkable                                 & Unlinkable           \\
-        No partial outsourcing        & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
-        Support randomised signatures & \cmark           & \cmark                                     & \cmark                                     & \xmark               \\
-        No complex cryptography       & \cmark           & \cmark                                     & \xmark                                     & \cmark               \\ \hline
+                                      & VRF-based mining & NSP-1  & NSP-2  & 2P-PoW \\ \hline
+        Punish-mining-reward          & \cmark           & \cmark & \cmark & \cmark \\
+        Stealing-unlinkability        & \xmark$^\dagger$       & \xmark & \cmark & \xmark \\
+        No partial outsourcing        & \cmark           & \cmark & \cmark & \xmark \\
+        Support randomised signatures & \cmark           & \cmark & \cmark & \xmark \\
+        No complex cryptography       & \cmark           & \cmark & \xmark & \cmark \\ \hline
+        \multicolumn{5}{l}{
+            \renewcommand{\arraystretch}{1.2}
+            \begin{tabular}[l]{@{}l@{}}
+                {$\dagger$ The pool operator should take non-negligible effort to deanonymise stealing behaviours.}
+            \end{tabular}
+        }
     \end{tabular}
     \label{table:comparison-mining-protocols}
 \end{table}
@@ -25,9 +30,9 @@ We classify related research to two types, namely pooled-mining-unfriendly minin
     \caption{Comparison with decentralised mining pools.}
     \begin{tabular}{ccccc}
         \hline
-                            & VRF-based mining & P2Pool & SmartPool & BetterHash \\ \hline
-        Complexity       & -                & Blockchain                     & Smart contract                    & -                                      \\
-        Decentralisation & Mining           & Mining                         & Mining                            & Select txs                             \\ \hline
+                         & VRF-based mining & P2Pool     & SmartPool      & BetterHash \\ \hline
+        Complexity       & -                & Blockchain & Smart contract & -          \\
+        Decentralisation & Mining           & Mining     & Mining         & Select txs \\ \hline
     \end{tabular}
     \label{table:comparison-pools}
 \end{table}
@@ -64,7 +69,7 @@ As discussed in \S\ref{sec:non_outsourceability}, while being simpler and more e
 Eyal and Sirer proposes 2P-PoW~\cite{2P-PoW}, a mining protocol that discourages pooled mining.
 In 2P-PoW, mining consists of two phases, and each phase has a difficulty parameter.
 A miner should find a nonce that makes the block to pass two phases: 1) the SHA256D hash of the block meets the first difficulty, 2) the SHA256 hash of the signature of the block meets the second difficulty.
-As the second requirement requires the private key, pool operators cannot outsource the second phase.
+As the second requirement requires the secret key, pool operators cannot outsource the second phase.
 
 % first phase outsourceable
 Compared to VRF-based mining that makes pooled mining impossible, 2P-PoW is partially outsourceable by outsourcing the first phase.

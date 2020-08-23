@@ -45,4 +45,6 @@ We profile $\mathsf{VRFHash}(\cdot)$ by evaluating its runtime of each step.
 Figure~\ref{fig:runtime-breakdown} shows that, the elliptic curve scalar multiplication $\gamma \gets h^{sk}(\cdot)$ takes 88\% of $\mathsf{VRFHash}(\cdot)$'s running time.
 This is because we use SHA-3 as the hash function in $H_1(\cdot)$ and $H_2(\cdot)$, and SHA-3 is designed to be fast.
 Meanwhile, we calculate the elliptic curve scalar multiplication using the trivial double-and-add method without any optimisation, thus is much slower than $H_1(\cdot)$ and $H_2(\cdot)$.
-Even so, $\mathsf{VRFHash}(\cdot)$ is still much faster than Scrypt and CryptoNight.
+There have been optimisation techniques for elliptic curve scalar multiplication, and some miners may exploit them for accelerating mining.
+This may be unfair to other miners.
+To avoid this, we suggest to replace $H_1(\cdot)$ and/or $H_2(\cdot)$ with slow hash functions such as Scrypt and CryptoNight.

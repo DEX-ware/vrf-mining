@@ -72,9 +72,9 @@ Monash University \and CSIRO-Data61 \and Bytom Foundation \and KZen Research
 \begin{abstract}
   This paper introduces VRF-based mining, a simple and effective way of making pooled mining impossible.
   Instead of using hash functions, VRF-based mining uses Verifiable Random Functions (VRFs) for Proof-of-work (PoW)-based consensus.
-  As VRF binds an output with a secret key, a pool operator should reveal its private key to outsource the mining process to miners, and miners can anonymously steal cryptocurrency in the pool operator's wallet.
+  As VRF binds an output with a secret key, a pool operator should reveal its secret key to outsource the mining process to miners, and miners can anonymously steal cryptocurrency in the pool operator's wallet.
   
-  We revisit the definition of \emph{non-outsourceability} in existing research, and show that VRF-based mining achieves the strongest notion of \emph{non-outsourceability}.
+  We revisit the definition of \emph{non-outsourceability} in existing research, and show that VRF-based mining achieves strong \emph{non-outsourceability} guarantee.
   In addition, we discuss several considerations on instantiating VRFs for VRF-based mining.
   Moreover, we experimentally show that VRF-based mining is simple to implement and introduces negligible overhead compared to hash-based mining.
 \end{abstract}
