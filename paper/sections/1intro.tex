@@ -19,9 +19,9 @@ A mining pool allows miners to mine on blockchain in the name of the pool operat
 % Problems of having mining pools
 While miners are willing to participate in mining pools, mining pools lead to mining power centralisation.
 Nowadays, four largest mining pools control more than 51\% Bitcoin mining power~\cite{btc-com}, which can be a lurking threat to blockchain ecosystem.
-However, mining power centralisation contradicts Bitcoin's design objective -- decentralisation, and weakens PoW-based consensus' security~\cite{nakamoto2008bitcoin, eyal2018majority}.
+However, mining power centralisation contradicts Bitcoin's design objective -- decentralisation, and weakens PoW-based consensus' security~\cite{nakamoto2008bitcoin}\cite{eyal2018majority}.
 % existing solutions
-To avoid this, researchers have been working on re-decentralising mining power, mainly by non-outsourceable mining~\cite{miller2015nonoutsourceable,2P-PoW} and decentralised mining pools~\cite{voight2011p2pool, luu2017smartpool, draft-bip-BetterHash}.
+To avoid this, researchers have been working on re-decentralising mining power, mainly by non-outsourceable mining~\cite{miller2015nonoutsourceable,2P-PoW} and decentralised mining pools~\cite{voight2011p2pool}\cite{luu2017smartpool}\cite{draft-bip-BetterHash}.
 However, existing approaches are either inefficient or ineffective, which will be discussed in \S\ref{sec:related} later.
 
 This paper introduces \textit{VRF-based mining}, a surprisingly simple but effective approach to make pooled mining impossible.
@@ -33,7 +33,7 @@ Our contributions are as follows.
 \textbf{We analyse the non-outsourceability of VRF-based mining.}
 Miller et al.~\cite{miller2015nonoutsourceable} first formalises the \emph{non-outsourceability} of mining in PoW-based consensus.
 We find \emph{non-outsourceability} consists of two orthogonal properties, namely the punishment on pool operators and the unaccountability of punishing.
-We then informally prove VRF-based mining achieves the strongest guarantee on both properties.
+We then show that VRF-based mining achieves the strongest guarantee on both properties.
 
 \textbf{We discuss considerations for instantiating VRF-based mining.}
 VRF has four customisable components, namely the elliptic curve, two hash functions between strings and elliptic curve elements, and a normal hash function.
