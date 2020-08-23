@@ -18,10 +18,14 @@ In multi-tier reward scheme, the mining difficulty is divided into different lev
 In this way, mining reward is distributed in a fine-grained way, so lowers the reward variance.
 % strongchain
 StrongChain~\cite{szalachowski2019strongchain} introduces the notion of Collaborative PoW, where miners are encouraged to mine blocks together and the mining reward is distributed in proportion to miners' contributions.
+% low-variance block time
+Bobtail~\cite{bissias2017bobtail} adapts the block difficulty validation rule to comparing with the mean of the k-lowest order statistics to a target, and achieves low-variance inter-block time; and hence is beneficial to stablise miners rewards.
 
+% faster block time
 Another solution is to increase the rate of mining blocks.
 With more blocks mined in a time unit, the mining reward can also be more stable.
-For example, although of independent interest, protocols for scaling blockchains such as sharding~\cite{wang2019monoxide} and DAG~\cite{li2018scaling} can also stabilise the mining reward variance.
+Combining Bobtail and HotStuff~\cite{yin2019hotstuff}, HotPoW~\cite{keller2019hotpow} can reduce block time in Proof-of-Work systems, and achieve finality quickly.
+Moreover, although of independent interest, other protocols for scaling blockchains and faster confirmations, such as sharding~\cite{wang2019monoxide} and DAG~\cite{li2018scaling} can also stabilise the mining reward variance.
 
 
 
