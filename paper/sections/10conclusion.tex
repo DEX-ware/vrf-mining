@@ -6,3 +6,8 @@ VRF-based mining is simple and intuitive: miners produce digests of blocks using
 We show that VRF-based mining achieves strong \emph{non-outsourceability} guarantee.
 In addition, we discuss considerations of instantiating VRF-based mining.
 Moreover, we experimentally proves that VRF-based mining is simple to implement and introduces negligible overhead.
+
+Adding \emph{stealing-unlinkability} to VRF-based mining remains as an open problem.
+The key -- as discussed by Miller et al.~\cite{miller2015nonoutsourceable} -- is to exclude everything that the pool operator can exploit to track miners from mining.
+A possible construction can be excluding Merkle root from mining and replacing VRF with \emph{Anonymous VRF}~\cite{ganesh2019proof} -- a VRF variant where VRF outputs cannot be linked to any secret key.
+We consider concrete construction as future work.
