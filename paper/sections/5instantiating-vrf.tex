@@ -15,7 +15,7 @@ We discuss considerations on choosing these four components for VRF-based mining
 
 \subsection{Elliptic curve}
 As neither blockchains and VRF limits the choice of elliptic curves, any elliptic curve can be adapted.
-For example, among prominent elliptic curves, Edwards25519~\cite{bernstein2012high} (birationally equivalent to Curve25519~\cite{bernstein2006curve25519}) can be a promising choice.
+For example, among prominent elliptic curves, Edwards25519~\cite{bernstein2012high} can be a promising choice.
 First, Edwards25519 works on a prime field with the prime number $2^{255} - 19$, which provides sufficient enumeration space for VRF.
 Second, Edwards25519 supports Ed25519, a fast and secure digital signature algorithm.
 Last, Edwards25519 is compatible with existing blockchains, as numerous blockchains and projects using VRF adapt Edwards25519 as their underlying elliptic curve~\cite{ethereum}\cite{tendermint}\cite{monero}.
