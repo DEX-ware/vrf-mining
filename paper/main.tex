@@ -74,7 +74,11 @@ Monash University \and CSIRO-Data61 \and Bytom Foundation \and KZen Research
   Instead of using hash functions, VRF-based mining uses Verifiable Random Functions (VRFs) for Proof-of-work (PoW)-based consensus.
   As VRF binds an output with a secret key, a pool operator should reveal its secret key to outsource the mining process to miners, and miners can anonymously steal cryptocurrency in the pool operator's wallet.
   
-  We revisit the definition of \emph{non-outsourceability} in existing research, and show that VRF-based mining achieves strong \emph{non-outsourceability} guarantee.
+  We revisit the definition of \emph{non-outsourceability} in existing research, and identify two properties, namely \emph{punish-mining-reward} and \emph{stealing-unlinkability}.
+  \emph{Punish-mining-reward} specifies that if a pool operator outsources mining to a miner, then the miner can steal mining reward.
+  \emph{Stealing-unlinkability} specifies that the pool operator cannot identify miners stealing mining reward.
+  We show that VRF-based mining satisfies \emph{punish-mining-reward}, but not \emph{stealing-unlinkability}.
+  Nevertheless, the pool operator should take extra effort -- which makes maintaining mining pools expensive -- to identify mining reward stealers and transfer mining reward before being stolen.
   In addition, we discuss several considerations on instantiating VRFs for VRF-based mining.
   Moreover, we experimentally show that VRF-based mining is simple to implement and introduces negligible overhead compared to hash-based mining.
 \end{abstract}
