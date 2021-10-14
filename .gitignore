@@ -277,3 +277,4 @@ sftp-config.json
 main.ps
 
 tmp/
+.DS_Store
