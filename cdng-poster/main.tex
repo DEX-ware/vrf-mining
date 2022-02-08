@@ -32,7 +32,7 @@
 \usepackage{graphicx} % Required for including images
 \graphicspath{{figs/}} % Location of the graphics files
 \usepackage{booktabs} % Top and bottom rules for table
-\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+\usepackage{caption} % Required for specifying captions to tables and figures
 \usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
 \usepackage{wrapfig} % Allows wrapping text around tables and figures
 
@@ -66,12 +66,13 @@
     \veryHuge \color{NavyBlue} \textbf{VRF-based mining} \color{Black}\\ % Title
     \Huge\textit{How to rule out mining pools from the blockchain ecosystem?}\\[2cm] % Subtitle
     \huge \textbf{Runchao Han, Haoyu Lin and Jiangshan Yu}\\[0.5cm] % Author(s)
-    \huge Monash University and CSIRO-Data61\\[0.4cm] % University/organization
+    \huge Monash University and CSIRO's Data61\\[0.4cm] % University/organization
     \Large \texttt{runchao.han@monash.edu}\\
 \end{minipage}
 %
 \begin{minipage}[b]{0.25\linewidth}
-    \includegraphics[width=20cm]{data61-logo.png}\\
+    \includegraphics[width=18cm]{monash-logo.jpg}\\
+    \includegraphics[width=18cm]{data61-logo.png}
 \end{minipage}
 
 \vspace{1cm} % A bit of extra whitespace between the header and poster content
@@ -86,16 +87,6 @@
 
     \color{Navy} % Navy color for the abstract
 
-    \begin{abstract}
-        In this paper, we describe VRF-based mining, a simple and effective way of making pooled mining impossible.
-        Instead of using hash functions, VRF-based mining uses Verifiable Random Functions (VRFs) for Proof-of-work (PoW)-based consensus.
-        As VRF binds the authorship with hashes, a pool operator should reveal his private key to outsource the mining process to miners, and miners can easily steal cryptocurrency in the pool operator's wallet anonymously.
-
-        In addition, we revisit the definition of non-outsourceability in existing research, and show VRF-based mining achieves stronger non-outsourceability than all existing proposals.
-        Moreover, we describe how to instantiate VRFs for VRF-based mining.
-        Last, we discuss potential problems of having no mining pools, and how to address them.
-    \end{abstract}
-
     %----------------------------------------------------------------------------------------
     %	INTRODUCTION
     %----------------------------------------------------------------------------------------
@@ -104,21 +95,15 @@
 
     \section*{Introduction}
 
-    In this work, we introduce \textit{VRF-based mining}, a novel idea of using Verifiable Random Functions (VRFs) rather than hash functions for mining in PoW-based consensus.
-    With VRF, a miner should use his private key to mine blocks, so a pool operator should reveal his private key in order to outsource the mining process to miners.
-    In this way, no one can outsource the mining process, otherwise any miner can steal all cryptocurrency in his wallet anonymously.
+    To remain resilient against attacks and censorship, permissionless blockchains has to be \emph{decentralised}: the mining power is evenly distributed among a large group of miners.
+    However, existing Proof-of-Work (PoW)-based blockchains allow miners to join \emph{mining pools}, in which a pool operator hosts miners' mining power and distributes rewards to them.
+    The existence of mining pools centralises PoW-based blockchains, incurring risks of attacks and censorship on them.
 
-    Our contributions are as follows:
-
-    \begin{description}
-        \item [VRF-based mining] We propose the idea of VRF-based mining, and describe its detailed construction. The construction is surprisingly straightforward: we replace the hash function in PoW-based consensus with a VRF, and a block in the blockchain should contain the VRF hash and its proof, but does not need to contain the digital signature. Verifying the VRF hash can prove both the correctness of the hash and the authorship of the block in the same time.
-        \item [Revisiting non-outsourceable cryptocurrency mining] We revisit the definition of non-outsourceability of Miller et al.~\cite{miller2015nonoutsourceable}. In particular, we show non-outsourceability consists of punishing pool operators and the unaccountability of punishing. We then show how VRF-based mining achieves stronger punishment of outsourcing than non-outsourceable scratch-off puzzle of Miller et al.~\cite{miller2015nonoutsourceable}.
-        \item [Instantiating VRFs for VRF-based mining] We discuss how to instantiate VRFs for VRF-based mining. In particular, we show a VRF has four tweakable components, namely the elliptic curve and two hash functions between strings and elliptic curve elements, and a normal hash function. Then, we discuss concerns how to choose them for VRF-based mining purpose.
-        \item [Problems and solutions of having no mining pools] We discuss two problems of having no mining pools, namely the high mining reward variance and the high orphan block rate. We then discuss how to address them without mining pools.
-    \end{description}
-
-
-
+    In this poster, we describe VRF-based mining, a simple approach to rule out mining pools in the PoW-based blockchains.
+    To this end, VRF-based mining makes the PoW puzzle non-outsourceable, i.e., cannot be outsourced to mining pools.
+    Instead of using hash functions, VRF-based mining uses Verifiable Random Functions (VRFs) for PoW-based consensus.
+    As VRF binds the authorship with hashes, a pool operator should reveal his private key to outsource the mining process to miners, allowing miners to steal the pool operator's cryptocurrency.
+    VRF-based mining can be a drop-in replacement of the traditional hash-based mining, ruling out mining pools in \emph{any} PoW-based blockchains.
 
     \color{DarkSlateGray} % DarkSlateGray color for the rest of the content
 
@@ -256,7 +241,7 @@
 
     \section*{Conclusion and future work}
 
-    In this paper, we propose VRF-based mining, that can make pooled mining in Proof-of-work-based consensus impossible.
+    We have proposed VRF-based mining, that can make pooled mining in Proof-of-work-based consensus impossible.
     VRF-based mining is simple and intuitive: Miners produce hashes of blocks using VRFs rather than hash functions, so a pool operator should reveal his private key to outsource the mining process to other miners.
 
     As aforementioned, ruling out pooled mining can achieve better decentralisation but may harm the incentive of mining.
